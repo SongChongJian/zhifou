@@ -18,6 +18,7 @@ import com.zhifou.bean.Notice;
 import com.zhifou.bean.Question;
 import com.zhifou.bean.User;
 import com.zhifou.service.Adminservice;
+import com.zhifou.utils.JsonUtils;
 
 
 
@@ -115,8 +116,9 @@ public class AdminServlet extends BaseServlet {
 		String word = request.getParameter("word");
 		if(word!=null){
 			List<Object> list = adminservice.searchword(word);
-			Gson gson = new Gson();
-			String json = gson.toJson(list);
+			String json = JsonUtils.objectToJson(list);
+			/*Gson gson = new Gson();
+			String json = gson.toJson(list);*/
 			response.getWriter().write(json);
 		}
 	}
