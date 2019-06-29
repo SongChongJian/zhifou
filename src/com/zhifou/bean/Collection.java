@@ -1,26 +1,27 @@
 package com.zhifou.bean;
 
 public class Collection {
-	private String collectionid;//收藏ID
-	private String userid;//收藏着(userID)
-	private String questionid;//问题(questionID)
-	public String getCollectionid() {
+	private Integer collectionid;//收藏ID
+	private Integer userid;//收藏着(userID)
+	private Integer questionid;//问题(questionID)
+	public Integer getCollectionid() {
 		return collectionid;
 	}
-	public void setCollectionid(String collectionid) {
+	public void setCollectionid(Integer collectionid) {
 		this.collectionid = collectionid;
 	}
-	public String getUserid() {
+	public Integer getUserid() {
 		return userid;
 	}
-	public void setUserid(String userid) {
+	public void setUserid(Integer userid) {
 		this.userid = userid;
 	}
-	public String getQuestionid() {
+	public Integer getQuestionid() {
 		return questionid;
 	}
-	public void setQuestionid(String questionid) {
+	public void setQuestionid(Integer questionid) {
 		this.questionid = questionid;
 	}
+	
 	
 }

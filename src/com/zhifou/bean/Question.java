@@ -1,17 +1,19 @@
 package com.zhifou.bean;
 
 public class Question {
-	private String questionid;//问题id
+	private Integer questionid;//问题id
 	private String questionproposer;//问题提出者(userID)
 	private String questionmadetime;//问题提出时间
+	private String questiontitle;//问题标题
 	private String questioncontent;//问题内容
-	private String ispassaudit;//审核状态
-	private String categoryid;//问题类型(categoryID)
-	private String question_count;//问题浏览次数
-	public String getQuestionid() {
+	private String questionphoto;//问题图片
+	private Integer ispassaudit;//审核状态
+	private Integer categoryid;//问题类型(categoryID)
+	private Integer question_count;//问题浏览次数
+	public Integer getQuestionid() {
 		return questionid;
 	}
-	public void setQuestionid(String questionid) {
+	public void setQuestionid(Integer questionid) {
 		this.questionid = questionid;
 	}
 	public String getQuestionproposer() {
@@ -26,28 +28,40 @@ public class Question {
 	public void setQuestionmadetime(String questionmadetime) {
 		this.questionmadetime = questionmadetime;
 	}
+	public String getQuestiontitle() {
+		return questiontitle;
+	}
+	public void setQuestiontitle(String questiontitle) {
+		this.questiontitle = questiontitle;
+	}
 	public String getQuestioncontent() {
 		return questioncontent;
 	}
 	public void setQuestioncontent(String questioncontent) {
 		this.questioncontent = questioncontent;
 	}
-	public String getIspassaudit() {
+	public String getQuestionphoto() {
+		return questionphoto;
+	}
+	public void setQuestionphoto(String questionphoto) {
+		this.questionphoto = questionphoto;
+	}
+	public Integer getIspassaudit() {
 		return ispassaudit;
 	}
-	public void setIspassaudit(String ispassaudit) {
+	public void setIspassaudit(Integer ispassaudit) {
 		this.ispassaudit = ispassaudit;
 	}
-	public String getCategoryid() {
+	public Integer getCategoryid() {
 		return categoryid;
 	}
-	public void setCategoryid(String categoryid) {
+	public void setCategoryid(Integer categoryid) {
 		this.categoryid = categoryid;
 	}
-	public String getQuestion_count() {
+	public Integer getQuestion_count() {
 		return question_count;
 	}
-	public void setQuestion_count(String question_count) {
+	public void setQuestion_count(Integer question_count) {
 		this.question_count = question_count;
 	}
 	

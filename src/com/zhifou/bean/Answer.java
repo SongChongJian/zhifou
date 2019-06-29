@@ -1,22 +1,22 @@
 package com.zhifou.bean;
 
 public class Answer {
-	private String answerid;//回答ID
-	private String answerproposer;//回答提出者(userID)
+	private Integer answerid;//回答ID
+	private Integer answerproposer;//回答提出者(userID)
 	private String answercontent;//回答内容
 	private String answertime;//回答时间
-	private String questionid;//外键问题(quesID)
-	private String answer_count;//回答浏览次数
-	public String getAnswerid() {
+	private Integer questionid;//外键问题(quesID)
+	private Integer answer_count;//回答浏览次数
+	public Integer getAnswerid() {
 		return answerid;
 	}
-	public void setAnswerid(String answerid) {
+	public void setAnswerid(Integer answerid) {
 		this.answerid = answerid;
 	}
-	public String getAnswerproposer() {
+	public Integer getAnswerproposer() {
 		return answerproposer;
 	}
-	public void setAnswerproposer(String answerproposer) {
+	public void setAnswerproposer(Integer answerproposer) {
 		this.answerproposer = answerproposer;
 	}
 	public String getAnswercontent() {
@@ -31,16 +31,16 @@ public class Answer {
 	public void setAnswertime(String answertime) {
 		this.answertime = answertime;
 	}
-	public String getQuestionid() {
+	public Integer getQuestionid() {
 		return questionid;
 	}
-	public void setQuestionid(String questionid) {
+	public void setQuestionid(Integer questionid) {
 		this.questionid = questionid;
 	}
-	public String getAnswer_count() {
+	public Integer getAnswer_count() {
 		return answer_count;
 	}
-	public void setAnswer_count(String answer_count) {
+	public void setAnswer_count(Integer answer_count) {
 		this.answer_count = answer_count;
 	}
 	

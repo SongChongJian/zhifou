@@ -1,12 +1,12 @@
 package com.zhifou.bean;
 
 public class Category {
-	private String categoryid;
+	private Integer categoryid;
 	private String categoryname;
-	public String getCategoryid() {
+	public Integer getCategoryid() {
 		return categoryid;
 	}
-	public void setCategoryid(String categoryid) {
+	public void setCategoryid(Integer categoryid) {
 		this.categoryid = categoryid;
 	}
 	public String getCategoryname() {
@@ -15,5 +15,6 @@ public class Category {
 	public void setCategoryname(String categoryname) {
 		this.categoryname = categoryname;
 	}
+
 	
 }
