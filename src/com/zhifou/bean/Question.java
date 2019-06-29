@@ -2,7 +2,7 @@ package com.zhifou.bean;
 
 public class Question {
 	private Integer questionid;//问题id
-	private Integer questionproposer;//问题提出者(userID)
+	private String questionproposer;//问题提出者(userID)
 	private String questionmadetime;//问题提出时间
 	private String questiontitle;//问题标题
 	private String questioncontent;//问题内容
@@ -16,10 +16,10 @@ public class Question {
 	public void setQuestionid(Integer questionid) {
 		this.questionid = questionid;
 	}
-	public Integer getQuestionproposer() {
+	public String getQuestionproposer() {
 		return questionproposer;
 	}
-	public void setQuestionproposer(Integer questionproposer) {
+	public void setQuestionproposer(String questionproposer) {
 		this.questionproposer = questionproposer;
 	}
 	public String getQuestionmadetime() {
