@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/assets/css/amazeui.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/assets/css/admin.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/admin/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">
 </head>
 <style>

@@ -22,6 +22,9 @@
 	href="${pageContext.request.contextPath}/admin/assets/css/amazeui.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/admin/assets/css/admin.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">	
 </head>
 <body>
 	<!--[if lte IE 9]>
@@ -101,7 +104,9 @@
 					<p>
 						<span class="am-icon-bookmark"></span> 公告
 					</p>
-					<p>时光静好，与君语；细水流年，与君同。—— Zhifou</p>
+					<p id="noticet">&nbsp;&nbsp;</p>
+					<p id="noticec"></p>
+					<p id="noticep"></p>
 				</div>
 			</div>
 
@@ -127,80 +132,11 @@
 
 			<div class="am-tabs am-margin" data-am-tabs>
 				<ul class="am-tabs-nav am-nav am-nav-tabs">
-					<!--  <li class="am-active"><a href="#tab1">问题类型</a></li> -->
 					<li><a href="#tab2">发布公告</a></li>
-					<li><a href="#tab3">类型管理</a></li>
+					<li><a href="#tab3" onclick="categorymanage()">类型管理</a></li>
 				</ul>
 
 				<div class="am-tabs-bd">
-					<!-- <div class="am-tab-panel am-fade am-in am-active" id="tab1">
-        <div class="am-g am-margin-top">
-          <div class="am-u-sm-2 am-text-right">所属类别</div>
-          <div class="am-u-sm-10">
-            <select>
-              <option value="option1">选项一...</option>
-              <option value="option2">选项二.....</option>
-              <option value="option3">选项三........</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="am-g am-margin-top">
-          <div class="am-u-sm-2 am-text-right">显示状态</div>
-          <div class="am-u-sm-10">
-            <div class="am-btn-group" data-am-button>
-              <label class="am-btn am-btn-default am-btn-xs">
-                <input type="radio" name="options" id="option1"> 正常
-              </label>
-              <label class="am-btn am-btn-default am-btn-xs">
-                <input type="radio" name="options" id="option2"> 待审核
-              </label>
-              <label class="am-btn am-btn-default am-btn-xs">
-                <input type="radio" name="options" id="option3"> 不显示
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="am-g am-margin-top">
-          <div class="am-u-sm-2 am-text-right">推荐类型</div>
-          <div class="am-u-sm-10">
-            <div class="am-btn-group" data-am-button>
-              <label class="am-btn am-btn-default am-btn-xs">
-                <input type="checkbox"> 允许评论
-              </label>
-              <label class="am-btn am-btn-default am-btn-xs">
-                <input type="checkbox"> 置顶
-              </label>
-              <label class="am-btn am-btn-default am-btn-xs">
-                <input type="checkbox"> 推荐
-              </label>
-              <label class="am-btn am-btn-default am-btn-xs">
-                <input type="checkbox"> 热门
-              </label>
-              <label class="am-btn am-btn-default am-btn-xs">
-                <input type="checkbox"> 轮播图
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="am-g am-margin-top">
-          <div class="am-u-sm-2 am-text-right">
-            发布时间
-          </div>
-          <div class="am-u-sm-10">
-            <form action="" class="am-form am-form-inline">
-              <div class="am-form-group am-form-icon">
-                <i class="am-icon-calendar"></i>
-                <input type="text" class="am-form-field am-input-sm" placeholder="时间">
-              </div>
-            </form>
-          </div>
-        </div>
-
-      </div> -->
-
 					<div class="am-tab-panel am-fade" id="tab2">
 						<form class="am-form"
 							action="${pageContext.request.contextPath}/adminservlet?method=notice"
@@ -208,7 +144,7 @@
 							<div class="am-g am-margin-top">
 								<div class="am-u-sm-2 am-text-right">公告标题</div>
 								<div class="am-u-sm-4">
-									<input type="text" class="am-input-sm" value=""
+									<input  id="noticetitle"  type="text" class="am-input-sm" value=""
 										name="noticetitle">
 								</div>
 								<div class="am-u-sm-6">*必填，不可重复</div>
@@ -217,7 +153,7 @@
 							<div class="am-g am-margin-top">
 								<div class="am-u-sm-2 am-text-right">管理员</div>
 								<div class="am-u-sm-4">
-									<input type="text" class="am-input-sm" name="noticeproposer">
+									<input id="noticeproposer" type="text" class="am-input-sm" name="noticeproposer" value="">
 								</div>
 								<div class="am-u-sm-6">*必填</div>
 							</div>
@@ -225,14 +161,12 @@
 							<div class="am-g am-margin-top-sm">
 								<div class="am-u-sm-2 am-text-right">内容描述</div>
 								<div class="am-u-sm-10">
-									<textarea rows="10" placeholder="请使用富文本编辑插件"
-										name="noticecontent"></textarea>
+									<textarea  id="noticecontent"  rows="10" placeholder="请使用富文本编辑插件" ></textarea>
 								</div>
 							</div>
 							<div class="am-margin" style="margin-left: 140px">
-								<input class="am-btn am-btn-primary am-btn-xs" type="submit"
-									value="发布公告" /> <input class="am-btn am-btn-primary am-btn-xs"
-									type="submit" value="取消发布" />
+								<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="addnotice(this)">提交保存</button>
+    							<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="noaddnotice(this)">放弃保存</button>
 							</div>
 						</form>
 
@@ -240,39 +174,30 @@
 					</div>
 
 					<div class="am-tab-panel am-fade" id="tab3">
-						<form class="am-form">
 							<div class="am-g am-margin-top-sm">
 								<div class="am-u-sm-2 am-text-right">新增类型:</div>
 								<div class="am-u-sm-4 am-u-end">
-									<input type="text" class="am-input-sm">
+									<input type="text" class="am-input-sm" id="addcategory" value="" name="newcategory">
 								</div>
-
 							</div>
-							<div class="am-g am-margin-top-sm">
-								<div class="am-u-sm-2 am-text-right">全部类型:</div>
-
+							<div class="am-g am-margin-top-sm" style="width:500px;margin-left: 125px">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>问题类型</th>
+										</tr>
+									</thead>
+									<tbody id="tbody">
+										
+									</tbody>
+								</table>
+								<div class="am-margin" style="margin-left: 125px">
+									<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="addcategory()">提交保存</button>
+    								<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="cancel()">放弃保存</button>
+								</div>
 							</div>
-
-							<!-- <div class="am-g am-margin-top-sm">
-            <div class="am-u-sm-2 am-text-right">
-              SEO 关键字
-            </div>
-            <div class="am-u-sm-4 am-u-end">
-              <input type="text" class="am-input-sm">
-            </div>
-          </div>
-
-          <div class="am-g am-margin-top-sm">
-            <div class="am-u-sm-2 am-text-right">
-              SEO 描述
-            </div>
-            <div class="am-u-sm-4 am-u-end">
-              <textarea rows="4"></textarea>
-            </div>
-          </div> -->
-						</form>
-					</div>
-
+					</div>				
 				</div>
 			</div>
 
@@ -289,14 +214,6 @@
 		MIT license.</p>
 	</footer>
 
-	<!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="${pageContext.request.contextPath}/admin/assets/js/polyfill/rem.min.js"></script>
-<script src="${pageContext.request.contextPath}/admin/assets/js/polyfill/respond.min.js"></script>
-<script src="${pageContext.request.contextPath}/admin/assets/js/amazeui.legacy.js"></script>
-<![endif]-->
-
 	<!--[if (gte IE 9)|!(IE)]><!-->
 	<script
 		src="${pageContext.request.contextPath}/admin/assets/js/jquery.min.js"></script>
@@ -305,4 +222,73 @@
 	<!--<![endif]-->
 	<script src="${pageContext.request.contextPath}/admin/assets/js/app.js"></script>
 </body>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	function addnotice(e){
+		var noticetitle = document.getElementById("noticetitle").value;
+		var noticeproposer = document.getElementById("noticeproposer").value;
+		var noticecontent = document.getElementById("noticecontent").value;
+		$.ajax({
+			url:"/zhifou/adminservlet",
+			async:true,
+			type:"POST",
+			data:{"method":"notice","noticetitle":noticetitle,"noticecontent":noticecontent,"noticeproposer":noticeproposer},
+			success:function(data){
+				if (data!=null) {
+					document.getElementById("noticet").innerHTML="&nbsp;&nbsp;"+data.noticetitle;
+					document.getElementById("noticec").innerHTML="&nbsp;&nbsp;"+data.noticecontent;
+					document.getElementById("noticep").innerHTML="&nbsp;&nbsp;"+noticeproposer+"----"+data.noticerelease;
+					
+					document.getElementById("noticetitle").value = "";
+					document.getElementById("noticeproposer").value = "";
+					document.getElementById("noticecontent").value = "";
+				}
+			},
+			error:function(){
+				alert("请求失败");
+			},
+			dataType:"json"				
+		});  
+	}
+	function categorymanage(){
+		var content = "";  
+		$.ajax({
+			url:"/zhifou/adminservlet",
+			async:true,
+			type:"POST",
+			data:{"method":"categorymanage"},
+			success:function(data){
+				if (data.length > 0) {
+					for (var i = 0; i < data.length; i++) {
+						content += "<tr><th>"+(i+1)+"</th><th>"+data[i].categoryname+"</th></tr>";
+					}
+					$("#tbody").html(content);
+				}
+			},
+			error:function(){
+				alert("请求失败");
+			},
+			dataType:"json"				
+		});
+	}
+	function addcategory(){
+		$.ajax({
+			url:"/zhifou/adminservlet",
+			async:true,
+			type:"POST",
+			data:{"method":"addcategory","newcategory":document.getElementById("addcategory").value},
+			success:function(data){
+				if(data>0){
+					categorymanage();
+					document.getElementById("addcategory").value="";
+				}
+			},
+			error:function(){
+				alert("请求失败");
+			},
+			dataType:"text"				
+		});
+	}
+	
+</script>
 </html>

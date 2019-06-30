@@ -65,8 +65,17 @@ public class Adminservice {
 	public Notice addnotice(String noticetitle, String noticecontent, Integer noticeproposer, String noticerelease) {
 		return admindao.addnotice(noticetitle,noticecontent,noticeproposer,noticerelease);
 	}
+	//获取所有管理员
 	public List<Admin> getalladmin() {
 		return admindao.getalladmin();
+	}
+	//获取最新公告
+	public Notice getnewnotice() {
+		return admindao.getnewnotice();
+	}
+	//添加新问题类型
+	public int addnewcategory(String newcategory) {
+		return admindao.addnewcategory(newcategory);
 	}
 	
 
