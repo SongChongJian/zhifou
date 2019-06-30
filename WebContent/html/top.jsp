@@ -45,7 +45,7 @@
             
             
             <!--提问-->
-            <a id="modal-578824 zu-top-add-question" href="#modal-container-578824" role="button" class="zu-top-add-question btn" data-toggle="modal">提问</a>
+            <a id="modal-578824 zu-top-add-question" href="#modal-container-57882" role="button" class="zu-top-add-question btn" data-toggle="modal">提问</a>
             
             <div role="search" id="zh-top-search" class="zu-top-search">
                 <form method="GET" action="https://nowcoder.com/search" id="zh-top-search-form" class="zu-top-search-form">
@@ -132,9 +132,9 @@
             	时间：2019-06-29
             	描述：弹出层提问
             -->
-            <div class="container">
+            <div class="container"  style="margin:0 auto">
 				<div class="row clearfix">
-						<div class="modal fade" id="modal-container-578824" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal fade" id="modal-container-57882" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
    									<div class="modal-header">
@@ -159,7 +159,7 @@
 			                                </div>
                                 	<!--下拉 列表 -->
                           			     问题类型<br />
-									<select style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 565px;height: 30px;border-radius:3px;">
+									<select style="border: 1px solid #869FB1;background-color: #FFFFFF;width:95%;height: 30px;border-radius:3px;">
 									  <option value="saab">Saab</option>
 									  <option value="opel">Opel</option>
 									  <option value="audi">Audi</option>
@@ -167,7 +167,7 @@
 									</br>
 									</br>
 									<!--选择文件-->
-									<input type="file" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 565px;height: 30px;border-radius:3px;"/>
+									<input type="file" style="border: 1px solid #869FB1;background-color: #FFFFFF;width:95%;height: 30px;border-radius:3px;"/>
                                 
 									</div>
 									<div class="modal-footer">

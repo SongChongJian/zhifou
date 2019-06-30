@@ -4,33 +4,41 @@
 <!DOCTYPE html>
 <!-- saved from url=(0039)question/36301524 -->
 <html lang="zh-CN" dropeffect="none" class="js  is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" async="" src="../scripts/za-0.1.1.min.js"></script>
-<script async="" src="https://ssl.google-analytics.com/ga.js"></script>
-
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-ZA-Response-Id" content="4b3ad1bf1e8045f1a016c31f5fbb40c8">
 
 <title>问题详情页面</title>
-
- <link rel="stylesheet"  href="../bootstrap-3.3.7/css/bootstrap.css"/>
-	<script type="text/javascript" src="../js/jquery-2.2.3.min.js"></script>
-	<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
-
 <meta name="apple-itunes-app" content="app-id=432274380, app-argument=nowcoder://questions/36301524">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="mobile-agent" content="format=html5;url=">
 <meta id="znonce" name="znonce" content="8d61d9c6697d4080ab36aa3bdb21b9d8">
-
 <link rel="search" type="application/opensearchdescription+xml" href="" title="知否">
 <link rel="stylesheet" href="../styles/detail.css">
 <link rel="stylesheet" href="../styles/index.css">
 <link rel="stylesheet"  href="../bootstrap-3.3.7/css/bootstrap.css"/>
-	<script type="text/javascript" src="../js/jquery-2.2.3.min.js"></script>
-	<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
+<script type="text/javascript" src="../js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 <script src="../scripts/instant.e7a17de6.js"></script>
+<style type="text/css">
+	.modal-dialog {
+    position: absolute;
+    z-index: 99;
+    width: 420px;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid #888;
+    box-shadow: 0 0 80px 0 rgba(0,0,0,.4);
+    background: #fff;
+    text-align: left;
+    left: 50%;
+     margin-left: -275px; 
+    margin-top: 14%;
+    margin-top: 14vh;
+}
+	
+</style>
 </head>
 
 <body class="zhi ">
@@ -38,8 +46,6 @@
     <div class="zg-wrap zu-main clearfix with-indention-votebar" itemscope="" itemtype="http://schema.org/Question" id="zh-single-question-page" data-urltoken="36301524" role="main">
         <div class="zu-main-content">
             <div class="zu-main-content-inner">
-                <meta itemprop="isTopQuestion" content="false">
-                <meta itemprop="visitsCount" content="402">
                 <div class="zm-tag-editor zg-section">
                     <div class="zm-tag-editor-labels zg-clear">
                         <a data-tip="t$b$19550730" class="zm-item-tag" href="">新浪微博</a>
@@ -404,7 +410,7 @@
             	时间：2019-06-29
             	描述：弹出层提问
             -->
-        <div class="container">
+       <div class="container">
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 					 <a id="modal-578824" href="#modal-container-578824" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
@@ -447,9 +453,5 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
 </body>
 </html>
