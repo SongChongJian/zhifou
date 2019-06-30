@@ -39,7 +39,7 @@
                 </div>
                 <div class="modal-dialog-content">
                     <div class="zh-add-question-form">
-                        <form class="js-add-question-form" style="display: block;">
+                        <form class="js-add-question-form" style="display: block;" action="/zhifou/ask?method=ask" method="post">
                             <div class="zg-section-big clearfix">
                                 <div id="zm-modal-dialog-info-wrapper"></div>
                                 <div style="display: none;position: relative;" id="zm-modal-dialog-warnmsg-wrapper">
@@ -48,7 +48,7 @@
                                     <span class="zm-modal-dialog-guide-title-msg"></span>
                                 </div>
                                 <div class="zg-form-text-input add-question-title-form" style="position: relative;">
-                                    <textarea rows="1" class="zg-editor-input zu-seamless-input-origin-element" title="在这里输入问题" id="zh-question-suggest-title-content" aria-label="写下你的问题" placeholder="写下你的问题" role="combobox" aria-autocomplete="list" autocomplete="off" style="height: 22px;"></textarea>
+                                    <textarea  name="questiontitle" rows="1" class="zg-editor-input zu-seamless-input-origin-element" title="在这里输入问题" id="zh-question-suggest-title-content" aria-label="写下你的问题" placeholder="写下你的问题" role="combobox" aria-autocomplete="list" autocomplete="off" style="height: 22px;"></textarea>
                                 </div>
                             </div>
                             <div class="zg-section-big">
@@ -58,8 +58,10 @@
                                         <div class="zm-editable-editor-outer">
                                             <div class="zm-editable-editor-field-wrap">
                                                 <div id="mock:k" class="zm-editable-editor-field-element editable" g_editable="true" role="textbox" contenteditable="true" style="font-style: italic;">
-                                                    <p>
-                                                        <span style="font-style: normal;color: #999;">问题背景、条件等详细信息</span></p>
+                                                <textarea name="questioncontent" style="width:100%;height:100%;"
+                                                class="zg-editor-input zu-seamless-input-origin-element" placeholder="问题说明">
+												
+												</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -69,19 +71,20 @@
                             </div>
                             <!--下拉 列表 -->
                           			     问题类型<br />
-									<select style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 150px;height: 30px;border-radius:3px;">
-									  <option value="saab">Saab</option>
-									  <option value="opel">Opel</option>
-									  <option value="audi">Audi</option>
+									<select name="categoryid" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 150px;height: 30px;border-radius:3px;">
+									  <option value="1">科技</option>
+									  <option value="2">娱乐</option>
+									  <option value="3">体育</option>
 									</select>
 									</br>
 									<br>
 									<a href="javascript:;"  >选择文件</a><br />
-									<input type="text" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 150px;height: 30px;border-radius:3px;"/>
+									<input name="questionphoto" type="text" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 150px;height: 30px;border-radius:3px;"/>
                             <div class="zm-command">
                                 <!-- <span id="zh-question-form-tag-err">至少添加一个话题</span> -->
                                 <a href="javascript:;" name="cancel" class="zm-command-cancel">取消</a>
-                                <a href="javascript:;" name="addq" class="zg-r5px zu-question-form-add zg-btn-blue">发布</a>
+                                <input type="submit" class="zg-r5px zu-question-form-add zg-btn-blue" value="发布"/>
+<!--                                 <a href="javascript:;" name="addq" class="zg-r5px zu-question-form-add zg-btn-blue">发布</a> -->
                                 <a name="jumpq" class="zg-r5px zg-btn-blue zu-question-form-jump" style="display:none;">查看问题</a></div>
                         </form>
                     </div>
