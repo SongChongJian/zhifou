@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
 import com.zhifou.bean.Admin;
 import com.zhifou.bean.Category;
 import com.zhifou.bean.Notice;
@@ -155,9 +154,21 @@ public class AdminServlet extends BaseServlet {
 		request.setCharacterEncoding("UTF-8");
 		String noticetitle = request.getParameter("noticetitle");
 		String noticecontent = request.getParameter("noticecontent");
-		String noticeproposer = request.getParameter("noticeproposer");
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		int noticeproposer = 1;
+		//查询所有管理员
+	 	List<Admin> adminlist = adminservice.getalladmin();
+	 	if(adminlist!=null){
+	 		for(Admin i: adminlist){
+	 			if(i.getAdminname().equals(request.getParameter("noticeproposer"))){
+	 				noticeproposer = i.getAdminid();
+	 			}
+	 		}
+	 	}
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
 		String noticerelease = df.format(new java.util.Date());// new Date()为获取当前系统时间 
 		Notice notice = adminservice.addnotice(noticetitle,noticecontent,noticeproposer,noticerelease);
+		String json = JsonUtils.objectToJson(notice);
+		response.getWriter().write(json);
+		System.out.println(json);
 	}
 }
