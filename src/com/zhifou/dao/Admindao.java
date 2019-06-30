@@ -163,7 +163,8 @@ public class Admindao {
 		}
 		return list;
 	}
-	public Notice addnotice(String noticetitle, String noticecontent, String noticeproposer, String noticerelease) {
+	//发布公告并回显
+	public Notice addnotice(String noticetitle, String noticecontent, Integer noticeproposer, String noticerelease) {
 		String sql = "insert into notice (noticetitle,noticecontent,noticerelease,noticeproposer) values(?,?,?,?)";
 		String sql2 = "select * from notice where noticetitle = ? ";
 		Notice notice = null;
@@ -174,6 +175,17 @@ public class Admindao {
 			e.printStackTrace();
 		}
 		return notice;
+	}
+	//获取所有管理员
+	public List<Admin> getalladmin() {
+		String sql = "select * from admin";
+		List<Admin> list = null;
+		try {
+			list = queryrunner.query(sql, new BeanListHandler<Admin>(Admin.class));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }

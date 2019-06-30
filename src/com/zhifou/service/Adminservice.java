@@ -62,8 +62,11 @@ public class Adminservice {
 		return admindao.getallusers();
 	}
 	//发布公告
-	public Notice addnotice(String noticetitle, String noticecontent, String noticeproposer, String noticerelease) {
+	public Notice addnotice(String noticetitle, String noticecontent, Integer noticeproposer, String noticerelease) {
 		return admindao.addnotice(noticetitle,noticecontent,noticeproposer,noticerelease);
+	}
+	public List<Admin> getalladmin() {
+		return admindao.getalladmin();
 	}
 	
 
