@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter(urlPatterns="/*")
+@WebFilter("/AdminServlet")
 public class AdminFilter implements Filter {
     public AdminFilter() {
         // TODO Auto-generated constructor stub

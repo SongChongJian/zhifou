@@ -32,8 +32,8 @@ public class AdminServlet extends BaseServlet {
 		String adminpassword = request.getParameter("adminpassword");
 		Admin admin = adminservice.adminlogin(adminmail,adminpassword);
 		if(admin!=null){
-			HttpSession session = request.getSession();
-			session.setAttribute("admin", admin);
+			HttpSession session2 = request.getSession();
+			session2.setAttribute("admin", admin);
 			response.sendRedirect("admin/admin-index.jsp");
 		}
 	}
@@ -103,37 +103,10 @@ public class AdminServlet extends BaseServlet {
 	 	request.setAttribute("currentpage", currentpage);
 	 	request.setAttribute("method", "issearched");
 	 	request.setAttribute("categoryid", categoryid);
-	 	//获取问题的类型 -- 调用方法
-	 	List<Category> categorylist = null;
-	 	categorylist = getcategorylist(request,response);
+	 	//获取问题的类型
+	 	List<Category> categorylist = adminservice.getcategory();
 	 	request.setAttribute("categorylist", categorylist);
 	 	request.getRequestDispatcher("admin/admin-table.jsp").forward(request, response);
-	}
-	//获取问题的类型
-	public List<Category> getcategorylist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-		List<Category> categorylist = adminservice.getcategory();
-		return categorylist;
-	}
-	//问题类型增加删除
-	public void categorymanage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//获取问题的类型 -- 调用方法
-		response.setContentType("text/html;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-	 	List<Category> categorylist = null;
-	 	categorylist = getcategorylist(request,response);
-	 	String json = JsonUtils.objectToJson(categorylist);
-	 	response.getWriter().write(json);
-	}
-	//添加新问题类型
-	public void addcategory(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-		String newcategory = request.getParameter("newcategory");
-		System.out.println(newcategory);
-		int row = adminservice.addnewcategory(newcategory);
-		response.getWriter().write(row);
 	}
 	//搜索字段自动显示
 	public void searchword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -197,12 +170,5 @@ public class AdminServlet extends BaseServlet {
 		String json = JsonUtils.objectToJson(notice);
 		response.getWriter().write(json);
 		System.out.println(json);
-	}
-	//获取最新公告
-	public void getnewnotice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-		Notice newnotice = adminservice.getnewnotice();
-		
 	}
 }

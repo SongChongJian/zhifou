@@ -187,27 +187,5 @@ public class Admindao {
 		}
 		return list;
 	}
-	//获取最新公告
-	public Notice getnewnotice() {
-		String sql = "select * from notice ORDER BY noticeid DESC LIMIT 1";
-		Notice newnotice = null;
-		try {
-			newnotice = queryrunner.query(sql, new BeanHandler<Notice>(Notice.class));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return newnotice;
-	}
-	//添加新问题类型
-	public int addnewcategory(String newcategory) {
-		String sql = "insert into category (categoryname) values(?)";
-		int row = 0;
-		try {
-			row = queryrunner.update(sql, newcategory);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return row;
-	}
 
 }
