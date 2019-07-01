@@ -1,7 +1,6 @@
 package com.zhifou.web.servlet;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,18 +63,5 @@ public class RecommendServlet extends BaseServlet{
 		String jsonData=JsonUtils.objectToJson(userindexs);
 		System.out.println(jsonData);
 		response.getWriter().write(jsonData);
-	}
-
-	public void showAnswerDetail(HttpServletRequest request,HttpServletResponse response) throws IOException{
-		String value = request.getParameter("answerid");
-		int answerid = Integer.parseInt(value);
-		RecommendService service = new RecommendService();
-		Answer answer = service.FindAnswerByID(answerid);
-		User user = service.FindUserByID(answer.getAnswerproposer());
-		Question question = service.FindQuestionById(answer.getQuestionid());
-		Category category = service.FindCategoryByID(question.getCategoryid());
-		UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
-		request.getSession().setAttribute("AnswerDetail", userindex);
-		response.sendRedirect("/zhifou/html/detail.jsp");
 	}
 }

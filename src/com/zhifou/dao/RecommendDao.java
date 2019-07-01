@@ -41,19 +41,6 @@ public class RecommendDao {
 		return users;
 	}
 	
-	//根据问题id找到该问题
-	public Answer FindAnswerByID(int id){
-		String sql = "select * from answer where answerid = ?";
-		Answer answer = null;
-		try {
-			answer =queryrunner.query(sql, new BeanHandler<Answer>(Answer.class),id);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return answer;	
-	}
-	
 	//根据问题提出者id找到该用户
 	public User FindUserByID(int id){
 		String sql = "select * from user where userid = ?";
