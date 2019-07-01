@@ -6,6 +6,14 @@ public class User {
 	 private String userpassword; //用户密码
 	 private String usermail;//用户邮箱
 	 private String userphoto;//用户头像
+	 private String usermeans;//用户签名
+	 
+	public String getUsermeans() {
+		return usermeans;
+	}
+	public void setUsermeans(String usermeans) {
+		this.usermeans = usermeans;
+	}
 	public Integer getUserid() {
 		return userid;
 	}

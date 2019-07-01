@@ -103,6 +103,7 @@ public class RecommendDao {
 		userindex.setUserpassword(user.getUserpassword());
 		userindex.setUsermail(user.getUsermail());
 		userindex.setUserphoto(user.getUserphoto());
+		userindex.setUsermeans(user.getUsermeans());
 		return userindex;
 	}
 }

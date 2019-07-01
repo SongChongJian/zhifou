@@ -8,6 +8,7 @@ public class UserIndex {
 	private String userpassword; //用户密码
 	private String usermail;//用户邮箱
 	private String userphoto;//用户头像
+	private String usermeans;//用户签名
 	private Integer questionid;//问题id
 	private Integer questionproposer;//问题提出者(userID)
 	private Date questionmadetime;//问题提出时间
@@ -23,6 +24,12 @@ public class UserIndex {
 	private String answertime;//回答时间
 	private String categoryname;//类别名称
 	
+	public String getUsermeans() {
+		return usermeans;
+	}
+	public void setUsermeans(String usermeans) {
+		this.usermeans = usermeans;
+	}
 	public String getCategoryname() {
 		return categoryname;
 	}
