@@ -99,7 +99,7 @@
 												<meta itemprop="answer-url-token" content="13174385">
 												<h2 class="feed-title">
 													<a class="question_link" target="_blank"
-														href="https://nowcoder.com/question/19857995#answer-389034">${iitem.questiontitle }</a>
+														href="https://nowcoder.com/question/19857995#answer-389034">${item.questiontitle }</a>
 												</h2>
 												<div class="feed-question-detail-item">
 													<div class="question-description-plain zm-editable-content"></div>
@@ -162,10 +162,12 @@
 																class="follow-link zg-follow meta-item"
 																href="javascript:;" id="sfb-123114"> <i
 																class="z-icon-follow"></i>关注问题
-															</a> <a href="#" name="addcomment"
+															</a> 
+															<a href="#" name="addcomment"
 																class="meta-item toggle-comment js-toggleCommentBox">
 																<i class="z-icon-comment"></i>69 条评论
-															</a> <a href="#" class="meta-item js-thank"
+															</a> 
+															<a onclick="setCollection('${item.answerid}','${item.questionid }')" class="meta-item js-thank"
 																data-thanked="false"> <i class="z-icon-thank"></i>收藏
 															</a>
 	
@@ -236,7 +238,7 @@
 			success:function(data){
 				if(data.length>0){
 					 $.each(data,function(index,obj){
-						content+="	<div class='avatar'>"
+						content+="<div class='avatar'>"
 						+"		<a title='李淼' data-tip='p$t$amuro1230'"
 						+"			class='zm-item-link-avatar' target='_blank'> <img"
 						+"			src='images/res/12a8e1ce5ad8060fddb93ae2df98028b_m.jpg'"
@@ -313,7 +315,7 @@
 						+"						</a> <a href='#' name='addcomment'"
 						+"							class='meta-item toggle-comment js-toggleCommentBox'>"
 						+"							<i class='z-icon-comment'></i>69 条评论"
-						+"						</a> <a href='#' class='meta-item js-thank'"
+						+"						</a> <a onclick='setCollection("+obj.answerid+","+obj.questionid+")' class='meta-item js-thank'"
 						+"							data-thanked='false'> <i class='z-icon-thank'></i>收藏"
 						+"						</a>"
 						+"						<button class='meta-item item-collapse js-collapse'>"
@@ -326,7 +328,7 @@
 						+"			</div>"
 						+"		</div>"
 						+"	</div>"
-;
+					;
 					}); 
 				}
 				$("#showDiv").append(content); 
@@ -334,9 +336,26 @@
 			error:function(){
 				alert("请求失败");
 			}
-			
 		});
 	}
+	
+	
+	function setCollection(answerid,questionid){
+		alert(answerid+"  "+questionid)
+		 $.ajax({
+			url:"/zhifou/collection",
+			type:"post",	
+			dataType:"json",
+			data:{"method":"addCollection","answerid":answerid,"questionid":questionid},
+			success:function(data){
+				alert("收藏成功");
+			},
+			error:function(){
+				alert("请求失败");
+			}
+		}); 
+	}
+	
 
 </script>
 </html>

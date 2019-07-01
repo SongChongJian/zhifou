@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <!DOCTYPE html>
 <html lang="zh-CN" class="is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile">
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,6 +24,23 @@
     <link rel="stylesheet"  href="../bootstrap-3.3.7/css/bootstrap.css"/>
 	<script type="text/javascript" src="../js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
+		<style type="text/css">
+			.modal-dialog {
+		    position: absolute;
+		    z-index: 99;
+		    width: 420px;
+		    max-width: 100%;
+		    border-radius: 8px;
+		    border: 1px solid #888;
+		    box-shadow: 0 0 80px 0 rgba(0,0,0,.4);
+		    background: #fff;
+		    text-align: left;
+		    left: 50%;
+		     margin-left: -275px; 
+		    margin-top: 14%;
+		    margin-top: 14vh;
+		}
+		</style>
 </head>
 <body class="posts_show">
 	<%@ include file="top.jsp"%>
@@ -37,37 +55,44 @@
     </div>
     <br />
     <br />
+    <!-- 收藏内容 -->
     <div id="main">
+    
         <div class="zg-wrap zu-main clearfix ">
             <ul class="letter-list">
+            <!-- 遍历的到收藏列表 -->
+            <c:forEach items="${uindex}" var="item" varStatus="status">
+            	
                 <li id="conversation-item-10005_622873">
                     <a class="letter-link" href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1"></a>
                     <div class="letter-info">
                         <div class="l-operate-bar">
                             <a href="javascript:void(0);" class="sns-action-del" data-id="10005_622873">
-                            删除
+                           			 删除
                             </a>
                             <a href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1">
-                                共268条回答
+                            		    共浏览${item.answer_count }次
                             </a>
                         </div>
                     </div>
                     <div class="chat-headbox">
                         <a class="list-head">
-                            <img alt="头像" src="http://static.nowcoder.com/images/head/notify.png">
+                            <img alt="头像" src="${item.userphoto}">
                         </a>
                     </div>
                     <div class="letter-detail">
                         <a title="问题" class="letter-name level-color-1">
-                          问题“二维数组中的查找”  
+                          ${item.questiontitle }
                         </a>
                         <p class="letter-brief">
                             <a href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1">
-                                网络水军的兴衰起伏，与互联网的进化相互交织。他们是社交时代的镜子，折射的不仅是屏幕上的瞬息万变，还有公众意识与舆论的更替变迁。从论坛时代到微博时代，再到微信时代，水军一直处于舆论的风口浪尖，但他们自称舆论的“弄潮儿”。从人声鼎沸到繁华落尽，如今，水军进入蛰伏期，静待属于他们的春天再次来临。
+                                ${item.answercontent }
                             </a>
                         </p>
                     </div>
                 </li>
+            </c:forEach>
+          </ul>
 
         </div>
         <script type="text/javascript">

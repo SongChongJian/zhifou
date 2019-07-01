@@ -19,13 +19,13 @@
                     </li>
                     <li>
                     <a href="https://nowcoder.com/inbox" tabindex="-1" id=":2">
-                    <i class="zg-icon zg-icon-dd-pm"></i>私信
+                    <i class="zg-icon zg-icon-dd-pm"></i>我的信息
                     <span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number" style="visibility:hidden" data-count="0">
                     </span>
                     </a>
                     </li>
                     <li>
-                    <a href="https://nowcoder.com/settings" tabindex="-1" id=":3">
+                    <a href="/zhifou/collection?method=getMyCollection" tabindex="-1" id=":3">
                     <i class="zg-icon zg-icon-dd-settings"></i>我的收藏
                     </a>
                     </li>

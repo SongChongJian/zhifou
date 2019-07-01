@@ -4,6 +4,7 @@ public class Collection {
 	private Integer collectionid;//收藏ID
 	private Integer userid;//收藏着(userID)
 	private Integer questionid;//问题(questionID)
+	private Integer answerid;//答案id
 	public Integer getCollectionid() {
 		return collectionid;
 	}
@@ -21,6 +22,12 @@ public class Collection {
 	}
 	public void setQuestionid(Integer questionid) {
 		this.questionid = questionid;
+	}
+	public Integer getAnswerid() {
+		return answerid;
+	}
+	public void setAnswerid(Integer answerid) {
+		this.answerid = answerid;
 	}
 	
 	
