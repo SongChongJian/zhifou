@@ -65,8 +65,10 @@
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
-        <p><span class="am-icon-bookmark"></span> 公告</p>
-        <p>时光静好，与君语；细水流年，与君同。—— Zhifou</p>
+        <p><span class="am-icon-bookmark"></span>最新公告</p>
+        <p>&nbsp;&nbsp;${newnotice.noticetitle}</p>
+        <p>&nbsp;&nbsp;${newnotice.noticecontent}</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${newnotice.noticerelease}</p>
       </div>
     </div>
 
@@ -94,7 +96,7 @@
           <div class="am-panel-bd">
             <div class="am-g">
               <div class="am-u-md-4">
-                <img class="am-img-circle am-img-thumbnail" src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/1000/h/1000/q/80" alt=""/>
+                <img id="adminphoto" class="am-img-circle am-img-thumbnail" src="${pageContext.request.contextPath}/images/logo.png" alt=""/>
               </div>
               <div class="am-u-md-8">
                 <p>你可以使用<a href="#">gravatar.com</a>提供的头像或者使用本地上传头像。 </p>
@@ -102,7 +104,7 @@
                   <div class="am-form-group">
                     <input type="file" id="user-pic">
                     <p class="am-form-help">请选择要上传的文件...</p>
-                    <button type="button" class="am-btn am-btn-primary am-btn-xs">保存</button>
+                    <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="changeadmininformation()">保存</button>
                   </div>
                 </form>
               </div>
@@ -136,37 +138,40 @@
           <div class="am-form-group">
             <label for="user-name" class="am-u-sm-3 am-form-label">姓名 / Name</label>
             <div class="am-u-sm-9">
-              <input type="text" id="user-name" placeholder="姓名 / Name" value="${admin.adminname}">
+              <input type="text" id="adminname" placeholder="姓名 / Name" value="${admin.adminname}">
               <small>输入你的名字，让我们记住你。</small>
             </div>
+            <div id="adminnamemassage" class="am-u-sm-6"></div>
           </div>
 
           <div class="am-form-group">
             <label for="user-email" class="am-u-sm-3 am-form-label">电子邮件 / Email</label>
             <div class="am-u-sm-9">
-              <input type="email" id="user-email" placeholder="输入你的电子邮件 / Email" value="${admin.adminmail}">
+              <input type="email" id="adminmail" placeholder="输入你的电子邮件 / Email" value="${admin.adminmail}">
               <small>邮箱你懂得...</small>
             </div>
+            <div id="adminmailmassage" class="am-u-sm-6"></div>
           </div>
 
           <div class="am-form-group">
             <label for="user-phone" class="am-u-sm-3 am-form-label">密码 / Password</label>
             <div class="am-u-sm-9">
-              <input type="password" id="user-phone" placeholder="输入你的电话号码 / Telephone" value="${admin.adminpassword}">
+              <input type="password" id="adminpassword" placeholder="输入你的密码 / Password" value="${admin.adminpassword}">
             </div>
+            <div id="adminpasswordmassage" class="am-u-sm-6"></div>
           </div>
 
           <div class="am-form-group">
             <label for="user-intro" class="am-u-sm-3 am-form-label">简介 / Intro</label>
             <div class="am-u-sm-9">
-              <textarea class="" rows="5" id="user-intro" placeholder="输入个人简介"></textarea>
+              <textarea class="" rows="5" id="adminintro" placeholder="输入个人简介"></textarea>
               <small>250字以内写出你的一生...</small>
             </div>
           </div>
 
           <div class="am-form-group">
             <div class="am-u-sm-9 am-u-sm-push-3">
-              <button type="button" class="am-btn am-btn-primary">保存修改</button>
+              <button type="button" class="am-btn am-btn-primary" onclick="changeadmininformation()">保存修改</button>
             </div>
           </div>
         </form>
@@ -181,19 +186,36 @@
   <hr>
   <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
 </footer>
-
-<!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="${pageContext.request.contextPath}/admin/assets/js/polyfill/rem.min.js"></script>
-<script src="${pageContext.request.contextPath}/admin/assets/js/polyfill/respond.min.js"></script>
-<script src="${pageContext.request.contextPath}/admin/assets/js/amazeui.legacy.js"></script>
-<![endif]-->
-
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="${pageContext.request.contextPath}/admin/assets/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/admin/assets/js/amazeui.min.js"></script>
-<!--<![endif]-->
-<script src="${pageContext.request.contextPath}/admin/assets/js/app.js"></script>
 </body>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	//修改管理员信息
+	function changeadmininformation(){
+		var adminname = document.getElementById("adminname").value;
+		var adminpassword = document.getElementById("adminpassword").value;
+		var adminmail = document.getElementById("adminmail").value;
+		var adminphoto = document.getElementById("adminphoto").src;
+		$.ajax({
+			url:"/zhifou/adminservlet",
+			async:true,
+			type:"POST",
+			data:{"method":"changeadmininformation","adminname":adminname,"adminpassword":adminpassword,"adminmail":adminmail,"adminphoto":adminphoto},
+			success:function(data){
+				if (data==1){
+					/* document.getElementById("adminnamemessage").value="";
+					document.getElementById("adminpasswordmessage").value="";
+					document.getElementById("adminmailmessage").value=""; */
+					alert("修改成功");
+				}else{
+					alert("修改失败");
+				}
+			},
+			error:function(){
+				alert("请求失败");
+			},
+			dataType:"text"				
+		}); 
+		
+	}
+</script>
 </html>

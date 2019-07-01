@@ -42,7 +42,6 @@
           <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
         </ul>
       </li>
-      <li><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
     </ul>
   </div>
 </header>
@@ -67,8 +66,10 @@
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
-        <p><span class="am-icon-bookmark"></span> 公告</p>
-        <p>时光静好，与君语；细水流年，与君同。—— Zhifou</p>
+        <p><span class="am-icon-bookmark"></span>最新公告</p>
+        <p>&nbsp;&nbsp;${newnotice.noticetitle}</p>
+        <p>&nbsp;&nbsp;${newnotice.noticecontent}</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${newnotice.noticerelease}</p>
       </div>
     </div>
 
@@ -92,30 +93,117 @@
     <div class="am-g error-log">
       <div class="am-u-sm-12 am-u-sm-centered">
         <pre class="am-pre-scrollable">
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
-<span class="am-text-success">[Tue Jan 11 17:32:52 2013]</span> <span class="am-text-danger">[error]</span> [google 123.124.2.2] client denied by server: /export/home/macadmin/testdoc - no such file
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>问题类型</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+					<tr>
+						<td>序号</td>
+						<td>问题类型</td>
+					</tr>
+				</tbody>
+			</table>
         </pre>
         <p>这里是静态页面展示，使用时结合代码高亮插件</p>
       </div>

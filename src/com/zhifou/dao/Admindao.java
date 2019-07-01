@@ -106,11 +106,11 @@ public class Admindao {
 	}
 	//搜索字段自动显示  //单词字段查询搜索显示
 	public List<Object> searchword(String word) {
-		String sql = "select * from question where questioncontent like ? limit 0,5";
+		String sql = "select * from question where questiontitle like ? limit 0,5";
 		List<Object> list = null;
 		try {
 //			list = queryrunner.query(sql, new ColumnListHandler(), "%"+word+"%");
-			list = queryrunner.query(sql, new ColumnListHandler("questioncontent"), "%"+word+"%");
+			list = queryrunner.query(sql, new ColumnListHandler("questiontitle"), "%"+word+"%");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -120,7 +120,7 @@ public class Admindao {
 	//模糊查询
 	//根据模糊条件得到集合
 	public List<Question> fuzzysearch(String fuzzy, int currentpage) {
-		String sql = "select * from question where questioncontent like ? limit "+15*(currentpage-1)+",15 ";
+		String sql = "select * from question where questiontitle like ? limit "+15*(currentpage-1)+",15 ";
 		List<Question> list = null;
 		try {
 			list = queryrunner.query(sql, new BeanListHandler<Question>(Question.class), "%"+fuzzy+"%");
@@ -131,7 +131,7 @@ public class Admindao {
 	}
 	//模糊查询 根据条件结果总数
 	public int fuzzytotalquestion(String fuzzy) {
-		String sql = "select count(*) from question where questioncontent like ?";
+		String sql = "select count(*) from question where questiontitle like ?";
 		Number count = 0;
 		try {
 			count = (Number) queryrunner.query(sql, new ScalarHandler(), "%"+fuzzy+"%");
@@ -205,6 +205,80 @@ public class Admindao {
 		try {
 			row = queryrunner.update(sql, newcategory);
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return row;
+	}
+	//检查公告名是否存在
+	public Boolean checktitle(String title) {
+		String sql = "select * from notice where noticetitle = ?";
+		Notice notice = null;
+		try {
+			notice = queryrunner.query(sql, new BeanHandler<Notice>(Notice.class), title);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return notice!=null?true:false;
+	}
+	//检查管理员是否存在
+	public Boolean checkproposer(String proposer) {
+		String sql = "select * from admin where adminname = ?";
+		Admin admin = null;
+		try {
+			admin = queryrunner.query(sql, new BeanHandler<Admin>(Admin.class), proposer);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return admin!=null?true:false;
+	}
+	//检查问题类型名是否存在
+	public Boolean checknewcategory(String newcategory) {
+		String sql = "select * from category where categoryname = ?";
+		Category category = null;
+		try {
+			category = queryrunner.query(sql, new BeanHandler<Category>(Category.class), newcategory);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return category!=null?true:false;
+	}
+	//管理员修改个人信息
+	public int changeadmininformation(Integer adminid,String adminname, String adminpassword, String adminmail,
+			String adminphoto) {
+		/*List<String> messagelist = null;
+		Admin admin = null;
+		try {
+			String sql = "select * from admin where adminid = ? ";
+			admin = queryrunner.query(sql,new BeanHandler<Admin>(Admin.class),adminid);
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		if(admin.getAdminname().trim().equals(adminname)){
+			messagelist.add(adminname);
+		}
+		if(admin.getAdminpassword().trim().equals(adminpassword)){
+			messagelist.add(adminpassword);
+		}
+		if(admin.getAdminmail().trim().equals(adminmail)){
+			messagelist.add(adminmail);
+		}
+		if(messagelist!=null){
+			return messagelist;
+		}else{
+			String sql = "UPDATE admin SET adminname = ? and adminpassword = ? and adminmail = ? WHERE adminid = ?";
+			try {
+				queryrunner.update(sql, adminname,adminpassword,adminmail);
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+			return null;
+	
+		}*/
+		String sql = "UPDATE admin SET adminname = ? , adminpassword = ? , adminmail = ? , adminphoto = ? WHERE adminid = ?";
+		int row = 0;
+		try {
+			row = queryrunner.update(sql, adminname,adminpassword,adminmail,adminphoto,adminid);
+		} catch (SQLException e){
 			e.printStackTrace();
 		}
 		return row;

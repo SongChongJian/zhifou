@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="box"></div>
-<div class="cent-box">
+<div class="cent-box register-box">
 	<div class="cent-box-header">
 		<h1 class="main-title hide">知否</h1>
 		<h2 class="sub-title">生活热爱分享</h2>
@@ -33,7 +33,7 @@
 						<input type="text" name="mail" id="email" class="ipt" onblur="check_mail(this)" autocomplete="off" placeholder="邮箱地址" required>
 						<input type="hidden" name="method" value="login" />
 					</div>
-					<div id="mail_message"></div>
+					<div id="password_message"></div>
 					<div class="group-ipt password">
 						<input type="password" name="password" id="password" class="ipt" onblur="check_password(this)" autocomplete="off" placeholder="输入您的登录密码" required>
 					</div>
@@ -138,7 +138,7 @@
 		if(checkcode == null || checkcode.trim() == ""){
 			document.getElementById("checkcode_message").innerHTML = "请输入验证码!";
 			document.getElementById("checkcode_message").style.cssText="color:red;font-size: 11px";
-			return false;
+			return true;
 		}else{
 			$.ajax({
 				url:"/zhifou/userservlet",
@@ -173,7 +173,7 @@
 		var password = check_password(document.getElementsByName("password")[0]);
 		var mail = check_mail(document.getElementsByName("mail")[0]);
 		var checkcode = check_checkcode(document.getElementsByName("checkcode")[0]);
-		if(username&&password&&checkpassword&&mail&&checkcode){
+		if(password&&mail&&checkcode){
 			return true;
 		}
 		return false;

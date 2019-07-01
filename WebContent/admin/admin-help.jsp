@@ -64,8 +64,10 @@
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
-        <p><span class="am-icon-bookmark"></span> 公告</p>
-        <p>时光静好，与君语；细水流年，与君同。—— Zhifou</p>
+        <p><span class="am-icon-bookmark"></span>最新公告</p>
+        <p>&nbsp;&nbsp;${newnotice.noticetitle}</p>
+        <p>&nbsp;&nbsp;${newnotice.noticecontent}</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${newnotice.noticerelease}</p>
       </div>
     </div>
 

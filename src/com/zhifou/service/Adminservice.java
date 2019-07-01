@@ -77,6 +77,23 @@ public class Adminservice {
 	public int addnewcategory(String newcategory) {
 		return admindao.addnewcategory(newcategory);
 	}
+	//检查公告名是否存在
+	public Boolean checktitle(String title) {
+		return admindao.checktitle(title);
+	}
+	//检查管理员是否存在
+	public Boolean checkproposer(String proposer) {
+		return admindao.checkproposer(proposer);
+	}
+	//检查问题类型名是否存在
+	public Boolean checknewcategory(String newcategory) {
+		return admindao.checknewcategory(newcategory);
+	}
+	//管理员修改个人信息
+	public int changeadmininformation(Integer adminid,String adminname, String adminpassword, String adminmail,
+			String adminphoto) {
+		return admindao.changeadmininformation(adminid,adminname,adminpassword,adminmail,adminphoto);
+	}
 	
 
 }

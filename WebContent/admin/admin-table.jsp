@@ -154,7 +154,7 @@ input::-webkit-input-placeholder {
 						<li><a href="${pageContext.request.contextPath}/admin/admin-log.jsp"><span
 								class="am-icon-calendar"></span> 系统日志</a></li>
 					</ul></li>
-				<li><a href="#"><span class="am-icon-table"></span>
+				<li><a href="${pageContext.request.contextPath}/adminservlet?method=questionmanage"><span class="am-icon-table"></span>
 						待审核问题</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin/admin-form.jsp"><span
 						class="am-icon-pencil-square-o"></span> 增加业务</a></li>
@@ -162,10 +162,10 @@ input::-webkit-input-placeholder {
 
 			<div class="am-panel am-panel-default admin-sidebar-panel">
 				<div class="am-panel-bd">
-					<p>
-						<span class="am-icon-bookmark"></span> 公告
-					</p>
-					<p>时光静好，与君语；细水流年，与君同。—— ZhiFou</p>
+					<p><span class="am-icon-bookmark"></span>最新公告</p>
+        <p>&nbsp;&nbsp;${newnotice.noticetitle}</p>
+        <p>&nbsp;&nbsp;${newnotice.noticecontent}</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${newnotice.noticerelease}</p>
 				</div>
 			</div>
 
@@ -243,7 +243,7 @@ input::-webkit-input-placeholder {
 								<tr>
 									<th class="table-check"><input onclick="checkall(this)" type="checkbox" /></th>
 									<th class="table-id">ID</th>
-									<th class="table-title">问题内容</th>
+									<th class="table-title">问题标题</th>
 									<th class="table-type">类别</th>
 									<th class="table-author">提出者</th>
 									<th class="table-date">提出日期</th>
@@ -257,7 +257,7 @@ input::-webkit-input-placeholder {
 									<tr>
 										<td style="vertical-align: middle;"><input name="check" value="${items.questionid}" onclick="checkone(this)" type="checkbox" /></td>
 										<td style="vertical-align: middle;" id="questionid">${pageid.count+(currentpage-1)*15}</td>
-										<td style="vertical-align: middle;"><a href="#">${items.questioncontent}</a></td>
+										<td style="vertical-align: middle;"><a href="#">${items.questiontitle}</a></td>
 										<td style="vertical-align: middle;">
 											<c:forEach items="${categorylist}" var="item">
 												<c:if test="${item.categoryid==items.categoryid}">${item.categoryname}</c:if>
@@ -470,7 +470,7 @@ input::-webkit-input-placeholder {
 				success:function(data){
 					if (data.length > 0) {
 						for (var i = 0; i < data.length; i++) {
-							content += "<div style='border-color: #6dcff6;width:168px;padding:5px;cursor:pointer' onclick='clickFn(this)' onmouseover='overFn(this)' onmouseout='outFn(this)'>"
+							content += "<div style='border-color: #6dcff6;width:168px;height:25px;padding:5px;cursor:pointer;overflow: hidden;' onclick='clickFn(this)' onmouseover='overFn(this)' onmouseout='outFn(this)'>"
 									+ data[i] + "</div>";
 						}
 						$("#showDiv").html(content);

@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.zhifou.bean.Admin;
 import com.zhifou.bean.User;
+import com.zhifou.service.Adminservice;
 import com.zhifou.service.UserService;
 import com.zhifou.utils.MailUtils;
 
@@ -18,6 +20,22 @@ import com.zhifou.utils.MailUtils;
 public class UserServlet extends BaseServlet {
 	UserService service = new UserService();
 	private HttpSession session =null;
+	//管理员登录
+	public void adminlogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*request.setCharacterEncoding("UTF-8");
+		response.setContentType("UTF-8");*/
+		String adminmail = request.getParameter("adminmail");
+		String adminpassword = request.getParameter("adminpassword");
+		Adminservice adminservice = new Adminservice();
+		Admin admin = adminservice.adminlogin(adminmail,adminpassword);
+		if(admin!=null){
+			HttpSession session = request.getSession();
+			session.setAttribute("admin", admin);
+			response.sendRedirect("admin/admin-index.jsp");
+		}else{
+			response.sendRedirect("adminlogin.jsp");
+		}
+	}
 	//注册
 	public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*request.setCharacterEncoding("UTF-8");
