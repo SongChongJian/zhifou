@@ -137,6 +137,7 @@
 						<div class="modal fade" id="modal-container-578824" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
+								  <form action="/zhifou/ask?method=ask" method="post">
    									<div class="modal-header">
 										 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 										<h4 class="modal-title" id="myModalLabel">
@@ -175,6 +176,7 @@
 										 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 										  <input type="submit" class="zg-r5px zu-question-form-add zg-btn-blue" value="发布"/>
 									</div>
+									</form>
 							</div>
 						</div>
 					</div>
