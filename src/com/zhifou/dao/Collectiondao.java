@@ -15,10 +15,10 @@ import com.zhifou.utils.DataSourceUtils;
 
 public class Collectiondao {
 	QueryRunner queryrunner= new QueryRunner(DataSourceUtils.getDataSource());
-	//获得所以收藏的answerid
+	//获得所以收藏记录集合
 	public List<Collection> getCollection(int userid){
 		
-		String sql="select answerid from collection where userid=?";
+		String sql="select * from collection where userid=?";
 		List<Collection> list=null;
         try {
 			list=queryrunner.query(sql, new BeanListHandler<Collection>(Collection.class),userid);
@@ -84,6 +84,20 @@ public class Collectiondao {
 		return update>0?true:false;
 		
 	}
+	
+	
+	//删除收藏
+		public int deleteCollection(int collectionid){
+			String sql = "delete from collection where collectionid=?";
+			int row = 0;
+			try {
+				row = queryrunner.update(sql,collectionid);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return row;
+		}		
 
 
 	

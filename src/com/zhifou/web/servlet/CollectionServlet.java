@@ -27,7 +27,8 @@ public class CollectionServlet extends BaseServlet{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("UTF-8");
 		
-		int userid=1;
+		User user1=(User)request.getSession().getAttribute("user");
+		int userid=user1.getUserid();
 		
 		List<UserIndex> Uindex=new ArrayList();
 		List<Collection> list=collectionservice.getCollection(userid);
@@ -59,6 +60,7 @@ public class CollectionServlet extends BaseServlet{
 			userindex.setUsername(user.getUsername());
 			userindex.setUserphoto(user.getUserphoto());
 			userindex.setUserpassword(user.getUserpassword());
+			userindex.setCollectionid(collection.getCollectionid());
 			//再添加到一个Uindex集合
 			Uindex.add(userindex);
 		
@@ -75,22 +77,42 @@ public class CollectionServlet extends BaseServlet{
 	public void addCollection(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("UTF-8");
+		//得到当前userid
 		User user=(User)request.getSession().getAttribute("user");
 		int userid=user.getUserid();
+		//得到ajax传来的参数
 		String answerid=request.getParameter("answerid");
 		int answerid1=Integer.parseInt(answerid);
 		String questionid=request.getParameter("questionid");
 		int questionid1=Integer.parseInt(questionid);
-		
+		//得到数据库已有的answerid,和要收藏的比较，如果一样则不能再收藏
+		List<Collection> list=collectionservice.getCollection(userid);
+		for (Collection collection : list) {
+			if(answerid1==collection.getAnswerid()){
+				return;
+			}
+			
+		}
 		Boolean collect=collectionservice.addCollection(userid, questionid1, answerid1);
 		try {
-			response.getWriter().write(collect==true?"true":"false");
+		//判断插入成功才跳收藏成功
+		response.getWriter().write(collect==true?"true":"false");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 	}
+	
+	
+	//删除收藏
+    public void deleteCollection(HttpServletRequest request, HttpServletResponse response) throws IOException{
+   	request.setCharacterEncoding("UTF-8");
+ 		response.setContentType("UTF-8");
+ 		String collectionid = request.getParameter("collectionid");
+ 		int id = Integer.parseInt(collectionid);
+ 		int deletecollection = collectionservice.deleteCollection(id);
+ 		response.getWriter().write(deletecollection==1?"1":"0");
+    }
 	
 	
 }
