@@ -23,7 +23,15 @@ public class UserIndex {
 	private String answercontent;//回答内容
 	private String answertime;//回答时间
 	private String categoryname;//类别名称
+	private Integer answer_count;//回答浏览次数
+	private Integer collectionid;//收藏ID
 	
+	public Integer getCollectionid() {
+		return collectionid;
+	}
+	public void setCollectionid(Integer collectionid) {
+		this.collectionid = collectionid;
+	}
 	public String getUsermeans() {
 		return usermeans;
 	}
@@ -66,7 +74,7 @@ public class UserIndex {
 	public void setAnswer_count(Integer answer_count) {
 		this.answer_count = answer_count;
 	}
-	private Integer answer_count;//回答浏览次数
+	
 	public UserIndex() {
 		super();
 	}
