@@ -5831,7 +5831,7 @@ h2+.meta {
 
 .feed-item .avatar {
     float: left;
-    margin: 3px 0 0
+    margin: 15px 0 0
 }
 
 .feed-item .avatar,.feed-item .avatar a,.feed-item .avatar img {
@@ -5845,7 +5845,8 @@ h2+.meta {
 }
 
 .feed-main {
-    margin-left: 48px
+    margin-left: 48px;
+    margin-top: 15px;
 }
 
 .feed-main>.title {
@@ -11714,9 +11715,14 @@ html.no-touchevents .zh-add-question-form .question-suggest-ac-wrap .ac-renderer
 .zh-summary {
     -webkit-tap-highlight-color: rgba(225,225,225,.5);
     position: relative;
-    cursor: pointer
+    cursor: pointer;
+    height:30px;
 }
-
+.answercontent{
+	line-height:20px; 
+	padding:0; 
+	margin:0;
+}
 .zh-summary .inline-img,.CardAdFeed-image {
     float: left;
     height: 112px;

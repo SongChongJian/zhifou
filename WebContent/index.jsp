@@ -36,29 +36,12 @@
 </head>
 <body class="zhi ">
 	<%@ include file="top.jsp"%>
-
-	<div class="zu-global-notify" id="zh-global-message"
-		style="display: none">
-		<div class="zg-wrap">
-			<div class="zu-global-nitify-inner">
-				<a class="zu-global-notify-close" href="javascript:;" title="关闭"
-					name="close">x</a> <span class="zu-global-notify-icon"></span> <span
-					class="zu-global-notify-msg"></span>
-			</div>
-		</div>
-	</div>
 	<div class="zg-wrap zu-main clearfix " role="main">
 		<div class="zu-main-content">
 			<div class="zu-main-content-inner">
 				<div class="zg-section" id="zh-home-list-title">
 					<i class="zg-icon zg-icon-feedlist"></i>最新动态 <input type="hidden"
-						id="is-topstory"> <span
-						class="zg-right zm-noti-cleaner-setting" style="list-style: none">
-						<a href="https://nowcoder.com/settings/filter"
-						class="zg-link-gray-normal"> <i
-							class="zg-icon zg-icon-settings"></i>设置
-					</a>
-					</span>
+						id="is-topstory">
 				</div>
 				<div class="zu-main-feed-con navigable" data-feedtype="topstory"
 					id="zh-question-list" data-widget="navigable"
@@ -71,11 +54,8 @@
 						data-delayed="true" data-za-module="TopStoryFeedList">
 
 						<div
-							class="feed-item folding feed-item-hook feed-item-2
-                        "feed-item-a="" data-type="a" id="feed-2"
+							class="feed-item folding feed-item-hook feed-item-2" data-type="a" id="feed-2"
 							data-za-module="FeedItem" data-za-index="">
-							<meta itemprop="ZReactor" data-id="389034"
-								data-meta="{&quot;source_type&quot;: &quot;promotion_answer&quot;, &quot;voteups&quot;: 4168, &quot;comments&quot;: 69, &quot;source&quot;: []}">
 							<div id="showDiv" class="feed-item-inner">
 								<c:forEach items="${userindexs}" varStatus="status" var="item">
 										<div class="avatar">
@@ -85,7 +65,7 @@
 												src="images/res/12a8e1ce5ad8060fddb93ae2df98028b_m.jpg"
 												class="zm-item-img-avatar"></a>
 										</div>
-										<div id="showDiv" class="feed-main">
+										<div class="feed-main">
 											<div class="feed-source" data-za-module="FeedSource">
 												热门回答，来自 <a href="https://nowcoder.com/topic/19562033"
 													data-tip="t$t$19562033" data-token="19562033"
@@ -141,9 +121,9 @@
 														data-author-name="${item.username }"
 														data-entry-url="/question/19857995/answer/13174385">
 														<textarea hidden="" class="content"></textarea>
-														<div class="zh-summary summary clearfix">${item.answercontent}
-															<a
-																href="https://nowcoder.com/question/19857995/answer/13174385"
+														<div class="zh-summary summary clearfix">
+														<p class="answercontent">${item.answercontent}</p> 
+															<a href="https://nowcoder.com/question/19857995/answer/13174385"
 																class="toggle-expand">显示全部</a>
 														</div>
 														<p class="visible-expanded">
@@ -177,8 +157,7 @@
 															</button>
 														</div>
 													</div>
-													<a href="#" class="ignore zu-autohide" name="dislike"
-														data-tip="s$b$不感兴趣"></a>
+													
 												</div>
 											</div>
 										</div>
@@ -198,25 +177,13 @@
 		</div>
 	</div>
 	
-	<meta name="entry" content="ZH.entryHome" data-module-id="page-main">
 	<script type="text/zscript" znonce="d3edc464cf014708819feffde7ddd01e"></script>
 	<input type="hidden" name="_xsrf"
 		value="21aa1c8d254df2899b23ab9afbd62a53">
-	<div class="zh-backtotop" style="opacity: 0; display: none;">
-		<a data-action="backtotop" data-tip="s$r$回到顶部" href="javascript:;"
-			class="btn-backtotop btn-action">
-			<div class="arrow"></div>
-			<div class="stick"></div>
-		</a>
-	</div>
-	<div id="zh-tooltip" data-theme="" class="tooltip bottom"
-		style="visibility: hidden; left: 778px; top: 321px; display: none;">
-		<div class="tooltip-arrow"></div>
-		<div class="tooltip-inner content-prewrap">不感兴趣</div>
-	</div>
+
 	<div class="copyright-notification">
 		<div class="user-image-container">
-			<img class="user-image" src="https://nowcoder.com/">
+			
 		</div>
 		<div class="tooltip right noty-tooltip">
 			<div class="tooltip-arrow arrow"></div>
@@ -227,6 +194,18 @@
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 
 <script type="text/javascript">
+	function contentLoad(){
+		$(".zh-summary").each(function(i){
+		    var divH = $(this).height();
+		    var $p = $("p", $(this)).eq(0);
+		    while ($p.outerHeight() > divH) {
+		        $p.text($p.text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
+		    };
+		});
+	}
+	$(function(){
+		contentLoad();
+	});
 	function showmore(){
 		var content="";
 		$.ajax({
@@ -295,7 +274,7 @@
 						+"					data-author-name='"+obj.username+"'"
 						+"					data-entry-url='/question/19857995/answer/13174385'>"
 						+"					<textarea hidden='' class='content'></textarea>"
-						+"					<div class='zh-summary summary clearfix'>"+obj.answercontent+""
+						+"					<div class='zh-summary summary clearfix'><p class='answercontent'>"+obj.answercontent+"</p>"
 						+"						<a class='toggle-expand'>显示全部</a>"
 						+"					</div>"
 						+"					<p class='visible-expanded'>"
@@ -323,22 +302,21 @@
 						+"						</button>"
 						+"					</div>"
 						+"				</div>"
-						+"				<a href='#' class='ignore zu-autohide' name='dislike'"
-						+"					data-tip='s$b$不感兴趣'></a>"
 						+"			</div>"
 						+"		</div>"
 						+"	</div>"
 					;
+						
 					}); 
 				}
 				$("#showDiv").append(content); 
+				contentLoad();
 			},
 			error:function(){
 				alert("请求失败");
 			}
 		});
 	}
-	
 	
 	function setCollection(answerid,questionid){
 		alert(answerid+"  "+questionid)
@@ -355,7 +333,5 @@
 			}
 		}); 
 	}
-	
-
 </script>
 </html>
