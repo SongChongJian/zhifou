@@ -63,11 +63,11 @@
             <!-- 遍历的到收藏列表 -->
             <c:forEach items="${uindex}" var="item" varStatus="status">
             	
-                <li id="conversation-item-10005_622873">
+                <li id="conversation-item-10005_622873"  class="${item.collectionid}">
                     <a class="letter-link" href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1"></a>
                     <div class="letter-info">
                         <div class="l-operate-bar">
-                            <a href="javascript:void(0);" class="sns-action-del" data-id="10005_622873">
+                            <a href="javascript:void(0);" class="sns-action-del" data-id="10005_622873"  onclick="deleteCollection(${item.collectionid})">
                            			 删除
                             </a>
                             <a href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1">
@@ -96,6 +96,22 @@
 
         </div>
         <script type="text/javascript">
+        function deleteCollection(id){
+    		var lis =$("."+id);
+    			$.ajax({
+    				url:"/zhifou/collection",
+    				async:true,
+    				type:"post",
+    				data:{"method":"deleteCollection","collectionid":id},
+    				success:function(date){
+    					lis.remove();
+    				},
+    				error:function(){
+    					alert("请求失败");
+    				}
+    			})
+    	}
+        
           $(function(){
 
             // If really is weixin

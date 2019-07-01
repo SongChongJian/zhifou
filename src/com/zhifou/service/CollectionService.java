@@ -30,4 +30,9 @@ public class CollectionService {
 	public Boolean addCollection(int userid,int questionid,int answerid){
 		return collectiondao.addCollection(userid, questionid, answerid);
 	}
+	
+	//删除收藏
+		public int deleteCollection(int collectionid){
+			return collectiondao.deleteCollection(collectionid);
+		}
 }
