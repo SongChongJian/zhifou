@@ -25,7 +25,7 @@
                     </a>
                     </li>
                     <li>
-                    <a href="https://nowcoder.com/settings" tabindex="-1" id=":3">
+                    <a href="https://nowcoder.com/logout" tabindex="-1" id=":3">
                     <i class="zg-icon zg-icon-dd-settings"></i>我的收藏
                     </a>
                     </li>
