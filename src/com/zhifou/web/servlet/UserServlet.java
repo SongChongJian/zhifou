@@ -20,8 +20,8 @@ public class UserServlet extends BaseServlet {
 	private HttpSession session =null;
 	//注册
 	public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("UTF-8");
+		/*request.setCharacterEncoding("UTF-8");
+		response.setContentType("UTF-8");*/
 		String username = request.getParameter("username");
 		String userpassword = request.getParameter("password");
 		String usermail = request.getParameter("mail");
@@ -52,8 +52,8 @@ public class UserServlet extends BaseServlet {
 	}
 	//检查用户名是否存在
 	public void userNameIsExit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("UTF-8");
+		/*request.setCharacterEncoding("UTF-8");
+		response.setContentType("UTF-8");*/
 		String username = request.getParameter("username");
 
 		Boolean	isexit = service.userNameIsExit(username);
@@ -61,22 +61,22 @@ public class UserServlet extends BaseServlet {
 	}
 	//验证码校验
 	public void codeCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("UTF-8");
+		/*request.setCharacterEncoding("UTF-8");
+		response.setContentType("UTF-8");*/
 		String checkcode = request.getParameter("checkcode");
 		String checkcode_session = (String)request.getSession().getAttribute("checkcode_session");
 		response.getWriter().write(checkcode.equals(checkcode_session)?"1":"0");
 	}
 	//登录
 	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		/*request.setCharacterEncoding("UTF-8");*/
 		String usermail = request.getParameter("mail");
 		String password = request.getParameter("password");
 		User user= service.login(usermail,password);
 		if(user!=null){
 			session = request.getSession();
 			session.setAttribute("user", user);
-			response.sendRedirect("jihuo.jsp");
+			response.sendRedirect("/zhifou/recommend?method=searchQuestionIndex");
 		}
 	}
 	
