@@ -1,5 +1,7 @@
 package com.zhifou.bean;
 
+import java.util.Date;
+
 public class UserIndex {
 	private Integer userid;// 用户ID
 	private String username;//用户昵称
@@ -8,7 +10,7 @@ public class UserIndex {
 	private String userphoto;//用户头像
 	private Integer questionid;//问题id
 	private Integer questionproposer;//问题提出者(userID)
-	private String questionmadetime;//问题提出时间
+	private Date questionmadetime;//问题提出时间
 	private String questiontitle;//问题标题
 	private String questioncontent;//问题内容
 	private String questionphoto;//问题图片
@@ -19,6 +21,14 @@ public class UserIndex {
 	private Integer answerproposer;//回答提出者(userID)
 	private String answercontent;//回答内容
 	private String answertime;//回答时间
+	private String categoryname;//类别名称
+	
+	public String getCategoryname() {
+		return categoryname;
+	}
+	public void setCategoryname(String categoryname) {
+		this.categoryname = categoryname;
+	}
 	public Integer getAnswerid() {
 		return answerid;
 	}
@@ -54,7 +64,7 @@ public class UserIndex {
 		super();
 	}
 	public UserIndex(Integer userid, String username, String userpassword, String usermail, String userphoto,
-			Integer questionid, Integer questionproposer, String questionmadetime, String questiontitle,
+			Integer questionid, Integer questionproposer, Date questionmadetime, String questiontitle,
 			String questioncontent, String questionphoto, Integer ispassaudit, Integer categoryid,
 			Integer question_count) {
 		super();
@@ -115,10 +125,10 @@ public class UserIndex {
 	public void setQuestionproposer(Integer questionproposer) {
 		this.questionproposer = questionproposer;
 	}
-	public String getQuestionmadetime() {
+	public Date getQuestionmadetime() {
 		return questionmadetime;
 	}
-	public void setQuestionmadetime(String questionmadetime) {
+	public void setQuestionmadetime(Date questionmadetime) {
 		this.questionmadetime = questionmadetime;
 	}
 	public String getQuestiontitle() {
