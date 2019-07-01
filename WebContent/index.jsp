@@ -123,7 +123,7 @@
 														<textarea hidden="" class="content"></textarea>
 														<div class="zh-summary summary clearfix">
 														<p class="answercontent">${item.answercontent}</p> 
-															<a href="https://nowcoder.com/question/19857995/answer/13174385"
+															<a href="/zhifou/recommend?method=showAnswerDetail&answerid=${item.answerid }"
 																class="toggle-expand">显示全部</a>
 														</div>
 														<p class="visible-expanded">
@@ -275,7 +275,7 @@
 						+"					data-entry-url='/question/19857995/answer/13174385'>"
 						+"					<textarea hidden='' class='content'></textarea>"
 						+"					<div class='zh-summary summary clearfix'><p class='answercontent'>"+obj.answercontent+"</p>"
-						+"						<a class='toggle-expand'>显示全部</a>"
+						+"						<a href='/zhifou/recommend?method=showAnswerDetail&answerid="+obj.answerid+"' class='toggle-expand'>显示全部</a>"
 						+"					</div>"
 						+"					<p class='visible-expanded'>"
 						+"						<a itemprop='url' class='answer-date-link meta-item'"
@@ -308,6 +308,8 @@
 					;
 						
 					}); 
+				}else{
+					$("#zh-load-more").html("已经到底了！！")
 				}
 				$("#showDiv").append(content); 
 				contentLoad();

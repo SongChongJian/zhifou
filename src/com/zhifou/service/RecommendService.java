@@ -26,4 +26,7 @@ public class RecommendService {
 	public UserIndex CreateUserIndex(User user,Answer answer,Question question,Category category){
 		return recommendDao.CreateUserIndex(user, answer, question, category);
 	}
+	public Answer FindAnswerByID(int id){
+		return recommendDao.FindAnswerByID(id);
+	}
 }
