@@ -24,6 +24,23 @@
     <link rel="stylesheet"  href="../bootstrap-3.3.7/css/bootstrap.css"/>
 	<script type="text/javascript" src="../js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
+	<script type="text/javascript">
+	 function a(){
+			$.ajax({  
+     		url:"/zhifou/collection",
+     		async:false,
+     		type:"post",
+     		data:{"method":"getMyCollection"},
+     		success:function(data){
+     			
+     		},
+				error:function(){
+					alert("请求失败");
+				}
+     	});
+			
+		}
+	</script>
 		<style type="text/css">
 			.modal-dialog {
 		    position: absolute;
@@ -42,7 +59,7 @@
 		}
 		</style>
 </head>
-<body class="posts_show">
+<body class="posts_show"  onload="a()">
 	<%@ include file="top.jsp"%>
     <div class="zu-global-notify" id="zh-global-message" style="display:none">
         <div class="zg-wrap">
@@ -59,9 +76,9 @@
     <div id="main">
     
         <div class="zg-wrap zu-main clearfix ">
-            <ul class="letter-list">
+            <ul class="letter-list" >
             <!-- 遍历的到收藏列表 -->
-            <c:forEach items="${uindex}" var="item" varStatus="status">
+            <c:forEach items="${uindex}" var="item" varStatus="status" >
             	
                 <li id="conversation-item-10005_622873"  class="${item.collectionid}">
                     <a class="letter-link" href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1"></a>
@@ -96,6 +113,8 @@
 
         </div>
         <script type="text/javascript">
+       
+        
         function deleteCollection(id){
     		var lis =$("."+id);
     			$.ajax({
@@ -104,6 +123,7 @@
     				type:"post",
     				data:{"method":"deleteCollection","collectionid":id},
     				success:function(date){
+    					a();
     					lis.remove();
     				},
     				error:function(){
@@ -111,6 +131,10 @@
     				}
     			})
     	}
+        
+        
+        
+        
         
           $(function(){
 
@@ -189,4 +213,5 @@
       </div>
     </div>
   </div>
-</body></html>
+</body>
+</html>
