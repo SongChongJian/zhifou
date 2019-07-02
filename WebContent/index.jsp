@@ -23,6 +23,7 @@
 <link rel="search" type="application/opensearchdescription+xml"
 	href="https://nowcoder.com/static/search.xml" title="牛客">
 <link rel="stylesheet" href="styles/index.css">
+<link rel="stylesheet" href="styles/gdt-style.css">
 <link rel="stylesheet"  href="bootstrap-3.3.7/css/bootstrap.css"/>
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.js"></script>
@@ -185,6 +186,23 @@
 			<div class="tooltip-arrow arrow"></div>
 			<div class="tooltip-inner inner">如需转载，请通过私信或评论联系我</div>
 		</div>
+	</div>
+<!-- 	公告 -->
+	<div class="side-bar2"> 
+		<div style="height: 320px;width: 220px;">
+			<p style="font-size: 30px;text-align: center;color: #FFFFFF;">最新公告</p>
+			<p style="font-size: 20px;color: #FFFFFF;line-height: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;${newnotice.noticetitle}</p>	
+			<p style="font-size: 20px;color: #FFFFFF;line-height: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;${newnotice.noticecontent}</p>
+        	<p style="font-size: 20px;text-align: right;color: #FFFFFF;line-height: 30px;">${newnotice.noticerelease}</p>
+		</div>
+		
+	</div>
+	<!-- 右侧悬浮 -->
+	<div class="side-bar"> 
+		<a href="#" class="icon-qq">QQ在线咨询</a> 
+		<a href="" class="icon-chat">微信<div class="chat-tips"><i></i><img style="width:138px;height:138px;" src="images/code.jpg" alt="微信订阅号"></div></a> 
+		<a target="_blank" href="" class="icon-blog">微博</a> 
+		<a href="mailto:admin@admin.com" class="icon-mail">mail</a> 
 	</div>
 </body>
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
