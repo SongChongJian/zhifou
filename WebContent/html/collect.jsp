@@ -25,7 +25,7 @@
 	<script type="text/javascript" src="../js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 	<script type="text/javascript">
-	 function a(){
+	 function freshen(){
 			$.ajax({  
      		url:"/zhifou/collection",
      		async:false,
@@ -59,7 +59,7 @@
 		}
 		</style>
 </head>
-<body class="posts_show"  onload="a()">
+<body class="posts_show"  onload="freshen()">
 	<%@ include file="top.jsp"%>
     <div class="zu-global-notify" id="zh-global-message" style="display:none">
         <div class="zg-wrap">
@@ -79,7 +79,6 @@
             <ul class="letter-list" >
             <!-- 遍历的到收藏列表 -->
             <c:forEach items="${uindex}" var="item" varStatus="status" >
-            	
                 <li id="conversation-item-10005_622873"  class="${item.collectionid}">
                     <a class="letter-link" href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1"></a>
                     <div class="letter-info">
@@ -88,7 +87,7 @@
                            			 删除
                             </a>
                             <a href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1">
-                            		    共浏览${item.answer_count }次
+                            		    热度:${item.answer_count }
                             </a>
                         </div>
                     </div>
@@ -98,12 +97,12 @@
                         </a>
                     </div>
                     <div class="letter-detail">
-                        <a title="问题" class="letter-name level-color-1">
+                        <a title="问题" class="letter-name level-color-1" href="">
                           ${item.questiontitle }
                         </a>
                         <p class="letter-brief">
-                            <a href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1">
-                                ${item.answercontent }
+                            <a title="答案" href="/zhifou/recommend?method=showAnswerDetail&answerid=${item.answerid}">
+                                ${item.answercontent}
                             </a>
                         </p>
                     </div>
@@ -113,8 +112,6 @@
 
         </div>
         <script type="text/javascript">
-       
-        
         function deleteCollection(id){
     		var lis =$("."+id);
     			$.ajax({
@@ -123,7 +120,7 @@
     				type:"post",
     				data:{"method":"deleteCollection","collectionid":id},
     				success:function(date){
-    					a();
+    					freshen();
     					lis.remove();
     				},
     				error:function(){
@@ -202,7 +199,7 @@
           <div class="modal-body">
             <div class="checkbox">
               <label class="i-checks">
-                <input id="already-installed" type="checkbox"><i></i> 我已安装了牛客网App，不再显示
+                <input id="already-installed" type="checkbox"><i></i> 我已安装了知否网App，不再显示
               </label>
             </div>
           </div>
