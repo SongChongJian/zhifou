@@ -28,6 +28,9 @@ public class RecommendServlet extends BaseServlet{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("UTF-8");
 		RecommendService service = new RecommendService();//生成RecommendService对象
+		if(request.getSession().getAttribute("search")!=null){
+			request.getSession().removeAttribute("search");
+		}
 		count=1;
 		List<Answer> answers = service.FindQuestionByPage(count, pz);//进入首页首先获取pz条数据
 		count++;
@@ -49,6 +52,9 @@ public class RecommendServlet extends BaseServlet{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");
 		RecommendService service = new RecommendService();
+		if(request.getSession().getAttribute("search")!=null){
+			count = service.GetAllAnswer();//如果session中有search，说明现在这个界面是搜索得到的。我们不能再显示更多了
+		}
 		List<Answer> answers = service.FindQuestionByPage(count, pz);
 		count++;
 		List<UserIndex> userindexs = new ArrayList<>();
@@ -60,6 +66,7 @@ public class RecommendServlet extends BaseServlet{
 			userindexs.add(userindex);
 		}
 		String jsonData=JsonUtils.objectToJson(userindexs);
+		System.out.println(jsonData);
 		response.getWriter().write(jsonData);
 	}
 
@@ -78,6 +85,7 @@ public class RecommendServlet extends BaseServlet{
 	
 	public void searchLikeQuestion(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String fuzzy = request.getParameter("search");
+		request.getSession().setAttribute("search", fuzzy);
 		RecommendService service = new RecommendService();
 		List<Question> questions = service.searchLikeQuestion(fuzzy);
 		List<UserIndex> userindexs = new ArrayList<>();

@@ -3,9 +3,9 @@
     
     <div role="navigation" class="zu-top">
         <div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
-            <a href="https://nowcoder.com/" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">牛客</a>
+            <a href="/zhifou/recommend?method=searchQuestionIndex" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">知否</a>
             <div class="top-nav-profile">
-                <a href="https://nowcoder.com/people/hu-yuan-24-48" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="">
+                <a href="/zhifou/recommend?method=searchQuestionIndex" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="">
                     <span class="name">知否</span>
                     <img class="Avatar" src="images/res/da8e974dc_s.jpg" srcset="https://pic1.zhimg.com/da8e974dc_xs.jpg 2x" alt="知否">
                     <span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count" style="visibility:hidden" data-count="0">
@@ -13,12 +13,12 @@
                 </a>
                 <ul class="top-nav-dropdown" id="top-nav-profile-dropdown" aria-labelledby=":0">
                     <li>
-                    <a href="https://nowcoder.com/people/hu-yuan-24-48" tabindex="-1" id=":1">
+                    <a href="/zhifou/recommend?method=searchQuestionIndexpeople/hu-yuan-24-48" tabindex="-1" id=":1">
                     <i class="zg-icon zg-icon-dd-home"></i>我的主页
                     </a>
                     </li>
                     <li>
-                    <a href="https://nowcoder.com/inbox" tabindex="-1" id=":2">
+                    <a href="/zhifou/recommend?method=searchQuestionIndexinbox" tabindex="-1" id=":2">
                     <i class="zg-icon zg-icon-dd-pm"></i>私信
                     <span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number" style="visibility:hidden" data-count="0">
                     </span>
@@ -30,7 +30,7 @@
                     </a>
                     </li>
                     <li>
-                    <a href="https://nowcoder.com/logout" tabindex="-1" id=":4">
+                    <a href="/zhifou/recommend?method=searchQuestionIndexlogout" tabindex="-1" id=":4">
                     <i class="zg-icon zg-icon-dd-logout"></i>退出
                     </a>
                     </li>
@@ -54,10 +54,10 @@
             <div id="zg-top-nav" class="zu-top-nav">
                 <ul class="zu-top-nav-ul zg-clear">
                     <li class="zu-top-nav-li current" id="zh-top-nav-home">
-                    <a class="zu-top-nav-link" href="https://nowcoder.com/" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
+                    <a class="zu-top-nav-link" href="/zhifou/recommend?method=searchQuestionIndex" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
                     </li>
                     <li class="zu-top-nav-li " id="zh-top-nav-explore">
-                    <a class="zu-top-nav-link" href="https://nowcoder.com/explore">发现</a>
+                    <a class="zu-top-nav-link" href="/zhifou/recommend?method=searchQuestionIndexexplore">发现</a>
                     </li>
                     <li class="top-nav-noti zu-top-nav-li ">
                     <a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息<span id="zh-top-nav-count" class="zu-top-nav-count zg-noti-number" style="display: none;">0</span></a>
@@ -114,8 +114,8 @@
                         </div>
                         <div class="zm-noti7-frame-border bottom"></div>
                         <div class="zm-noti7-popup-footer">
-                            <a href="https://nowcoder.com/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 »</a>
-                            <a href="https://nowcoder.com/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置"><i class="zg-icon zg-icon-settings"></i></a>
+                            <a href="/zhifou/recommend?method=searchQuestionIndexnotifications" class="zm-noti7-popup-footer-all zg-right">查看全部 »</a>
+                            <a href="/zhifou/recommend?method=searchQuestionIndexsettings/notification" class="zm-noti7-popup-footer-set" title="通知设置"><i class="zg-icon zg-icon-settings"></i></a>
                         </div>
                     </div>
                 </div>

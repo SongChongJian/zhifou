@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.zhifou.bean.Answer;
 import com.zhifou.bean.Category;
@@ -16,6 +17,17 @@ import com.zhifou.utils.DataSourceUtils;
 
 public class RecommendDao {
 	QueryRunner queryrunner = new QueryRunner(DataSourceUtils.getDataSource());
+	public int GetAllAnswer(){
+		String sql = "select count(*) from answer";
+		Number count =1;
+		try {
+			count = (Number) queryrunner.query(sql,new ScalarHandler());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count.intValue();
+	}
 	public List<Answer> FindQuestionByPage(int count,int pagesize){
 		String sql="select * from answer  order by answer_count desc limit "+(count-1)*pagesize+","+pagesize;
 		List<Answer> answers = null;

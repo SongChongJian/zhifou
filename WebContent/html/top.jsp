@@ -3,11 +3,11 @@
     
     <div role="navigation" class="zu-top">
         <div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
-            <a href="https://nowcoder.com/" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">牛客</a>
+            <a href="/zhifou/recommend?method=searchQuestionIndex" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">知否</a>
             <div class="top-nav-profile">
-                <a href="https://nowcoder.com/people/hu-yuan-24-48" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="">
+                <a href="/zhifou/recommend?method=searchQuestionIndex" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="">
                     <span class="name">知否</span>
-                    <img class="Avatar" src="../images/res/da8e974dc_s.jpg" srcset="https://pic1.zhimg.com/da8e974dc_xs.jpg 2x" alt="知否">
+                    <img class="Avatar" src="../images/res/da8e974dc_s.jpg"  alt="知否">
                     <span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count" style="visibility:hidden" data-count="0">
                     </span>
                 </a>
@@ -57,7 +57,7 @@
             <div id="zg-top-nav" class="zu-top-nav">
                 <ul class="zu-top-nav-ul zg-clear">
                     <li class="zu-top-nav-li current" id="zh-top-nav-home">
-                    <a class="zu-top-nav-link" href="https://nowcoder.com/" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
+                    <a class="zu-top-nav-link" href="/zhifou/recommend?method=searchQuestionIndex" id="zh-top-link-home" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
                     </li>
                     <li class="zu-top-nav-li " id="zh-top-nav-explore">
                     <a class="zu-top-nav-link" href="https://nowcoder.com/explore">发现</a>

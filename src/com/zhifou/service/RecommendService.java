@@ -11,6 +11,9 @@ import com.zhifou.dao.RecommendDao;
 
 public class RecommendService {
 	private RecommendDao recommendDao = new RecommendDao();
+	public int GetAllAnswer(){
+		return recommendDao.GetAllAnswer();
+	}
 	public List<Answer> FindQuestionByPage(int count,int pagesize){
 		return recommendDao.FindQuestionByPage(count, pagesize);
 	}

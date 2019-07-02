@@ -56,7 +56,7 @@
 						<div
 							class="feed-item folding feed-item-hook feed-item-2" data-type="a" id="feed-2"
 							data-za-module="FeedItem" data-za-index="">
-							<div id="showDiv" class="feed-item-inner">
+							<div id="showAll" class="feed-item-inner">
 								<c:forEach items="${userindexs}" varStatus="status" var="item">
 										<div class="avatar">
 											<a title="李淼" data-tip="p$t$amuro1230"
@@ -222,6 +222,7 @@
 	});
 	function showmore(){
 		var content="";
+		var usermeans = "";
 		$.ajax({
 			url:"/zhifou/recommend",
 			async:false,
@@ -231,8 +232,8 @@
 			success:function(data){
 				if(data.length>0){
 					 $.each(data,function(index,obj){
-						 if(obj.usermeans==null){
-							 var usermeans = "";
+						 if(obj.usermeans!=null){
+							 usermeans=obj.usermeans;
 						 }
 						content+="<div class='avatar'>"
 						+"		<a title='李淼' data-tip='p$t$amuro1230'"
@@ -323,13 +324,12 @@
 						+"		</div>"
 						+"	</div>"
 					;
-						
 					}); 
 				}else{
 					$("#zh-load-more").html("已经到底了！！")
 				}
-				$("#showDiv").append(content); 
-				contentLoad();
+				$("#showAll").append(content); 
+				
 			},
 			error:function(){
 				alert("没有更多数据！");
