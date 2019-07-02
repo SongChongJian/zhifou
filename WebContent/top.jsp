@@ -7,7 +7,7 @@
             <div class="top-nav-profile">
                 <a href="/zhifou/recommend?method=searchQuestionIndex" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="">
                     <span class="name">知否</span>
-                    <img class="Avatar" src="images/res/da8e974dc_s.jpg" srcset="https://pic1.zhimg.com/da8e974dc_xs.jpg 2x" alt="知否">
+                    <img class="Avatar" src="images/res/da8e974dc_s.jpg"  alt="知否">
                     <span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count" style="visibility:hidden" data-count="0">
                     </span>
                 </a>
