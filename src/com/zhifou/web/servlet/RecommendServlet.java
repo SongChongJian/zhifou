@@ -3,6 +3,7 @@ package com.zhifou.web.servlet;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,6 +19,8 @@ import com.zhifou.bean.UserIndex;
 import com.zhifou.service.Adminservice;
 import com.zhifou.service.RecommendService;
 import com.zhifou.utils.JsonUtils;
+
+import redis.clients.jedis.Jedis;
 
 @WebServlet("/recommend")
 public class RecommendServlet extends BaseServlet{
@@ -74,15 +77,41 @@ public class RecommendServlet extends BaseServlet{
 		String value = request.getParameter("answerid");
 		int answerid = Integer.parseInt(value);
 		RecommendService service = new RecommendService();
-		Answer answer = service.FindAnswerByID(answerid);//通过answerid获得回答
-		User user = service.FindUserByID(answer.getAnswerproposer());//通过回答的作者找到该用户
-		Question question = service.FindQuestionById(answer.getQuestionid());//通过回答的问题id找到回答回应的问题
-		Category category = service.FindCategoryByID(question.getCategoryid());//通过问题的类型id找到类型。
-		UserIndex userindex = service.CreateUserIndex(user, answer, question, category);//组装对象
+
+		Answer answer = service.FindAnswerByID(answerid);
+		User user = service.FindUserByID(answer.getAnswerproposer());
+		Question question = service.FindQuestionById(answer.getQuestionid());
+		Category category = service.FindCategoryByID(question.getCategoryid());
+		UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+		Jedis j = null;
+		j = new Jedis("127.0.0.1", 6379);
+        BitSet b = byteArray2BitSet(j.get("answer:"+answerid).getBytes());
+        int lognum = b.cardinality();
+        System.out.println("问题编号"+answerid+"点赞数是：" + lognum);
+        //response.getWriter().print(lognum);
 		request.getSession().setAttribute("AnswerDetail", userindex);
-		response.sendRedirect("/zhifou/html/detail.jsp");
+		request.setAttribute("nums", lognum);
+		try {
+			request.getRequestDispatcher("html/detail.jsp").forward(request,response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//response.sendRedirect("/zhifou/html/detail.jsp");
+		
 	}
-	
+
+    public static BitSet byteArray2BitSet(byte[] bytes) {
+        BitSet bitSet = new BitSet(bytes.length * 8);
+        int index = 0;
+        for (int i = 0; i < bytes.length; i++) {
+            for (int j = 7; j >= 0; j--) {
+                bitSet.set(index++, (bytes[i] & (1 << j)) >> j == 1 ? true
+                        : false);
+            }
+        }
+        return bitSet;
+    }
 	public void searchLikeQuestion(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String fuzzy = request.getParameter("search");
 		request.getSession().setAttribute("search", fuzzy);
