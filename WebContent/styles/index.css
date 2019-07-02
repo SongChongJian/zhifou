@@ -5073,7 +5073,7 @@ html.touchevents .topic-item .unfollow {
 }
 
 .explore-editor-recommends .feed-title {
-    font-weight: 400
+    font-weight: 350
 }
 
 .explore-editor-recommends .top-recommend-feed>.feed-title {
@@ -11717,11 +11717,20 @@ html.no-touchevents .zh-add-question-form .question-suggest-ac-wrap .ac-renderer
     position: relative;
     cursor: pointer;
     height:30px;
+    display: inline-block;
 }
 .answercontent{
+	height:20px;
+	width: 550px;
+	z-index: 2;
 	line-height:20px; 
 	padding:0; 
 	margin:0;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+     /*for ie8不变省略号问题*/
+    word-wrap:normal;
 }
 .zh-summary .inline-img,.CardAdFeed-image {
     float: left;

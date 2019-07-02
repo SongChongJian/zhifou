@@ -69,15 +69,13 @@
 											<div class="feed-source" data-za-module="FeedSource">
 												热门回答，来自 <a href="https://nowcoder.com/topic/19562033"
 													data-tip="t$t$19562033" data-token="19562033"
-													data-topicid="3946" target="_blank">${item.categoryid }</a>
+													data-topicid="3946" target="_blank">${item.categoryname }</a>
 												<a data-follow="t:link" href="javascript:;"
 													class="zg-follow zu-autohide follow-topic zu-edit-button"
 													data-id="3946">关注话题</a>
 											</div>
 											<div class="feed-content" data-za-module="AnswerItem">
-												<meta itemprop="answer-id" content="389034">
-												<meta itemprop="answer-url-token" content="13174385">
-												<h2 class="feed-title">
+												<h2 class="feed-title" style="font-size: 25px">
 													<a class="question_link" target="_blank"
 														href="https://nowcoder.com/question/19857995#answer-389034">${item.questiontitle }</a>
 												</h2>
@@ -107,7 +105,7 @@
 														<a class="author-link" data-tip="p$b$amuro1230"
 															target="_blank"
 															href="https://nowcoder.com/people/amuro1230">${item.username }</a>
-														<span title="${item.questiontitle }" class="bio">，${item.questiontitle }</span>
+														<span title="${item.usermeans }" class="bio">，${item.usermeans }</span>
 													</div>
 						 							<div class="zm-item-vote-info" data-votecount="4168"
 														data-za-module="VoteInfo">
@@ -127,10 +125,9 @@
 																class="toggle-expand">显示全部</a>
 														</div>
 														<p class="visible-expanded">
-															<a itemprop="url" class="answer-date-link meta-item"
-																data-tip="s$t$发布于 2011-09-23" target="_blank"
-																href="https://nowcoder.com/question/19857995/answer/13174385">编辑于
-																2015-06-24</a>
+															<a  class="answer-date-link meta-item"
+																data-tip="s$t$发布于 2011-09-23" target="_blank">编辑于
+																${item.answertime }</a>
 														</p>
 													</div>
 												</div>
@@ -143,7 +140,7 @@
 																href="javascript:;" id="sfb-123114"> <i
 																class="z-icon-follow"></i>关注问题
 															</a> 
-															<a href="#" name="addcomment"
+															<a href="#" 
 																class="meta-item toggle-comment js-toggleCommentBox">
 																<i class="z-icon-comment"></i>69 条评论
 															</a> 
@@ -177,7 +174,7 @@
 		</div>
 	</div>
 	
-	<script type="text/zscript" znonce="d3edc464cf014708819feffde7ddd01e"></script>
+	
 	<input type="hidden" name="_xsrf"
 		value="21aa1c8d254df2899b23ab9afbd62a53">
 
@@ -315,7 +312,7 @@
 				contentLoad();
 			},
 			error:function(){
-				alert("请求失败");
+				alert("没有更多数据！");
 			}
 		});
 	}
@@ -331,16 +328,6 @@
 			},
 			error:function(){
 				alert("您已收藏过该回答！可进入我的收藏查看！");
-			}
-		}); 
-	}
-</script>
-</html>ionid},
-			success:function(data){
-				alert("收藏成功");
-			},
-			error:function(){
-				alert("请求失败");
 			}
 		}); 
 	}
