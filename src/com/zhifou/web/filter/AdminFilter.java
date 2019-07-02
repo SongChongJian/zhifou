@@ -22,7 +22,7 @@ public class AdminFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest)request;
 		Object obj = req.getSession().getAttribute("admin");
 		if(obj == null) {
-			resp.sendRedirect("../adminlogin.jsp");
+			resp.sendRedirect("/zhifou/adminlogin.jsp");
 		}
 		chain.doFilter(request, response);
 		
