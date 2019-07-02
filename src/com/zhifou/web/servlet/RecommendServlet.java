@@ -123,6 +123,10 @@ public class RecommendServlet extends BaseServlet {
 		String fuzzy = request.getParameter("search");
 		request.getSession().setAttribute("search", fuzzy);
 		RecommendService service = new RecommendService();
+		if(fuzzy==""){		
+			searchQuestionIndex(request,response);
+			return;
+		}
 		List<Question> questions = service.searchLikeQuestion(fuzzy);
 		List<UserIndex> userindexs = new ArrayList<>();
 		for (Question question : questions) {
