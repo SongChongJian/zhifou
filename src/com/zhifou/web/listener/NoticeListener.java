@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebListener;
 
 import com.zhifou.bean.Notice;
 import com.zhifou.service.Adminservice;
+import com.zhifou.web.servlet.AdminServlet;
 
 @WebListener
 public class NoticeListener implements ServletContextListener, ServletContextAttributeListener {

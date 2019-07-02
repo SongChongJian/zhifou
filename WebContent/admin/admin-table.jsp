@@ -22,6 +22,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/admin/toastr/toastr.min.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/toastr/toastr.min.js"></script>
+
 </head>
 <style>
 /* reset webkit search input browser style */
@@ -355,6 +358,28 @@ input::-webkit-input-placeholder {
 </body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
+	toastr.options = {
+			  "closeButton": false,
+			  "debug": false,
+			  "newestOnTop": false,
+			  "progressBar": false,
+			  "positionClass": "toast-top-center",
+			  "preventDuplicates": false,
+			  "onclick": null,
+			  "showDuration": "3000",
+			  "hideDuration": "1000",
+			  "timeOut": "1000",
+			  "extendedTimeOut": "1000",
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut"
+			}
+/* 	toastr.options.positionClass = 'toast-top-center';
+	toastr.success('审核成功');
+	toastr.warning('审核失败');*/
+</script>
+<script type="text/javascript">
 	function ispassaudit(e){
 		$.ajax({
 			url:"/zhifou/adminservlet",
@@ -369,6 +394,7 @@ input::-webkit-input-placeholder {
 					spa2.appendChild(pass2);
 					spa2.setAttribute("class","label label-success");
 					document.getElementById(""+e+"").appendChild(spa2);
+					toastr.success('审核成功');
 				} else {
 					document.getElementById(""+e+"").innerHTML="";
 					var spa = document.createElement("span");
@@ -376,6 +402,7 @@ input::-webkit-input-placeholder {
 					spa.appendChild(pass);
 					spa.setAttribute("class","label label-danger");
 					document.getElementById(""+e+"").appendChild(spa);
+					toastr.warning('审核失败');
 				}
 			},
 			error:function(){
@@ -398,6 +425,7 @@ input::-webkit-input-placeholder {
 					spa.appendChild(pass);
 					spa.setAttribute("class","label label-danger");
 					document.getElementById(""+e+"").appendChild(spa);
+					toastr.error('退回成功');
 				} else {
 					document.getElementById(""+e+"").innerHTML="";
 					var spa2 = document.createElement("span");
@@ -405,6 +433,7 @@ input::-webkit-input-placeholder {
 					spa2.appendChild(pass2);
 					spa2.setAttribute("class","label label-success");
 					document.getElementById(""+e+"").appendChild(spa2);
+					toastr.warning('退回失败');
 				}
 			},
 			error:function(){
@@ -506,5 +535,6 @@ input::-webkit-input-placeholder {
 		$("#showDiv").css("display", "none");
  		$("#search").val(""); 
 	} */
+	
 </script>
 </html>

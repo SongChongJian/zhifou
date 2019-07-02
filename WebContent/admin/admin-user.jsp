@@ -17,6 +17,8 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/assets/css/amazeui.min.css"/>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/assets/css/admin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/toastr/toastr.min.css">
+  <script type="text/javascript" src="${pageContext.request.contextPath}/admin/toastr/toastr.min.js"></script>
 </head>
 <body>
 
@@ -189,6 +191,28 @@
 </body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
+	toastr.options = {
+			  "closeButton": false,
+			  "debug": false,
+			  "newestOnTop": false,
+			  "progressBar": false,
+			  "positionClass": "toast-top-center",
+			  "preventDuplicates": false,
+			  "onclick": null,
+			  "showDuration": "3000",
+			  "hideDuration": "1000",
+			  "timeOut": "1000",
+			  "extendedTimeOut": "1000",
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut"
+			}
+/* 	toastr.options.positionClass = 'toast-top-center';
+	toastr.success('审核成功');
+	toastr.warning('审核失败');*/
+</script>
+<script type="text/javascript">
 	//修改管理员信息
 	function changeadmininformation(){
 		var adminname = document.getElementById("adminname").value;
@@ -205,13 +229,13 @@
 					/* document.getElementById("adminnamemessage").value="";
 					document.getElementById("adminpasswordmessage").value="";
 					document.getElementById("adminmailmessage").value=""; */
-					alert("修改成功");
+					toastr.success('修改成功');
 				}else{
-					alert("修改失败");
+					toastr.error('修改失败');
 				}
 			},
 			error:function(){
-				alert("请求失败");
+				toastr.warning('请求失败');
 			},
 			dataType:"text"				
 		}); 

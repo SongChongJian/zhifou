@@ -26,9 +26,9 @@ import com.zhifou.utils.JsonUtils;
 public class AdminServlet extends BaseServlet {
 	Adminservice adminservice = new Adminservice();
 	//管理员登录
-	public void adminlogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*request.setCharacterEncoding("UTF-8");
-		response.setContentType("UTF-8");*/
+/*	public void adminlogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("UTF-8");
 		String adminmail = request.getParameter("adminmail");
 		String adminpassword = request.getParameter("adminpassword");
 		Admin admin = adminservice.adminlogin(adminmail,adminpassword);
@@ -39,7 +39,7 @@ public class AdminServlet extends BaseServlet {
 		}else{
 			response.sendRedirect("adminlogin.jsp");
 		}
-	}
+	}*/
 	public void questionmanage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//问题首页
 		//分页显示
@@ -244,4 +244,10 @@ public class AdminServlet extends BaseServlet {
 		int issucsses = adminservice.changeadmininformation(adminid,adminname,adminpassword,adminmail,adminphoto);
 		response.getWriter().write(issucsses==1?"1":"0");
 	}
+	//===================================================================================================================================
+	//公告更新到前台
+	public void updatenotice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+	
 }

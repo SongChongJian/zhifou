@@ -25,6 +25,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">	
+<link rel="stylesheet" href="${pageContext.request.contextPath}/admin/toastr/toastr.min.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/toastr/toastr.min.js"></script>
 </head>
 <body>
 	<!--[if lte IE 9]>
@@ -224,6 +226,26 @@
 </body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
+	toastr.options = {
+			  "closeButton": false,
+			  "debug": false,
+			  "newestOnTop": false,
+			  "progressBar": false,
+			  "positionClass": "toast-top-center",
+			  "preventDuplicates": false,
+			  "onclick": null,
+			  "showDuration": "3000",
+			  "hideDuration": "1000",
+			  "timeOut": "1000",
+			  "extendedTimeOut": "1000",
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut"
+			}
+/* 	toastr.options.positionClass = 'toast-top-center'; */
+</script>
+<script type="text/javascript">
 //发布公告
 	function addnotice(){
 		var noticetitle = document.getElementById("noticetitle").value;
@@ -246,6 +268,7 @@
 						document.getElementById("noticecontent").value = "";
 						document.getElementById("proposermassage").innerHTML = "";
 						document.getElementById("titlemassage").innerHTML = "";
+						toastr.success('公告发布成功');
 					}
 				},
 				error:function(){
@@ -256,7 +279,8 @@
 		}else{
 			checktitle(document.getElementsByName("noticetitle")[0]);
 			checkproposer(document.getElementsByName("noticeproposer")[0]);
-			checkcontent(document.getElementByName("noticecontent")[0])
+			checkcontent(document.getElementByName("noticecontent")[0]);
+			toastr.warning('公告发布失败');
 		}
 		
 	}
@@ -306,7 +330,8 @@
 					document.getElementById("categorymassage").innerHTML = "";
 					categorymanage();
 /* 					content += "<tr><th name='number'>"+document.getElementById("number").innerHTML+"</th><th>"+data[i].categoryname+"</th></tr>";
- */				},
+ */				toastr.success('问题类型添加成功');
+ 				},
 				error:function(){
 					alert("请求失败");
 				},
@@ -314,6 +339,7 @@
 			});
 		}else{
 			checknewcategory(document.getElementsByName("newcategory")[0]);
+			toastr.warning('问题类型添加失败');
 		}
 		
 	}
@@ -334,6 +360,7 @@
 					if (data == 1) {
 						document.getElementById("categorymassage").innerHTML = "该类型已存在！";
 						document.getElementById("categorymassage").style.color = "red";
+						toastr.warning('请检查字段');
 					} else {
 						document.getElementById("categorymassage").innerHTML = "✔";
 						document.getElementById("categorymassage").style.color = "green";
@@ -361,6 +388,7 @@
 		var title = e.value;
 		if(title == null || title.trim() == ""){
 			document.getElementById("titlemassage").innerHTML = "用户名不能为空！";
+			toastr.warning('请检查字段');
 			document.getElementById("titlemassage").style.color = "red";
 			return false;
 		}else{
@@ -372,6 +400,7 @@
 				success:function(data){
 					if (data == 1) {
 						document.getElementById("titlemassage").innerHTML = "该标题已存在！";
+						toastr.warning('请检查字段');
 						document.getElementById("titlemassage").style.color = "red";
 					} else {
 						document.getElementById("titlemassage").innerHTML = "✔";
@@ -391,6 +420,7 @@
 		var proposer = e.value;
 		if(proposer == null || proposer.trim() == ""){
 			document.getElementById("proposermassage").innerHTML = "管理员不能为空！";
+			toastr.warning('请检查字段');
 			document.getElementById("proposermassage").style.color = "red";
 			return false;
 		}else{
@@ -405,6 +435,7 @@
 						document.getElementById("proposermassage").style.color = "green";
 					} else {
 						document.getElementById("proposermassage").innerHTML = "管理员不存在";
+						toastr.warning('请检查字段');
 						document.getElementById("proposermassage").style.color = "red";
 					}
 				},
@@ -425,6 +456,7 @@
 		var content = e.value;
 		if(content == null || content.trim() == ""){
 			document.getElementById("noticecontent").placeholder = "公告内容不能为空！";
+			toastr.warning('请检查字段');
 			document.getElementById("noticecontent").placeholder.style.color = "red";
 			return false;
 		}
