@@ -321,12 +321,21 @@
 	}
 	
 	function setCollection(answerid,questionid){
-		alert(answerid+"  "+questionid)
 		 $.ajax({
 			url:"/zhifou/collection",
 			type:"post",	
 			dataType:"json",
 			data:{"method":"addCollection","answerid":answerid,"questionid":questionid},
+			success:function(data){
+				alert("收藏成功");
+			},
+			error:function(){
+				alert("您已收藏过该回答！可进入我的收藏查看！");
+			}
+		}); 
+	}
+</script>
+</html>ionid},
 			success:function(data){
 				alert("收藏成功");
 			},
