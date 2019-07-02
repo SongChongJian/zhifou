@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8" import="com.zhifou.bean.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<!-- saved from url=(0029)#signin -->
-<html lang="zh-CN" dropeffect="none"
+<html lang="zh-CN" 
 	class="js is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile"
 	style="">
 <head>
@@ -214,6 +213,9 @@
 			success:function(data){
 				if(data.length>0){
 					 $.each(data,function(index,obj){
+						 if(obj.usermeans==null){
+							 var usermeans = "";
+						 }
 						content+="<div class='avatar'>"
 						+"		<a title='李淼' data-tip='p$t$amuro1230'"
 						+"			class='zm-item-link-avatar' target='_blank'> <img"
@@ -257,7 +259,7 @@
 						+"				<div class='zm-item-answer-author-info'>"
 						+"					<a class='author-link' data-tip='p$b$amuro1230'"
 						+"						target='_blank'>"+obj.username+"</a>"
-						+"					<span title='"+obj.questiontitle+"' class='bio'>，"+obj.questiontitle+"</span>"
+						+"					<span title='"+usermeans+"' class='bio'>，"+usermeans+"</span>"
 						+"				</div>"
 						+"				<div class='zm-item-vote-info' data-votecount='4168'"
 						+"					data-za-module='VoteInfo'>"
