@@ -44,11 +44,11 @@
 
     <form method="post" action="${pageContext.request.contextPath}/userservlet" class="am-form">
       <label for="email">邮箱:</label>
-      <input type="email" name="adminmail" id="email" value="">
+      <input type="email" name="adminmail" id="email" value="" required>
       <input type="hidden" name="method" id="" value="adminlogin">
       <br>
       <label for="password">密码:</label>
-      <input type="password" name="adminpassword" id="password" value="">
+      <input type="password" name="adminpassword" id="password" value="" required>
       <br>
       <label for="remember-me">
         <input id="remember-me" type="checkbox">

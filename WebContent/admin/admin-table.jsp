@@ -135,7 +135,7 @@ input::-webkit-input-placeholder {
 				<ul class="am-dropdown-content">
 					<li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
 					<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-					<li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+					<li><a href="/zhifou/adminservlet?method=adminexit"><span class="am-icon-power-off"></span> 退出</a></li>
 				</ul></li>
 		</ul>
 	</div>
@@ -204,12 +204,12 @@ input::-webkit-input-placeholder {
 					<div class="am-fl am-cf">
 						<div class="am-btn-toolbar am-fl">
 							<div class="am-btn-group am-btn-group-xs">
-								<button type="button" class="am-btn am-btn-default">
+								<!-- <button type="button" class="am-btn am-btn-default">
 									<span class="am-icon-plus"></span> 新增
 								</button>
 								<button type="button" class="am-btn am-btn-default">
 									<span class="am-icon-save"></span> 保存
-								</button>
+								</button> -->
 								<button type="button" class="am-btn am-btn-default" onclick="checksome(this)">
 									<span class="am-icon-archive"></span> 审核
 								</button>
@@ -288,10 +288,10 @@ input::-webkit-input-placeholder {
 										<td style="vertical-align: middle;">
 											<div class="am-btn-toolbar">
 												<div class="am-btn-group am-btn-group-xs">
-													<button
+													<!-- <button
 														class="am-btn am-btn-default am-btn-xs am-text-secondary">
 														<span class="am-icon-pencil-square-o"></span> 编辑
-													</button>
+													</button> -->
 													<button onclick="ispassaudit(${items.questionid})" type="button"
 														class="am-btn am-btn-default am-btn-xs">
 														<span class="am-icon-copy"></span>通过
@@ -542,6 +542,5 @@ input::-webkit-input-placeholder {
 		$("#showDiv").css("display", "none");
  		$("#search").val(""); 
 	} */
-	
 </script>
 </html>
