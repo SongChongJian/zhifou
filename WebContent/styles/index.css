@@ -1162,7 +1162,7 @@ html.no-touchevents .zg-link-gray:hover,html.no-touchevents .zg-link-gray-normal
 }
 
 .zh-footer li+li:before {
-    content: '鈥�';
+    content: '閳ワ拷';
     margin-right: 3px;
     padding: 0 3px;
     font-family: Arial;
@@ -1778,7 +1778,8 @@ i[class^=z-icon-],i[class*=" z-icon-"] {
 }
 
 html.no-touchevents .meta-item:hover {
-    color: #25bb9b
+    color: #25bb9b;
+    cursor: pointer
 }
 
 html.no-touchevents .meta-item:hover .goog-menu-button-caption {
@@ -11729,7 +11730,7 @@ html.no-touchevents .zh-add-question-form .question-suggest-ac-wrap .ac-renderer
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-     /*for ie8不变省略号问题*/
+     /*for ie8涓嶅彉鐪佺暐鍙烽棶棰�*/
     word-wrap:normal;
 }
 .zh-summary .inline-img,.CardAdFeed-image {

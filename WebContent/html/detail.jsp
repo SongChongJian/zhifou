@@ -36,7 +36,11 @@
      margin-left: -275px; 
     margin-top: 14%;
     margin-top: 14vh;
+    
 }
+  .zm-meta-panel #dianzan:hover{
+		background-color:red;		
+    }
 	
 </style>
 </head>
@@ -108,6 +112,7 @@
                         
                            
                         <div class="answer-head">
+                        
                             <div class="zm-item-answer-author-info">
                                 <a class="zm-item-link-avatar avatar-link" href="" target="_blank" data-tip="p$t$yingxiaodao">
                                     <img src="../images/res/11be4a90ed938abfbab4899df56ee754_s.png" class="zm-list-avatar avatar"></a>
@@ -130,6 +135,14 @@
 <!--                                    id="modal-578824 zu-top-add-question" href="#modal-container-578824" role="button" class="zu-top-add-question btn" data-toggle="modal"
 -->                                <a name="addcomment" href="#modal-container-578824"  class="meta-item toggle-comment js-toggleCommentBox " data-toggle="modal">
                                     <i class="z-icon-comment1"></i>私信</a>
+                                    <a onclick="setCollection('${AnswerDetail.answerid}','${AnswerDetail.questionid }')" class="meta-item js-thank" data-thanked="false">
+                                     <i class="z-icon-thank"></i>收藏</a>
+                 
+                                    <button data-za-module="VoteBar" id="dianzan"  style="background-color: #EFF6FA;width:50px;border-color:#EFF6FA;margin-left:20px"aria-pressed="false" title="赞同">
+										<i ></i><span class="count" style="color:#25BB9B">4168</span>
+										<span class="label sr-only">赞同</span>
+									</button>
+															
                                
 
                                 <button class="item-collapse js-collapse" style="transition: none;">
@@ -144,6 +157,23 @@
                <form action="answer?method=doanswer">
                <textarea></textarea>
                </form>
+               
+               <script type="text/javascript">
+               function setCollection(answerid,questionid){
+           		 $.ajax({
+           			url:"/zhifou/collection",
+           			type:"post",	
+           			dataType:"json",
+           			data:{"method":"addCollection","answerid":answerid,"questionid":questionid},
+           			success:function(data){
+           				alert("收藏成功");
+           			},
+           			error:function(){
+           				alert("您已收藏该回答！可进入我的收藏查看！");
+           			}
+           		}); 
+           	}
+               </script>
                 <!-- 版权演示 -->
                 <script type="text/x-template" id="copyright-demo-template">< article >
 
@@ -209,12 +239,12 @@
             "type": "HEADLINE",
             "value": null
         }</script>
-    <script type="text/json" class="json-inline" data-name="redirect_to">""</script>
-    <script src="../scripts/vendor.ff76fbae.js"></script>
-    <script src="../scripts/base.fb262f0e.js"></script>
-    <script src="../scripts/common.fed5411f.js"></script>
+     <script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+      <script src="../scripts/vendor.ff76fbae.js"></script>
+      <script src="../scripts/base.fb262f0e.js"></script>
+     <script src="../scripts/common.fed5411f.js"></script>
     <script src="../scripts/richtexteditor.aa0a4005.js" async=""></script>
-    <script src="../scripts/page-main.5d4c554d.js"></script>
+    <!--  script src="../scripts/page-main.5d4c554d.js"></script> -->
     <meta name="entry" content="ZH.entrySQ" data-module-id="page-main">
     <script type="text/zscript" znonce="8d61d9c6697d4080ab36aa3bdb21b9d8"></script>
     <input type="hidden" name="_xsrf" value="21aa1c8d254df2899b23ab9afbd62a53">
@@ -253,7 +283,7 @@
        <div class="container">
 			<div class="row clearfix">
 				<div class="col-md-12 column">
-					 <a id="modal-578824" href="#modal-container-578824" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+					
 					
 					<div class="modal fade" id="modal-container-578824" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
