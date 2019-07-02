@@ -245,9 +245,10 @@ public class AdminServlet extends BaseServlet {
 		response.getWriter().write(issucsses==1?"1":"0");
 	}
 	//===================================================================================================================================
-	//公告更新到前台
-	public void updatenotice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	//管理员退出登录
+	public void adminexit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getServletContext().removeAttribute("admin");
+		response.sendRedirect("/zhifou/adminlogin.jsp");
 	}
 	
 }

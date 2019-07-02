@@ -40,7 +40,8 @@
         <ul class="am-dropdown-content">
           <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
           <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+          <li><a href="/zhifou/adminservlet?method=adminexit">
+          <span class="am-icon-power-off"></span> 退出</a></li>
         </ul>
       </li>
     </ul>
@@ -188,6 +189,9 @@
   <hr>
   <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
 </footer>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
 </body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
