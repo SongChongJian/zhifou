@@ -29,17 +29,17 @@
 		<form action="userservlet" method="post" onsubmit="return checkall()">
 			<div class="login form">
 				<div class="group">
-					<div class="group-ipt email">
-						<input type="text" name="mail" id="email" class="ipt" onblur="check_mail(this)" autocomplete="off" placeholder="邮箱地址" required>
+					<div class="group-ipt email"><!-- onblur="check_mail(this)" --> 
+						<input type="text" name="mail" id="email" class="ipt" autocomplete="off" placeholder="邮箱地址" required>
 						<input type="hidden" name="method" value="login" />
 					</div>
 					<div id="password_message"></div>
-					<div class="group-ipt password">
-						<input type="password" name="password" id="password" class="ipt" onblur="check_password(this)" autocomplete="off" placeholder="输入您的登录密码" required>
+					<div class="group-ipt password"><!-- onblur="check_password(this)"  -->
+						<input type="password" name="password" id="password" class="ipt" autocomplete="off" placeholder="输入您的登录密码" required>
 					</div>
 					<div id="password_message"></div>
-					<div class="group-ipt verify">
-						<input type="text" name="checkcode" id="verify" class="ipt" onblur="check_checkcode(this)" autocomplete="off" placeholder="输入验证码" required>
+					<div class="group-ipt verify"><!-- onblur="check_checkcode(this)"  -->
+						<input type="text" name="checkcode" id="verify" class="ipt" autocomplete="off" placeholder="输入验证码" required>
 						<img onclick="changeImg(this)" src="checkimageservlet" class="imgcode" />
 					</div>
 					<div id="checkcode_message"></div>
@@ -75,26 +75,24 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">
 <script>
-	$('.imgcode').hover(function(){
-		layer.tips("看不清？点击更换", '.verify', {
-        		time: 6000,
-        		tips: [2, "#3c3c3c"]
-    		})
-	},function(){
-		layer.closeAll('tips');
-	});
-	$("#remember-me").click(function(){
-		var n = document.getElementById("remember-me").checked;
-		if(n){
-			$(".zt").show();
-		}else{
-			$(".zt").hide();
-		}
-	});
 	/* 更改验证码 */
 	function changeImg(e){
 		e.src="checkimageservlet?time="+new Date().getTime();
 	}
+	//邮箱
+	/* function check_mail(e){
+		var email = e.value;
+		var emailReg=/^\w+@\w+\.[A-Za-z]{2,3}$/;
+		if(!emailReg.test(email)){
+			document.getElementById("mail_message").innerHTML = "邮箱格式不正确，请检查！！";
+			document.getElementById("mail_message").style.color = "red";
+			return false;
+		}else{
+			document.getElementById("mail_message").innerHTML = "✔";
+			document.getElementById("mail_message").style.color = "green";
+		}
+		return true;
+	} 
 	//密码
 	function check_password(e){
 		var password = e.value;
@@ -110,28 +108,9 @@
 		}
 	}
 	document.getElementsByName("password")[0].onfocus=function(){
-		check_username(document.getElementsByName("username")[0]);
+		check_mail(document.getElementById("email"));
 	}
 	
-	//邮箱
-	function check_mail(e){
-		var email = e.value;
-		var emailReg=/^\w+@\w+\.[A-Za-z]{2,3}$/;
-		if(!emailReg.test(email)){
-		/* 	$('#mail_message').popover('show'); */
-			document.getElementById("mail_message").innerHTML = "邮箱格式不正确，请检查！！";
-			document.getElementById("mail_message").style.color = "red";
-			return false;
-		}
-		document.getElementById("mail_message").innerHTML = "✔";
-		document.getElementById("mail_message").style.color = "green";
-		return true;
-	}
-	document.getElementsByName("mail")[0].onfocus=function(){
-		check_username(document.getElementsByName("username")[0]);
-		check_password(document.getElementsByName("password")[0]);
-		/* check_checkpassword(document.getElementsByName("checkpassword")[0]); */
-	}
 	//验证码
 	function check_checkcode(e){
 		var checkcode = e.value;
@@ -164,20 +143,25 @@
 		}
 	}
 	document.getElementsByName("checkcode")[0].onfocus=function(){
-		check_password(document.getElementsByName("password")[0]);
-		check_mail(document.getElementsByName("mail")[0]);
+		check_password(document.getElementsById("password"));
+		check_mail(document.getElementsById("email"));
 	}
 	
 	//判断提交条件
 	function checkall(){
-		var password = check_password(document.getElementsByName("password")[0]);
-		var mail = check_mail(document.getElementsByName("mail")[0]);
-		var checkcode = check_checkcode(document.getElementsByName("checkcode")[0]);
+		var password = check_password(document.getElementsById("password"));
+		var mail = check_mail(document.getElementsById("email"));
+		var checkcode = check_checkcode(document.getElementsById("verify"));
 		if(password&&mail&&checkcode){
 			return true;
+		}else{
+			check_password(document.getElementsById("password"));
+			check_mail(document.getElementsById("email"));
+			check_checkcode(document.getElementsById("verify"));
+			return false;
 		}
-		return false;
-	}
+		
+	}*/
 </script>
 </body>
 </html>

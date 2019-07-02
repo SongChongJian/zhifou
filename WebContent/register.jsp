@@ -6,6 +6,16 @@
 <head>
 	<title>注册 - 知否</title>
 	<link rel="stylesheet" type="text/css" href="styles/register-login.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/admin/toastr/toastr.min.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/admin/toastr/toastr.min.js"></script>
+	<style type="text/css">
+	.toast-center-center {
+    	top: 50%;
+   		left: 50%;
+   		margin-top: -25px;
+    	margin-left: -150px;
+	}
+</style>
 </head>
 <body>
 <div id="box"></div>
@@ -22,26 +32,26 @@
 				<div class="slide-bar slide-bar1"></div>				
 			</div>
 		</div>
-		<form action="userservlet" method="post" onsubmit="return checkall()">
+		<form action="userservlet" method="post" ><!-- onsubmit="return checkall()" -->
 			<div class="login form">		
 				<div class="group">
-					<div class="group-ipt user">
-						<input type="text" name="username" autocomplete="off" id="user" class="ipt" onblur="check_username(this)" placeholder="选择一个用户名" required>
+					<div class="group-ipt user"><!-- onblur="check_username(this)" -->
+						<input type="text" name="username" autocomplete="off" id="user" class="ipt"  placeholder="选择一个用户名" required>
 					</div>
 					<div id="username_message"></div>
-					<div class="group-ipt password">
-						<input type="password" name="password" autocomplete="off" id="password" class="ipt" onblur="check_password(this)" placeholder="设置登录密码" required>
+					<div class="group-ipt password"><!-- onblur="check_password(this)"  -->
+						<input type="password" name="password" autocomplete="off" id="password" class="ipt" placeholder="设置登录密码" required>
 					</div><span id="password_message"></span>
-					<div class="group-ipt password1">
-						<input type="password" name="checkpassword" autocomplete="off" id="password1" class="ipt" onkeyup="check_checkpassword(this)" placeholder="重复密码" required>
+					<div class="group-ipt password1"><!-- onkeyup="check_checkpassword(this)" -->
+						<input type="password" name="checkpassword" autocomplete="off" id="password1" class="ipt"  placeholder="重复密码" required>
 					</div><span id="checkpassword_message"></span>
-					<div class="group-ipt email">
-						<input type="email" name="mail" autocomplete="off" id="email" class="ipt" onblur="check_mail(this)" placeholder="请输入邮箱" required>
+					<div class="group-ipt email"><!-- onblur="check_mail(this)" -->
+						<input type="email" name="mail" autocomplete="off" id="email" class="ipt"  placeholder="请输入邮箱" required>
 						<input type="hidden" name="method" value="register" />
 						<input type="hidden" name="code" value="0" />
 					</div><span id="mail_message"></span>
-					<div class="group-ipt verify">
-						<input type="text" name="checkcode" autocomplete="off" id="verify" class="ipt" onblur="check_checkcode(this)" placeholder="输入验证码" required>
+					<div class="group-ipt verify"><!-- onblur="check_checkcode(this)" -->
+						<input type="text" name="checkcode" autocomplete="off" id="verify" class="ipt"  placeholder="输入验证码" required>
 						<img onclick="changeImg(this)" src="checkimageservlet" class="imgcode" />
 					</div><span id="checkcode_message"></span>
 				</div>
@@ -63,7 +73,6 @@
 <script src='js/background.js' type="text/javascript"></script>
 <script src='js/jquery.min.js' type="text/javascript"></script>
 <script src='js/layer/layer.js' type="text/javascript"></script>
-<script src='js/index.js' type="text/javascript"></script>
 <script>
 	$('.imgcode').hover(function(){
 		layer.tips("看不清？点击更换", '.verify', {
@@ -89,6 +98,7 @@
 		}
 	})
 </script>
+
 <script type="text/javascript">
 	/* 更改验证码 */
 	function changeImg(e){
@@ -96,7 +106,7 @@
 	}
 	/* 表单验证 */
 	//用户名
-	function check_username(e){
+	/*function check_username(e){
 		var username = e.value;
 		if(username == null || username.trim() == ""){
 			document.getElementById("username_message").innerHTML = "用户名不能为空！";
@@ -187,7 +197,7 @@
 	document.getElementsByName("mail")[0].onfocus=function(){
 		check_username(document.getElementsByName("username")[0]);
 		check_password(document.getElementsByName("password")[0]);
-		/* check_checkpassword(document.getElementsByName("checkpassword")[0]); */
+		check_checkpassword(document.getElementsByName("checkpassword")[0]);
 	}
 	//验证码
 	function check_checkcode(e){
@@ -237,7 +247,7 @@
 			return true;
 		}
 		return false;
-	}
+	} */
 </script>
 </body>
 </html>

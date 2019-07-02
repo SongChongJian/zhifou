@@ -24,7 +24,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/toastr/toastr.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/toastr/toastr.min.js"></script>
-
+<style type="text/css">
+	.toast-center-center {
+    	top: 50%;
+   		left: 50%;
+   		margin-top: -25px;
+    	margin-left: -150px;
+	}
+</style>
 </head>
 <style>
 /* reset webkit search input browser style */

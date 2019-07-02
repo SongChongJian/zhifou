@@ -33,7 +33,7 @@ public class UserServlet extends BaseServlet {
 			session.setAttribute("admin", admin);
 			response.sendRedirect("admin/admin-index.jsp");
 		}else{
-			response.sendRedirect("adminlogin.jsp");
+			response.sendRedirect("/zhifou/admin/adminlogin.jsp");
 		}
 	}
 	//注册
@@ -64,7 +64,7 @@ public class UserServlet extends BaseServlet {
 				response.sendRedirect("login.jsp");
 	//			System.out.println("注册成功");
 			}else{
-				response.sendRedirect("register.jsp");
+				response.sendRedirect("/zhifou/register.jsp");
 			}
 		}
 	}
@@ -95,6 +95,8 @@ public class UserServlet extends BaseServlet {
 			session = request.getSession();
 			session.setAttribute("user", user);
 			response.sendRedirect("/zhifou/recommend?method=searchQuestionIndex");
+		}else{
+			response.sendRedirect("/zhifou/login.jsp");
 		}
 	}
 	
