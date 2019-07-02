@@ -29,4 +29,16 @@ public class RecommendService {
 	public Answer FindAnswerByID(int id){
 		return recommendDao.FindAnswerByID(id);
 	}
+	public List<Question> searchLikeQuestion(String search){
+		return recommendDao.searchLikeQuestion(search);
+	}
+	public Answer MaxCountAnswer(int id){
+		return recommendDao.MaxCountAnswer(id);
+	}
+	public Question FindQuestionByQuestionID(int id){
+		return recommendDao.FindQuestionByQuestionID(id);
+	}
+	public List<Answer> FindAllAnswer(int id){
+		return recommendDao.FindAllAnswer(id);
+	}
 }

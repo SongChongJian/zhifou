@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import com.zhifou.bean.Category;
 import com.zhifou.bean.Question;
 import com.zhifou.bean.User;
 import com.zhifou.bean.UserIndex;
+import com.zhifou.service.Adminservice;
 import com.zhifou.service.RecommendService;
 import com.zhifou.utils.JsonUtils;
 
@@ -25,11 +27,12 @@ public class RecommendServlet extends BaseServlet{
 	public void searchQuestionIndex(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("UTF-8");
-		RecommendService service = new RecommendService();
+		RecommendService service = new RecommendService();//生成RecommendService对象
 		count=1;
-		List<Answer> answers = service.FindQuestionByPage(count, pz);
+		List<Answer> answers = service.FindQuestionByPage(count, pz);//进入首页首先获取pz条数据
 		count++;
 		List<UserIndex> userindexs = new ArrayList<>();
+		//遍历answer，通过answerid查询到问题，然后找到作者，找到类型。组装成一个userindex对象
 		for (Answer answer : answers) {
 			User user = service.FindUserByID(answer.getAnswerproposer());
 			Question question = service.FindQuestionById(answer.getQuestionid());
@@ -37,14 +40,9 @@ public class RecommendServlet extends BaseServlet{
 			UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
 			userindexs.add(userindex);
 		}
-		request.getSession().setAttribute("userindexs", userindexs);
-		try {
-			response.sendRedirect("index.jsp");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		request.getSession().setAttribute("userindexs", userindexs);	
+		response.sendRedirect("index.jsp");
+	
 	}
 	
 	public void searchQuestionByPage(HttpServletRequest request,HttpServletResponse response) throws IOException{
@@ -62,7 +60,6 @@ public class RecommendServlet extends BaseServlet{
 			userindexs.add(userindex);
 		}
 		String jsonData=JsonUtils.objectToJson(userindexs);
-		System.out.println(jsonData);
 		response.getWriter().write(jsonData);
 	}
 
@@ -70,12 +67,62 @@ public class RecommendServlet extends BaseServlet{
 		String value = request.getParameter("answerid");
 		int answerid = Integer.parseInt(value);
 		RecommendService service = new RecommendService();
-		Answer answer = service.FindAnswerByID(answerid);
-		User user = service.FindUserByID(answer.getAnswerproposer());
-		Question question = service.FindQuestionById(answer.getQuestionid());
-		Category category = service.FindCategoryByID(question.getCategoryid());
-		UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+		Answer answer = service.FindAnswerByID(answerid);//通过answerid获得回答
+		User user = service.FindUserByID(answer.getAnswerproposer());//通过回答的作者找到该用户
+		Question question = service.FindQuestionById(answer.getQuestionid());//通过回答的问题id找到回答回应的问题
+		Category category = service.FindCategoryByID(question.getCategoryid());//通过问题的类型id找到类型。
+		UserIndex userindex = service.CreateUserIndex(user, answer, question, category);//组装对象
 		request.getSession().setAttribute("AnswerDetail", userindex);
 		response.sendRedirect("/zhifou/html/detail.jsp");
+	}
+	
+	public void searchLikeQuestion(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		String fuzzy = request.getParameter("search");
+		RecommendService service = new RecommendService();
+		List<Question> questions = service.searchLikeQuestion(fuzzy);
+		List<UserIndex> userindexs = new ArrayList<>();
+		for (Question question : questions) {
+			Answer answer = service.MaxCountAnswer(question.getQuestionid());
+			Category category = service.FindCategoryByID(question.getCategoryid());
+			User user = service.FindUserByID(answer.getAnswerproposer());
+			UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+			userindexs.add(userindex);
+		}
+		request.getSession().setAttribute("userindexs", userindexs);	
+		response.sendRedirect("index.jsp");
+	}
+	
+	public void showQuestionDetail(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		String value = request.getParameter("questionid");
+		int questionid = Integer.parseInt(value);
+		RecommendService service = new RecommendService();
+		Question q = service.FindQuestionByQuestionID(questionid);
+		request.getSession().setAttribute("Question", q);//存一个question，存放最上面标题等信息
+		List<Answer> answers = service.FindAllAnswer(questionid);
+		List<UserIndex> userindexs = new ArrayList<>();
+		for (Answer answer : answers) {
+			User user = service.FindUserByID(answer.getAnswerproposer());
+			Question question = service.FindQuestionById(answer.getQuestionid());
+			Category category = service.FindCategoryByID(question.getCategoryid());
+			UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+			userindexs.add(userindex);
+		}
+		request.getSession().setAttribute("AllAnswers", userindexs);
+		response.sendRedirect("/zhifou/html/answerlist.jsp");
+	}
+	
+	//搜索字段自动显示
+	public void searchword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");*/
+		String word = request.getParameter("word");
+		if(word!=null){
+			Adminservice adminservice = new Adminservice();
+			List<Object> list = adminservice.searchword(word);
+			String json = JsonUtils.objectToJson(list);
+			/*Gson gson = new Gson();
+			String json = gson.toJson(list);*/
+			response.getWriter().write(json);
+		}
 	}
 }

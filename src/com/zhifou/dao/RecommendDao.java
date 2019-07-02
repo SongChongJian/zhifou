@@ -119,4 +119,54 @@ public class RecommendDao {
 		userindex.setUsermeans(user.getUsermeans());
 		return userindex;
 	}
+	
+	//根据搜索语句模糊查询问题
+	public List<Question> searchLikeQuestion(String search){
+		String sql = "select * from question where ispassaudit and questiontitle like '%"+search+"%'";
+		List<Question> questions = null;
+		try {
+			questions = queryrunner.query(sql, new BeanListHandler<Question>(Question.class));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return questions;
+	}
+	//根据问题id找到浏览次数最多
+	public Answer MaxCountAnswer(int id){
+		String sql = "select * from answer where questionid=? order by answer_count desc limit 1";
+		Answer answer = null;
+		try {
+			answer = queryrunner.query(sql, new BeanHandler<>(Answer.class),id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return answer;
+	}
+	
+	//根据问题id找到问题
+	public Question FindQuestionByQuestionID(int id){
+		String sql = "select * from question where questionid = ?";
+		Question question = null;
+		try {
+			question = queryrunner.query(sql, new BeanHandler<>(Question.class),id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return question;
+	}
+	//根据问题id找到所有回答
+	public List<Answer> FindAllAnswer(int id){
+		String sql = "select * from answer where questionid=? order by answer_count desc";
+		List<Answer> answers = null;
+		try {
+			answers = queryrunner.query(sql, new BeanListHandler<>(Answer.class),id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return answers;
+	}
 }

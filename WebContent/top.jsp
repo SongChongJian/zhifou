@@ -36,21 +36,18 @@
                     </li>
                 </ul>
             </div>
-           
-            
-            
-            
-            
-            
-            
+
             
             <!--提问-->
             <a id="modal-578824 zu-top-add-question" href="#modal-container-578824" role="button" class="zu-top-add-question btn" data-toggle="modal">提问</a>
             
             <div role="search" id="zh-top-search" class="zu-top-search">
-                <form method="GET" action="https://nowcoder.com/search" id="zh-top-search-form" class="zu-top-search-form">
-                <input type="hidden" name="type" value="content">
-                <label for="q" class="hide-text">知否搜索</label><input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索你感兴趣的内容..." role="combobox" aria-autocomplete="list">
+                <form method="get" action="/zhifou/recommend" id="zh-top-search-form" class="zu-top-search-form">
+                <input type="text" hidden="hidden" name="method" value="searchLikeQuestion"/>
+                <label for="q" class="hide-text">知否搜索</label><input type="text" onkeyup="searchWord(this)" class="zu-top-search-input" id="search" name="search" autocomplete="off" value="" placeholder="搜索你感兴趣的内容..." role="combobox" aria-autocomplete="list">
+                <div id="showDiv"
+					style="display: none; position: absolute; z-index: 1000; background: #fff; width: 350px; border: 1px solid #6dcff6;">
+				</div>
                 <button type="submit" class="zu-top-search-button"><span class="hide-text">搜索</span><span class="sprite-global-icon-magnifier-dark"></span></button>
                 </form>
             </div>
@@ -183,5 +180,48 @@
 				</div>
 			</div>
    
-   
+   	<script type="text/javascript">
+   		function searchWord(e){
+   			$("#showDiv").html("");
+   			var content = "";
+   			if(e.value!="" || e.value!=null){
+   				$.ajax({
+   					url:"/zhifou/recommend",
+   					async:true,
+   					type:"POST",
+   					data:{"word":e.value,"method":"searchword"},
+   					success:function(data){
+   						if (data.length > 0) {
+   							for (var i = 0; i < data.length; i++) {
+   								content += "<div style='border-color: #6dcff6;width:348px;height:25px;padding:5px;cursor:pointer;overflow: hidden;' onclick='clickFn(this)' onmouseover='overFn(this)' onmouseout='outFn(this)'>"
+   										+ data[i] + "</div>";
+   							}
+   							$("#showDiv").html(content);
+   							$("#showDiv").css("display", "block");
+   						}
+   					},
+   					error:function(){
+   						alert("请求失败");
+   					},
+   					dataType:"json"				
+   				});  
+   			}
+   		}
+   		function overFn(obj) {
+   			$(obj).css("background", "#DBEAF9");
+   		}
+   		function outFn(obj) {
+   			$(obj).css("background", "#fff");
+   		}
+
+   		function clickFn(e) {
+   			$("#search").val($(e).html());
+   			$("#showDiv").css("display", "none");
+   			searchLikeQuestion($(e).html());
+   		}
+   		//模糊查找
+   		function searchLikeQuestion(e){
+   			location.href="/zhifou/recommend?method=searchLikeQuestion&search="+e;
+   		}
+	</script>
     
