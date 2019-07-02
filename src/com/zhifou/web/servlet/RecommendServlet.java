@@ -90,14 +90,16 @@ public class RecommendServlet extends BaseServlet{
         System.out.println("问题编号"+answerid+"点赞数是：" + lognum);
         //response.getWriter().print(lognum);
 		request.getSession().setAttribute("AnswerDetail", userindex);
-		request.setAttribute("nums", lognum);
+		request.getSession().setAttribute("nums", lognum);
+		//request.setAttribute("nums", lognum);
 		try {
-			request.getRequestDispatcher("html/detail.jsp").forward(request,response);
+			response.sendRedirect("/zhifou/html/detail.jsp");
+			//request.getRequestDispatcher("html/detail.jsp").forward(request,response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//response.sendRedirect("/zhifou/html/detail.jsp");
+		
 		
 	}
 

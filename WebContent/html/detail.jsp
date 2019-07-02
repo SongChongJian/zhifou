@@ -196,7 +196,7 @@
 									onclick="likeNum(${AnswerDetail.answerid})"
 									style="background-color: #EFF6FA; width: 50px; border-color: #EFF6FA; margin-left: 20px"
 									aria-pressed="false" title="赞同">
-									<i></i><span class="count" id="ziti" style="color: #25BB9B">4168</span>
+									<i></i><span class="count" id="ziti" style="color: #25BB9B">${nums}</span>
 									<span class="label sr-only">赞同</span>
 								</button>
 								<!-- 点赞ajax -->
@@ -216,9 +216,9 @@
 													document.getElementById("dianzan").style.background = "#25BB9B";
 													document.getElementById("ziti").style.color ="#fff";
 								                    //$('#' + aaaa).html("<i class=\"fa fa-heart\" style=\"color:#ff99cc\"></i>" + " " + data);
-								                    alert(data);
+								                    //alert(data);
 								                }
-								                alert(data);
+								                //alert(data);
 								            },
 								            error:function(){
 								                alert("请求失败");
