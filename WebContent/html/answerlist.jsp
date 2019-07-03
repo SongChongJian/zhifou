@@ -221,7 +221,7 @@
 
 				</c:forEach>
 				<a name="draft"></a>
-				
+
 				<!-- 版权演示 -->
 				<script type="text/x-template" id="copyright-demo-template">< article >
 
@@ -341,7 +341,7 @@
 							<ul class="dropdown-menu">
 							</ul>
 						</div>
-						字体
+						<!-- 字体 -->
 						<div class="btn-group">
 							<a class="btn dropdown-toggle" data-toggle="dropdown"
 								title="Font Size"><i class="icon-text-height"></i>&nbsp;<b
@@ -352,7 +352,7 @@
 								<li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
 							</ul>
 						</div>
-						字体样式
+						<!--字体样式 -->
 						<div class="btn-group">
 							<a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i
 								class="icon-bold"></i></a> <a class="btn" data-edit="italic"
@@ -362,7 +362,7 @@
 								data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i
 								class="icon-underline"></i></a>
 						</div>
-						序列化
+ 						<!--序列化 -->
 						<div class="btn-group">
 							<a class="btn" data-edit="insertunorderedlist"
 								title="Bullet list"><i class="icon-list-ul"></i></a> <a
@@ -372,7 +372,7 @@
 								class="icon-indent-left"></i></a> <a class="btn" data-edit="indent"
 								title="Indent (Tab)"><i class="icon-indent-right"></i></a>
 						</div>
-						内容位置
+ 						<!--内容位置 -->
 						<div class="btn-group">
 							<a class="btn" data-edit="justifyleft"
 								title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
@@ -420,7 +420,7 @@
 						<textarea type="hide" name="answercontent" id="answer"
 							style="display: none;"></textarea>
 
-						<input class="btn" type="submit" value="提交"> <a href="#0"
+						<input class="btn btn-primary" type="submit" value="提交"> <a href="#0"
 							class="cd-popup-close "> <span
 							class="glyphicon glyphicon-remove"></span>close
 						</a>
@@ -473,65 +473,45 @@
 	<script src="../js/bootstrap-wysiwyg.js"></script>
 	<script src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 	<script>
-		$(function() {
-			function initToolbarBootstrapBindings() {
-				//定义字体样式
-				var fonts = [ 'Serif', 'Sans', 'Arial', 'Arial Black',
-						'Courier', 'Courier New', 'Comic Sans MS', 'Helvetica',
-						'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma',
-						'Times', 'Times New Roman', 'Verdana' ], fontTarget = $(
-						'[title=Font]').siblings('.dropdown-menu');
-				$
-						.each(
-								fonts,
-								function(idx, fontName) {
-									fontTarget
-											.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'
-													+ fontName + '</a></li>'));
-								});
-				$('a[title]').tooltip({
-					container : 'body'
-				});
-				$('.dropdown-menu input').click(function() {
-					return false;
-				}).change(
-						function() {
-							$(this).parent('.dropdown-menu').siblings(
-									'.dropdown-toggle').dropdown('toggle');
-						}).keydown('esc', function() {
-					this.value = '';
-					$(this).change();
-				});
+	$(function(){
+	    function initToolbarBootstrapBindings() {
+	      //定义字体样式
+	      var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier', 
+	            'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
+	            'Times New Roman', 'Verdana'],
+	            fontTarget = $('[title=Font]').siblings('.dropdown-menu');
+	      $.each(fonts, function (idx, fontName) {
+	          fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
+	      });
+	      $('a[title]').tooltip({container:'body'});
+	    	$('.dropdown-menu input').click(function() {return false;})
+			    .change(function () {$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');})
+	        .keydown('esc', function () {this.value='';$(this).change();});
 
-				$('[data-role=magic-overlay]').each(
-						function() {
-							var overlay = $(this), target = $(overlay
-									.data('target'));
-							overlay.css('opacity', 0).css('position',
-									'absolute').offset(target.offset()).width(
-									target.outerWidth()).height(
-									target.outerHeight());
-						});
-				$('#voiceBtn').hide();
-				// if ("onwebkitspeechchange"  in document.createElement("input")) {
-				//   var editorOffset = $('#editor').offset();
-				//   $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
-				// } else {
-				//   $('#voiceBtn').hide();
-				// }
-			}
-			;
-			initToolbarBootstrapBindings();
-			$('#editor').wysiwyg();
-			window.prettyPrint && prettyPrint();
+	      $('[data-role=magic-overlay]').each(function () { 
+	        var overlay = $(this), target = $(overlay.data('target')); 
+	        overlay.css('opacity', 0).css('position', 'absolute').offset(target.offset()).width(target.outerWidth()).height(target.outerHeight());
+	      });
+	      $('#voiceBtn').hide();
+	      // if ("onwebkitspeechchange"  in document.createElement("input")) {
+	      //   var editorOffset = $('#editor').offset();
+	      //   $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+	      // } else {
+	      //   $('#voiceBtn').hide();
+	      // }
+	    };
+	    initToolbarBootstrapBindings();  
+	    $('#editor').wysiwyg();
+	    window.prettyPrint && prettyPrint();
+	  });
+	  
+	  $("#ans").submit(function() {
+		  document.getElementById("answer").innerHTML =$('#editor').html();
 		});
+	  
+	  
 
-		$("#ans").submit(function() {
-			document.getElementById("answer").innerHTML = $('#editor').html();
-		});
-		$('#editor2').wysiwyg();
-		window.prettyPrint && prettyPrint();
-	});
+	  
 	</script>
 
 
