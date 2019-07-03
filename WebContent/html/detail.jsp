@@ -401,10 +401,10 @@
 							<div class="modal-body">
 
 								<form method="post"
-									action="User?act=add_Answer&Answer_User_Id=&Answer_Question_Id="
+									action="/zhifou/msgServlet?method=doreSend"
 									role="form">
 									<div class="form-group">
-										<textarea name="Question_Content" class="form-control"
+										<textarea name="content" class="form-control"
 											rows="3"></textarea>
 									</div>
 

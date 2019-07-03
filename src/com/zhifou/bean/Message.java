@@ -1,5 +1,7 @@
 package com.zhifou.bean;
 
+import java.util.Date;
+
 public class Message {
 	private Integer id;
 	private Integer from_id;//发信人的ID 对应User 表中的ID字段
@@ -8,6 +10,21 @@ public class Message {
 	private String content;//信息的正文
 	private String create_time;//信息的创建时间
 	private Integer status;//1已读,2未读,3删除
+
+	public Message() {
+		super();
+	}
+	public Message(Integer id, Integer from_id, Integer to_id, String subject, String content, String create_time,
+			Integer status) {
+		super();
+		this.id = id;
+		this.from_id = from_id;
+		this.to_id = to_id;
+		this.subject = subject;
+		this.content = content;
+		this.create_time = create_time;
+		this.status = status;
+	}
 	public Integer getId() {
 		return id;
 	}

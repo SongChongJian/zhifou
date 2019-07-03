@@ -96,7 +96,7 @@ public class RecommendServlet extends BaseServlet {
 		}
 		// response.getWriter().print(lognum);
 		request.getSession().setAttribute("AnswerDetail", userindex);
-
+		//AnswerDetail.categoryname
 		// request.setAttribute("nums", lognum);
 		try {
 			response.sendRedirect("/zhifou/html/detail.jsp");

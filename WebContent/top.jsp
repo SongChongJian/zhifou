@@ -18,10 +18,8 @@
                     </a>
                     </li>
                     <li>
-                    <a href="/zhifou/recommend?method=searchQuestionIndexinbox" tabindex="-1" id=":2">
+                 	<a href="/zhifou/msgServlet?method=findMsgByUserId" tabindex="-1" id=":2">
                     <i class="zg-icon zg-icon-dd-pm"></i>我的信息
-                    <span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number" style="visibility:hidden" data-count="0">
-                    </span>
                     </a>
                     </li>
                     <li>
