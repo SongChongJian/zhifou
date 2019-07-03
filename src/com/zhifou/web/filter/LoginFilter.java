@@ -30,7 +30,7 @@ public class LoginFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest)request;
-		Object obj = req.getSession().getAttribute("userInfo");
+		Object obj = req.getSession().getAttribute("user");
 		if(obj == null) {//说明尚未登录
 			HttpServletResponse resp = (HttpServletResponse)response;
 			resp.sendRedirect("../login.jsp");
