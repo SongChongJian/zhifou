@@ -33,12 +33,11 @@ public class QuestionServlet extends BaseServlet {
 		question.setQuestioncontent(questioncontent);
 		question.setQuestionphoto(questionphoto);
 		question.setCategoryid(Integer.parseInt(categoryid));
-//		User user=(User) request.getSession().getAttribute("user");		
-//		question.setQuestionproposer(user.getUserid());
-		question.setQuestionproposer(123456);		
-		System.out.println(question);	
+		User user=(User) request.getSession().getAttribute("user");		
+		question.setQuestionproposer(user.getUserid());				
 		// 数据库的插入
 		QuestionServiceImpl service = new QuestionServiceImpl();
+		response.sendRedirect("/zhifou/recommend?method=searchQuestionIndex");
 		service.add(question);
 	}
 }

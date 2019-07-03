@@ -12,14 +12,15 @@ public class QuestionDAOImpl implements QuestionDAO {
 	public void add(Question question) {
 		// TODO Auto-generated method stub
 		
-		System.out.println(question);
+		
 		String sql = "insert into question(questiontitle,questioncontent,questionphoto,categoryid,questionproposer,questionmadetime)"
 				+ " values(?,?,?,?,?,?)";
 
 		PreparedStatement psmt=null;
 		try {
 			
-			psmt = DataSourceUtils.getConnection().prepareStatement(sql);				
+			psmt = DataSourceUtils.getConnection().prepareStatement(sql);	
+			System.out.println(question.getQuestiontitle());
 			psmt.setString(1, question.getQuestiontitle());
 			psmt.setString(2, question.getQuestioncontent());
 			psmt.setString(3, question.getQuestionphoto());
