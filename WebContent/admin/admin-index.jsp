@@ -121,7 +121,14 @@
 				<div class="am-fl am-cf">
 					<strong class="am-text-primary am-text-lg">首页</strong> / <small>一些常用模块</small>
 				</div>
+				
+				
 			</div>
+			<div>
+			<span style=" font-size: x-large">知否当前在线人数:${onlineCount}</span></div>
+			<br>
+			<br>
+			<br>
 			<!--  //折线图div-->
 			<div "loadData()" id="myLineDiv" style="height: 300px; width: 830px; display: inline-block"></div>
 		</div>
