@@ -204,6 +204,7 @@
 								
 								
 									function likeNum(e) {
+							
 										$.ajax({
 											url : '/zhifou/ActiveServlet',
 								            async:true,
@@ -211,12 +212,12 @@
 								            data : {"method":"great","answerid":e},
 								            success:function(data){
 								                if(data!=null) {
-
+													
 								                    $("#ziti").html(data);
 													document.getElementById("dianzan").style.background = "#25BB9B";
 													document.getElementById("ziti").style.color ="#fff";
 								                    //$('#' + aaaa).html("<i class=\"fa fa-heart\" style=\"color:#ff99cc\"></i>" + " " + data);
-								                    //alert(data);
+								                    //alert(data+);
 								                }
 								                //alert(data);
 								            },

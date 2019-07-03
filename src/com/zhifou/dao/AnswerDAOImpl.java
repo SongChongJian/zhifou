@@ -8,7 +8,6 @@ import java.util.Map;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
-import org.junit.Test;
 
 import com.zhifou.bean.Answer;
 import com.zhifou.utils.DataSourceUtils;

@@ -92,11 +92,13 @@ public class RecommendServlet extends BaseServlet {
 			int lognum = b.cardinality();
 			System.out.println("问题编号" + answerid + "点赞数是：" + lognum);
 			request.getSession().setAttribute("nums", lognum);
-
+		}else{
+			int lognum = 0;
+			request.getSession().setAttribute("nums", lognum);
 		}
 		// response.getWriter().print(lognum);
 		request.getSession().setAttribute("AnswerDetail", userindex);
-		//AnswerDetail.categoryname
+
 		// request.setAttribute("nums", lognum);
 		try {
 			response.sendRedirect("/zhifou/html/detail.jsp");
