@@ -191,7 +191,7 @@
 				
 						$.each(data,function(index,obj){
 					
-							content+= "<option value='"+obj+"'>"+obj+"</option>"
+							content+= "<option value='"+obj.categoryid+"'>"+obj.categoryname+"</option>"
 						});
 						$("#searchcategory").append(content);
 					}

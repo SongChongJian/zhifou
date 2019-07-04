@@ -50,10 +50,6 @@
 					<i class="zg-icon zg-icon-feedlist"></i>消息详情 <input type="hidden"
 						id="is-topstory"> <span
 						class="zg-right zm-noti-cleaner-setting" style="list-style: none">
-						<a href="https://nowcoder.com/settings/filter"
-						class="zg-link-gray-normal"> <i
-							class="zg-icon zg-icon-settings"></i>设置
-					</a>
 					</span>
 				</div>
 				<div class="zu-main-feed-con navigable" data-feedtype="topstory"
