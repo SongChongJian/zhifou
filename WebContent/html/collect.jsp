@@ -97,7 +97,7 @@
                         </a>
                     </div>
                     <div class="letter-detail">
-                        <a title="问题" class="letter-name level-color-1" href="">
+                        <a title="问题" class="letter-name level-color-1" href="/zhifou/recommend?method=showQuestionDetail&questionid=${item.questionid }">
                           ${item.questiontitle }
                         </a>
                         <p class="letter-brief">

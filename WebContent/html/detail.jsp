@@ -75,9 +75,9 @@
 				<div id="zh-question-title" data-editable="true"
 					class="zm-editable-status-normal">
 					<h2 class="zm-item-title">
-
-						<span class="zm-editable-content">${AnswerDetail.questiontitle }</span>
-
+						<a href="/zhifou/recommend?method=showQuestionDetail&questionid=${AnswerDetail.questionid }">
+							<span class="zm-editable-content">${AnswerDetail.questiontitle }</span>
+						</a>
 					</h2>
 				</div>
 				<div id="zh-question-detail"

@@ -77,7 +77,7 @@
 											<div class="feed-content" data-za-module="AnswerItem">
 												<h2 class="feed-title" style="font-size: 25px">
 													<a class="question_link" target="_blank"
-														href="/zhifou/recommend?method=showQuestionDetail&questionid=${item.answerid }">${item.questiontitle }</a>
+														href="/zhifou/recommend?method=showQuestionDetail&questionid=${item.questionid }">${item.questiontitle }</a>
 												</h2>
 												<div class="feed-question-detail-item">
 													<div class="question-description-plain zm-editable-content"></div>
@@ -252,7 +252,7 @@
 						+"			<meta itemprop='answer-id' content='389034'>"
 						+"			<meta itemprop='answer-url-token' content='13174385'>"
 						+"			<h2 class='feed-title'>"
-						+"				<a /zhifou/recommend?method=showQuestionDetail&questionid="+obj.questionid+" class='question_link' target='_blank'>"+obj.questiontitle+"</a>"
+						+"				<a href='/zhifou/recommend?method=showQuestionDetail&questionid="+obj.questionid+"' class='question_link' target='_blank'>"+obj.questiontitle+"</a>"
 						+"			</h2>"
 						+"			<div class='feed-question-detail-item'>"
 						+"				<div class='question-description-plain zm-editable-content'></div>"
