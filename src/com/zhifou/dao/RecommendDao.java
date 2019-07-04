@@ -184,11 +184,11 @@ public class RecommendDao {
 	}
 	
 	//获取类型的名字
-	public List<Object> SearchCategory(){
-		String sql = "select categoryname from category";
-		List<Object> list = null;
+	public List<Category> SearchCategory(){
+		String sql = "select * from category";
+		List<Category> list = null;
 		try {
-			list=queryrunner.query(sql, new ColumnListHandler("categoryname"));
+			list=queryrunner.query(sql,new BeanListHandler<>(Category.class));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

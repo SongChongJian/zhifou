@@ -183,7 +183,7 @@ public class RecommendServlet extends BaseServlet {
 	}
 	public void SearchCategory(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		RecommendService service = new RecommendService();
-		List<Object> categorys = service.SearchCategory();
+		List<Category> categorys = service.SearchCategory();
 		String jsondata = JsonUtils.objectToJson(categorys);
 		System.out.println(jsondata);
 		response.getWriter().write(jsondata);
