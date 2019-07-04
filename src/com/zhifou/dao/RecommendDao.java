@@ -208,4 +208,17 @@ public class RecommendDao {
 		}
 		return number.intValue();
 	}
+	
+	//根据回答id查看多少人收藏了该回答
+		public int GetQuestionNumber(int id){
+			String sql = "select count(*) from collection where questionid = ?";
+			Number number =0;
+			try {
+				number = (Number) queryrunner.query(sql,new ScalarHandler(),id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return number.intValue();
+		}
 }

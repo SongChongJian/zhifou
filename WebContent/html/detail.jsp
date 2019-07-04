@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <!-- saved from url=(0039)question/36301524 -->
-<html lang="zh-CN" dropeffect="none"
+<html lang="zh-CN" 
 	class="js  is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile"
 	style="">
 <head>
@@ -56,28 +56,15 @@
 <body class="zhi ">
 	<%@ include file="top.jsp"%>
 	<div class="zg-wrap zu-main clearfix with-indention-votebar"
-		itemscope="" itemtype="http://schema.org/Question"
 		id="zh-single-question-page" data-urltoken="36301524" role="main">
 		<div class="zu-main-content">
 			<div class="zu-main-content-inner">
-				<div class="zm-tag-editor zg-section">
-					<div class="zm-tag-editor-labels zg-clear">
-						<a data-tip="t$b$19550730" class="zm-item-tag" href="">新浪微博</a> <a
-							data-tip="t$b$19554412" class="zm-item-tag" href="">网络营销</a> <a
-							data-tip="t$b$19559739" class="zm-item-tag" href="">微博粉丝</a> <a
-							data-tip="t$b$19560290" class="zm-item-tag" href="">僵尸粉</a> <a
-							data-tip="t$b$19565757" class="zm-item-tag" href="">网络水军</a> <a
-							href="javascript:;" class="zu-edit-button" name="edit"> <i
-							class="zu-edit-button-icon"></i>修改
-						</a>
-					</div>
-				</div>
 				<div id="zh-question-title" data-editable="true"
 					class="zm-editable-status-normal">
 					<h2 class="zm-item-title">
 						<a
 							href="/zhifou/recommend?method=showQuestionDetail&questionid=${AnswerDetail.questionid }">
-							<span class="zm-editable-content">${AnswerDetail.questiontitle }</span>
+							<h2 class="zm-editable-content">${AnswerDetail.questiontitle }</h2>
 						</a>
 					</h2>
 				</div>
@@ -89,10 +76,6 @@
 				<div class="zm-side-section">
 					<div class="zm-side-section-inner"
 						id="zh-question-side-header-wrap">
-						<button data-follow="q:m:button"
-							class="follow-button zg-follow zg-btn-green" data-id="6727688">收藏问题</button>
-
-
 						<div class="zh-question-followers-sidebar">
 							<div class="zg-gray-normal">
 								<a href=""> <strong>${collectnumber }</strong></a>人收藏该回答
@@ -106,8 +89,7 @@
 					data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}"
 					data-init="{&quot;params&quot;: {&quot;url_token&quot;: 36301524, &quot;pagesize&quot;: 10, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}">
 					<div tabindex="-1" class="zm-item-answer  zm-item-expanded"
-						itemprop="topAnswer" itemscope=""
-						itemtype="http://schema.org/Answer" data-aid="22162611"
+						data-aid="22162611"
 						data-atoken="66862039" data-collapsed="0"
 						data-created="1444310527" data-deleted="0" data-helpful="1"
 						data-isowner="0" data-copyable="1" data-za-module="AnswerItem">

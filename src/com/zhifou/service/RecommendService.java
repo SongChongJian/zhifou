@@ -50,4 +50,7 @@ public class RecommendService {
 	public int GetCollectNumber(int id){
 		return recommendDao.GetCollectNumber(id);
 	}
+	public int GetQuestionNumber(int id){
+		return recommendDao.GetQuestionNumber(id);
+	}
 }

@@ -147,6 +147,8 @@ public class RecommendServlet extends BaseServlet {
 		int questionid = Integer.parseInt(value);
 		RecommendService service = new RecommendService();
 		Question q = service.FindQuestionByQuestionID(questionid);
+		int number = service.GetQuestionNumber(questionid);
+		request.getSession().setAttribute("number", number);
 		request.getSession().setAttribute("Question", q);// 存一个question，存放最上面标题等信息
 		List<Answer> answers = service.FindAllAnswer(questionid);
 		List<UserIndex> userindexs = new ArrayList<>();

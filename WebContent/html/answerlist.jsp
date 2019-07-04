@@ -62,24 +62,13 @@
 		id="zh-single-question-page" data-urltoken="36301524" role="main">
 		<div class="zu-main-content">
 			<div class="zu-main-content-inner">
-				<div class="zm-tag-editor zg-section">
-					<div class="zm-tag-editor-labels zg-clear">
-						<a data-tip="t$b$19550730" class="zm-item-tag" href="">新浪微博</a> <a
-							data-tip="t$b$19554412" class="zm-item-tag" href="">网络营销</a> <a
-							data-tip="t$b$19559739" class="zm-item-tag" href="">微博粉丝</a> <a
-							data-tip="t$b$19560290" class="zm-item-tag" href="">僵尸粉</a> <a
-							data-tip="t$b$19565757" class="zm-item-tag" href="">网络水军</a> <a
-							href="javascript:;" class="zu-edit-button" name="edit"> <i
-							class="zu-edit-button-icon"></i>修改
-						</a>
-					</div>
-				</div>
 				<div id="zh-question-title" data-editable="true"
 					class="zm-editable-status-normal">
 					<h2 class="zm-item-title">
-
-						<span class="zm-editable-content">${sessionScope.Question.questiontitle }</span>
-
+						<a
+							href="/zhifou/recommend?method=showQuestionDetail&questionid=${sessionScope.Question.questionid }">
+							<h2 class="zm-editable-content">${sessionScope.Question.questiontitle }</h2>
+						</a>
 					</h2>
 				</div>
 				<div id="zh-question-detail"
@@ -91,49 +80,12 @@
 					<div class="zm-side-section-inner"
 						id="zh-question-side-header-wrap">
 
-						<button data-follow="q:m:button"
-							class="follow-button zg-follow zg-btn-green" data-id="6727688">收藏问题</button>
-						<!--回答按钮 -->
-
 						<a href="javascript:0;"
 							class="cd-popup-trigger0 follow-button zg-follow zg-btn-green">回答</a>
 
 						<div class="zh-question-followers-sidebar">
 							<div class="zg-gray-normal">
-								<a href=""> <strong>9</strong></a>人收藏该问题
-							</div>
-							<div class="list zu-small-avatar-list zg-clear">
-								<span class="zm-item-link-avatar"> <img title="匿名用户"
-									class="zm-item-img-avatar" src="../images/res/aadd7b895_s.jpg"></span>
-								<a data-tip="p$b$yi-yi-98-91-99" class="zm-item-link-avatar"
-									href="" data-original_title="奕奕"> <img
-									src="../images/res/6ceea810748d179f57cac0baa5cf9592_s.jpg"
-									class="zm-item-img-avatar"></a> <a
-									data-tip="p$b$wang-wu-29-54" class="zm-item-link-avatar"
-									href="" data-original_title="王五"> <img
-									src="../images/res/da8e974dc_s.jpg" class="zm-item-img-avatar"></a>
-								<a data-tip="p$b$huang-xiang-90-99" class="zm-item-link-avatar"
-									href="" data-original_title="案小声"> <img
-									src="../images/res/19456ebfe8b207320735f282769ac635_s.jpg"
-									class="zm-item-img-avatar"></a> <a data-tip="p$b$yingxiaodao"
-									class="zm-item-link-avatar" href="" data-original_title="营销岛">
-									<img src="../images/res/11be4a90ed938abfbab4899df56ee754_s.png"
-									class="zm-item-img-avatar">
-								</a> <a data-tip="p$b$hero-hou-23" class="zm-item-link-avatar"
-									href="" data-original_title="Hero Hou"> <img
-									src="../images/res/da8e974dc_s.jpg" class="zm-item-img-avatar"></a>
-								<a data-tip="p$b$jin-hua-zhang-10" class="zm-item-link-avatar"
-									href="" data-original_title="荷尔蒙毒品"> <img
-									src="../images/res/d207854fffc9e0289fbd6bbbb3986988_s.jpg"
-									class="zm-item-img-avatar"></a> <a title="宇轩"
-									data-tip="p$t$yu-xuan-91-11" class="zm-item-link-avatar"
-									href=""> <img
-									src="../images/res/1ac7840eeb19ada0bbf85f51702d5784_s.jpg"
-									class="zm-item-img-avatar"></a> <a title="尹锋"
-									data-tip="p$t$yin-feng" class="zm-item-link-avatar" href="">
-									<img src="../images/res/da8e974dc_s.jpg"
-									class="zm-item-img-avatar">
-								</a>
+								<a href=""> <strong>${number }</strong></a>人收藏该问题
 							</div>
 						</div>
 					</div>
@@ -193,13 +145,7 @@
 								class="zm-item-meta answer-actions clearfix js-contentActions">
 								<div class="zm-meta-panel">
 									<a itemprop="url" class="answer-date-link meta-item"
-										target="_blank" href="">发布于${p.answertime}</a> <a href=""
-										name="addcomment"
-										class="meta-item toggle-comment js-toggleCommentBox"> <i
-										class="z-icon-comment"></i>4 条评论
-									</a>
-									<!--                                    id="modal-578824 zu-top-add-question" href="#modal-container-578824" role="button" class="zu-top-add-question btn" data-toggle="modal"
--->
+										target="_blank" href="">发布于${p.answertime}</a> 
 									<a name="addcomment" href="#modal-container-578824"
 										class="meta-item toggle-comment js-toggleCommentBox "
 										data-toggle="modal"> <i class="z-icon-comment1"></i>私信To
@@ -362,7 +308,7 @@
 								data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i
 								class="icon-underline"></i></a>
 						</div>
- 						<!--序列化 -->
+						<!--序列化 -->
 						<div class="btn-group">
 							<a class="btn" data-edit="insertunorderedlist"
 								title="Bullet list"><i class="icon-list-ul"></i></a> <a
@@ -372,7 +318,7 @@
 								class="icon-indent-left"></i></a> <a class="btn" data-edit="indent"
 								title="Indent (Tab)"><i class="icon-indent-right"></i></a>
 						</div>
- 						<!--内容位置 -->
+						<!--内容位置 -->
 						<div class="btn-group">
 							<a class="btn" data-edit="justifyleft"
 								title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
@@ -420,8 +366,8 @@
 						<textarea type="hide" name="answercontent" id="answer"
 							style="display: none;"></textarea>
 
-						<input class="btn btn-primary" type="submit" value="提交"> <a href="#0"
-							class="cd-popup-close "> <span
+						<input class="btn btn-primary" type="submit" value="提交"> <a
+							href="#0" class="cd-popup-close "> <span
 							class="glyphicon glyphicon-remove"></span>close
 						</a>
 					</form>
@@ -473,111 +419,62 @@
 	<script src="../js/bootstrap-wysiwyg.js"></script>
 	<script src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 	<script>
-	$(function(){
-	    function initToolbarBootstrapBindings() {
-	      //定义字体样式
-	      var fonts = ['Serif', 'Sans', 'Arial', 'Arial Black', 'Courier', 
-	            'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma', 'Times',
-	            'Times New Roman', 'Verdana'],
-	            fontTarget = $('[title=Font]').siblings('.dropdown-menu');
-	      $.each(fonts, function (idx, fontName) {
-	          fontTarget.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'+fontName + '</a></li>'));
-	      });
-	      $('a[title]').tooltip({container:'body'});
-	    	$('.dropdown-menu input').click(function() {return false;})
-			    .change(function () {$(this).parent('.dropdown-menu').siblings('.dropdown-toggle').dropdown('toggle');})
-	        .keydown('esc', function () {this.value='';$(this).change();});
+		$(function() {
+			function initToolbarBootstrapBindings() {
+				//定义字体样式
+				var fonts = [ 'Serif', 'Sans', 'Arial', 'Arial Black',
+						'Courier', 'Courier New', 'Comic Sans MS', 'Helvetica',
+						'Impact', 'Lucida Grande', 'Lucida Sans', 'Tahoma',
+						'Times', 'Times New Roman', 'Verdana' ], fontTarget = $(
+						'[title=Font]').siblings('.dropdown-menu');
+				$
+						.each(
+								fonts,
+								function(idx, fontName) {
+									fontTarget
+											.append($('<li><a data-edit="fontName ' + fontName +'" style="font-family:\''+ fontName +'\'">'
+													+ fontName + '</a></li>'));
+								});
+				$('a[title]').tooltip({
+					container : 'body'
+				});
+				$('.dropdown-menu input').click(function() {
+					return false;
+				}).change(
+						function() {
+							$(this).parent('.dropdown-menu').siblings(
+									'.dropdown-toggle').dropdown('toggle');
+						}).keydown('esc', function() {
+					this.value = '';
+					$(this).change();
+				});
 
-	      $('[data-role=magic-overlay]').each(function () { 
-	        var overlay = $(this), target = $(overlay.data('target')); 
-	        overlay.css('opacity', 0).css('position', 'absolute').offset(target.offset()).width(target.outerWidth()).height(target.outerHeight());
-	      });
-	      $('#voiceBtn').hide();
-	      // if ("onwebkitspeechchange"  in document.createElement("input")) {
-	      //   var editorOffset = $('#editor').offset();
-	      //   $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
-	      // } else {
-	      //   $('#voiceBtn').hide();
-	      // }
-	    };
-	    initToolbarBootstrapBindings();  
-	    $('#editor').wysiwyg();
-	    window.prettyPrint && prettyPrint();
-	  });
-	  
-	  $("#ans").submit(function() {
-		  document.getElementById("answer").innerHTML =$('#editor').html();
+				$('[data-role=magic-overlay]').each(
+						function() {
+							var overlay = $(this), target = $(overlay
+									.data('target'));
+							overlay.css('opacity', 0).css('position',
+									'absolute').offset(target.offset()).width(
+									target.outerWidth()).height(
+									target.outerHeight());
+						});
+				$('#voiceBtn').hide();
+				// if ("onwebkitspeechchange"  in document.createElement("input")) {
+				//   var editorOffset = $('#editor').offset();
+				//   $('#voiceBtn').css('position','absolute').offset({top: editorOffset.top, left: editorOffset.left+$('#editor').innerWidth()-35});
+				// } else {
+				//   $('#voiceBtn').hide();
+				// }
+			}
+			;
+			initToolbarBootstrapBindings();
+			$('#editor').wysiwyg();
+			window.prettyPrint && prettyPrint();
 		});
-	  
-	  
 
-	  
+		$("#ans").submit(function() {
+			document.getElementById("answer").innerHTML = $('#editor').html();
+		});
 	</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<!--
-            	作者：chenfang
-            	时间：2019-06-29
-            	描述：弹出层提问
-            -->
-	<div class="container">
-		<div class="row clearfix">
-			<div class="col-md-12 column">
-				<a id="modal-578824" href="#modal-container-578824" role="button"
-					class="btn" data-toggle="modal">触发遮罩窗体</a>
-
-				<div class="modal fade" id="modal-container-578824" role="dialog"
-					aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">×</button>
-								<h4 class="modal-title" id="myModalLabel">
-									发给：<span></span>
-								</h4>
-							</div>
-							<div class="modal-body">
-								<div class="zg-section-big">
-									<div class="add-question-section-title">内容：</div>
-									<div id="zh-question-suggest-detail-container"
-										class="zm-editable-status-editing"></div>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">取消</button>
-								<button type="button" class="btn btn-primary">发送</button>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
 </body>
 </html>
