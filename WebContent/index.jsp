@@ -217,9 +217,7 @@
 		    };
 		});
 	}
-	$(function(){
-		contentLoad();
-	});
+
 	function showmore(){
 		var content="";
 		var usermeans = "";
@@ -254,7 +252,7 @@
 						+"			<meta itemprop='answer-id' content='389034'>"
 						+"			<meta itemprop='answer-url-token' content='13174385'>"
 						+"			<h2 class='feed-title'>"
-						+"				<a class='question_link' target='_blank'>"+obj.questiontitle+"</a>"
+						+"				<a /zhifou/recommend?method=showQuestionDetail&questionid="+obj.questionid+" class='question_link' target='_blank'>"+obj.questiontitle+"</a>"
 						+"			</h2>"
 						+"			<div class='feed-question-detail-item'>"
 						+"				<div class='question-description-plain zm-editable-content'></div>"
@@ -351,5 +349,10 @@
 			}
 		}); 
 	}
+	$(function(){
+		if('${user}'=='' && '${userindexs}'=='')
+		window.location.href="/zhifou/recommend?method=searchQuestionIndex";
+	});
+	
 </script>
 </html>
