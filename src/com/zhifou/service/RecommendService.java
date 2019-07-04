@@ -44,7 +44,13 @@ public class RecommendService {
 	public List<Answer> FindAllAnswer(int id){
 		return recommendDao.FindAllAnswer(id);
 	}
-	public List<Object> SearchCategory(){
+	public List<Category> SearchCategory(){
 		return recommendDao.SearchCategory();
+	}
+	public int GetCollectNumber(int id){
+		return recommendDao.GetCollectNumber(id);
+	}
+	public int GetQuestionNumber(int id){
+		return recommendDao.GetQuestionNumber(id);
 	}
 }

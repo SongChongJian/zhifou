@@ -5,12 +5,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.mail.Session;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import com.zhifou.bean.Answer;
 import com.zhifou.bean.Collection;
@@ -67,9 +64,7 @@ public class CollectionServlet extends BaseServlet{
 		}
 		request.getSession().setAttribute("uindex", Uindex);
 		response.sendRedirect("html/collect.jsp");
-//		for (UserIndex uindex : Uindex) {
-//			System.out.println("回答内容："+uindex.getAnswercontent()+"问题："+uindex.getQuestioncontent()+"回答者："+uindex.getUsername());
-//		}		
+	
 	}
 	
 	//点击收藏添加到收藏表中

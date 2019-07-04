@@ -184,15 +184,41 @@ public class RecommendDao {
 	}
 	
 	//获取类型的名字
-	public List<Object> SearchCategory(){
-		String sql = "select categoryname from category";
-		List<Object> list = null;
+	public List<Category> SearchCategory(){
+		String sql = "select * from category";
+		List<Category> list = null;
 		try {
-			list=queryrunner.query(sql, new ColumnListHandler("categoryname"));
+			list=queryrunner.query(sql,new BeanListHandler<>(Category.class));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
 	}
+	
+	//根据回答id查看多少人收藏了该回答
+	public int GetCollectNumber(int id){
+		String sql = "select count(*) from collection where answerid = ?";
+		Number number =0;
+		try {
+			number = (Number) queryrunner.query(sql,new ScalarHandler(),id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return number.intValue();
+	}
+	
+	//根据回答id查看多少人收藏了该回答
+		public int GetQuestionNumber(int id){
+			String sql = "select count(*) from collection where questionid = ?";
+			Number number =0;
+			try {
+				number = (Number) queryrunner.query(sql,new ScalarHandler(),id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return number.intValue();
+		}
 }

@@ -77,12 +77,12 @@ public class RecommendServlet extends BaseServlet {
 		String value = request.getParameter("answerid");
 		int answerid = Integer.parseInt(value);
 		RecommendService service = new RecommendService();
-
 		Answer answer = service.FindAnswerByID(answerid);
 		User user = service.FindUserByID(answer.getAnswerproposer());
 		Question question = service.FindQuestionById(answer.getQuestionid());
 		Category category = service.FindCategoryByID(question.getCategoryid());
 		UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+		int number = service.GetCollectNumber(answerid);
 		Jedis j = null;
 		j = new Jedis("127.0.0.1", 6379);
 		if ((j.get("answer:" + answerid)) != null) {
@@ -98,7 +98,7 @@ public class RecommendServlet extends BaseServlet {
 		}
 		// response.getWriter().print(lognum);
 		request.getSession().setAttribute("AnswerDetail", userindex);
-
+		request.getSession().setAttribute("collectnumber", number);
 		// request.setAttribute("nums", lognum);
 		try {
 			response.sendRedirect("/zhifou/html/detail.jsp");
@@ -147,6 +147,8 @@ public class RecommendServlet extends BaseServlet {
 		int questionid = Integer.parseInt(value);
 		RecommendService service = new RecommendService();
 		Question q = service.FindQuestionByQuestionID(questionid);
+		int number = service.GetQuestionNumber(questionid);
+		request.getSession().setAttribute("number", number);
 		request.getSession().setAttribute("Question", q);// 存一个question，存放最上面标题等信息
 		List<Answer> answers = service.FindAllAnswer(questionid);
 		List<UserIndex> userindexs = new ArrayList<>();
@@ -181,7 +183,7 @@ public class RecommendServlet extends BaseServlet {
 	}
 	public void SearchCategory(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		RecommendService service = new RecommendService();
-		List<Object> categorys = service.SearchCategory();
+		List<Category> categorys = service.SearchCategory();
 		String jsondata = JsonUtils.objectToJson(categorys);
 		System.out.println(jsondata);
 		response.getWriter().write(jsondata);

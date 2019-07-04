@@ -63,7 +63,7 @@
                     </li>
                     
                     <li class="top-nav-noti zu-top-nav-li ">
-                    <a class="zu-top-nav-link" href="/zhifou/msgServlet?method=findMsgByUserId" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息<span id="zh-top-nav-count" class="zu-top-nav-count zg-noti-number" style="display: none;">0</span></a>
+                    <a class="zu-top-nav-link" href="/zhifou/msgServlet?method=findMsgByUserId"  role="button"><span></span>消息</a>
                     </li>
                 </ul>
                 <div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
@@ -191,7 +191,7 @@
 				
 						$.each(data,function(index,obj){
 					
-							content+= "<option value='"+obj+"'>"+obj+"</option>"
+							content+= "<option value='"+obj.categoryid+"'>"+obj.categoryname+"</option>"
 						});
 						$("#searchcategory").append(content);
 					}
