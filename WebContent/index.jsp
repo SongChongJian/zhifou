@@ -86,34 +86,15 @@
 													<!-- <link itemprop="url" href="/question/19857995/answer/13174385">
 		                                            <meta itemprop="answer-id" content="389034">
 		                                            <meta itemprop="answer-url-token" content="13174385"> -->
-													<div class="zm-item-vote">
-														<a class="zm-item-vote-count js-expand js-vote-count"
-															href="javascript:;" data-bind-votecount="">4168</a>
-													</div>
-													<div class="zm-votebar" data-za-module="VoteBar">
-														<button class="up" aria-pressed="false" title="赞同">
-															<i class="icon vote-arrow"></i><span class="count">4168</span>
-															<span class="label sr-only">赞同</span>
-														</button>
-														<button class="down" aria-pressed="false"
-															title="反对，不会显示你的姓名">
-															<i class="icon vote-arrow"></i> <span
-																class="label sr-only">反对，不会显示你的姓名</span>
-														</button>
-													</div>
+													
+											
 													<div class="zm-item-answer-author-info">
 														<a class="author-link" data-tip="p$b$amuro1230"
 															target="_blank"
 															href="https://nowcoder.com/people/amuro1230">${item.username }</a>
 														<span title="${item.usermeans }" class="bio">，${item.usermeans }</span>
 													</div>
-						 							<div class="zm-item-vote-info" data-votecount="4168"
-														data-za-module="VoteInfo">
-														<span class="voters text"> <a href="#"
-															class="more text"> <span class="js-voteCount">4168</span>&nbsp;人赞同
-														</a>
-														</span>
-													</div> 
+						 					
 													<div class="zm-item-rich-text expandable js-collapse-body"
 														data-resourceid="123114" data-action="/answer/content"
 														data-author-name="${item.username }"
@@ -257,34 +238,7 @@
 						+"			<div class='feed-question-detail-item'>"
 						+"				<div class='question-description-plain zm-editable-content'></div>"
 						+"			</div>"
-						+"			<div class='expandable entry-body'>"
-						+"				<div class='zm-item-vote'>"
-						+"					<a class='zm-item-vote-count js-expand js-vote-count'"
-						+"						href='javascript:;' data-bind-votecount=''>4168</a>"
-						+"				</div>"
-						+"				<div class='zm-votebar' data-za-module='VoteBar'>"
-						+"					<button class='up' aria-pressed='false' title='赞同'>"
-						+"						<i class='icon vote-arrow'></i><span class='count'>4168</span>"
-						+"						<span class='label sr-only'>赞同</span>"
-						+"					</button>"
-						+"					<button class='down' aria-pressed='false'"
-						+"						title='反对，不会显示你的姓名'>"
-						+"						<i class='icon vote-arrow'></i> <span"
-						+"							class='label sr-only'>反对，不会显示你的姓名</span>"
-						+"					</button>"
-						+"				</div>"
-						+"				<div class='zm-item-answer-author-info'>"
-						+"					<a class='author-link' data-tip='p$b$amuro1230'"
-						+"						target='_blank'>"+obj.username+"</a>"
-						+"					<span title='"+usermeans+"' class='bio'>，"+usermeans+"</span>"
-						+"				</div>"
-						+"				<div class='zm-item-vote-info' data-votecount='4168'"
-						+"					data-za-module='VoteInfo'>"
-						+"					<span class='voters text'> <a href='#'"
-						+"						class='more text'> <span class='js-voteCount'>4168</span>&nbsp;人赞同"
-						+"					</a>"
-						+"					</span>"
-						+"				</div> "
+						+"		"
 						+"				<div class='zm-item-rich-text expandable js-collapse-body'"
 						+"					data-resourceid='123114' data-action='/answer/content'"
 						+"					data-author-name='"+obj.username+"'"
