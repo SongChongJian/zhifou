@@ -86,7 +86,7 @@
                             <a href="javascript:void(0);" class="sns-action-del" data-id="10005_622873"  onclick="deleteCollection(${item.collectionid})">
                            			 删除
                             </a>
-                            <a href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1">
+                            <a>
                             		    热度:${item.answer_count }
                             </a>
                         </div>
@@ -113,7 +113,9 @@
         </div>
         <script type="text/javascript">
         function deleteCollection(id){
-    		var lis =$("."+id);
+        	var flag=window.confirm("是否确认删除该收藏？");
+        	if(flag){
+        		var lis =$("."+id);
     			$.ajax({
     				url:"/zhifou/collection",
     				async:true,
@@ -127,6 +129,8 @@
     					alert("请求失败");
     				}
     			})
+        	}
+    		
     	}
         
         
