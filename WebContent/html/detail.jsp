@@ -75,7 +75,8 @@
 				<div id="zh-question-title" data-editable="true"
 					class="zm-editable-status-normal">
 					<h2 class="zm-item-title">
-						<a href="/zhifou/recommend?method=showQuestionDetail&questionid=${AnswerDetail.questionid }">
+						<a
+							href="/zhifou/recommend?method=showQuestionDetail&questionid=${AnswerDetail.questionid }">
 							<span class="zm-editable-content">${AnswerDetail.questiontitle }</span>
 						</a>
 					</h2>
@@ -191,7 +192,7 @@
 									class="z-icon-thank"></i>收藏
 								</a>
 
-								<!-- 点赞按钮 -->
+								<!-- 点赞按钮-->
 								<button data-za-module="VoteBar" id="dianzan"
 									onclick="likeNum(${AnswerDetail.answerid})"
 									style="background-color: #EFF6FA; width: 50px; border-color: #EFF6FA; margin-left: 20px"
@@ -401,12 +402,10 @@
 
 							<div class="modal-body">
 
-								<form method="post"
-									action="/zhifou/msgServlet?method=doreSend"
+								<form method="post" action="/zhifou/msgServlet?method=doreSend"
 									role="form">
 									<div class="form-group">
-										<textarea name="content" class="form-control"
-											rows="3"></textarea>
+										<textarea name="content" class="form-control" rows="3"></textarea>
 									</div>
 
 									<button type="button" class="btn btn-default"

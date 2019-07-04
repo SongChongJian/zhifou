@@ -28,7 +28,7 @@
                     </a>
                     </li>
                     <li>
-                    <a href="/zhifou/recommend?method=searchQuestionIndexlogout" tabindex="-1" id=":4">
+                    <a href="/zhifou/login.jsp" tabindex="-1" id=":4">
                     <i class="zg-icon zg-icon-dd-logout"></i>退出
                     </a>
                     </li>
