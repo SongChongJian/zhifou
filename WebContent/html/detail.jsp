@@ -95,40 +95,7 @@
 
 						<div class="zh-question-followers-sidebar">
 							<div class="zg-gray-normal">
-								<a href=""> <strong>9</strong></a>人收藏该问题
-							</div>
-							<div class="list zu-small-avatar-list zg-clear">
-								<span class="zm-item-link-avatar"> <img title="匿名用户"
-									class="zm-item-img-avatar" src="../images/res/aadd7b895_s.jpg"></span>
-								<a data-tip="p$b$yi-yi-98-91-99" class="zm-item-link-avatar"
-									href="" data-original_title="奕奕"> <img
-									src="../images/res/6ceea810748d179f57cac0baa5cf9592_s.jpg"
-									class="zm-item-img-avatar"></a> <a
-									data-tip="p$b$wang-wu-29-54" class="zm-item-link-avatar"
-									href="" data-original_title="王五"> <img
-									src="../images/res/da8e974dc_s.jpg" class="zm-item-img-avatar"></a>
-								<a data-tip="p$b$huang-xiang-90-99" class="zm-item-link-avatar"
-									href="" data-original_title="案小声"> <img
-									src="../images/res/19456ebfe8b207320735f282769ac635_s.jpg"
-									class="zm-item-img-avatar"></a> <a data-tip="p$b$yingxiaodao"
-									class="zm-item-link-avatar" href="" data-original_title="营销岛">
-									<img src="../images/res/11be4a90ed938abfbab4899df56ee754_s.png"
-									class="zm-item-img-avatar">
-								</a> <a data-tip="p$b$hero-hou-23" class="zm-item-link-avatar"
-									href="" data-original_title="Hero Hou"> <img
-									src="../images/res/da8e974dc_s.jpg" class="zm-item-img-avatar"></a>
-								<a data-tip="p$b$jin-hua-zhang-10" class="zm-item-link-avatar"
-									href="" data-original_title="荷尔蒙毒品"> <img
-									src="../images/res/d207854fffc9e0289fbd6bbbb3986988_s.jpg"
-									class="zm-item-img-avatar"></a> <a title="宇轩"
-									data-tip="p$t$yu-xuan-91-11" class="zm-item-link-avatar"
-									href=""> <img
-									src="../images/res/1ac7840eeb19ada0bbf85f51702d5784_s.jpg"
-									class="zm-item-img-avatar"></a> <a title="尹锋"
-									data-tip="p$t$yin-feng" class="zm-item-link-avatar" href="">
-									<img src="../images/res/da8e974dc_s.jpg"
-									class="zm-item-img-avatar">
-								</a>
+								<a href=""> <strong>${collectnumber }</strong></a>人收藏该回答
 							</div>
 						</div>
 					</div>
@@ -144,45 +111,29 @@
 						data-atoken="66862039" data-collapsed="0"
 						data-created="1444310527" data-deleted="0" data-helpful="1"
 						data-isowner="0" data-copyable="1" data-za-module="AnswerItem">
-						<link itemprop="url" href="">
-						<meta itemprop="answer-id" content="22162611">
-						<meta itemprop="answer-url-token" content="66862039">
 						<a class="zg-anchor-hidden" name="answer-22162611"></a>
-
-
 						<div class="answer-head">
-
 							<div class="zm-item-answer-author-info">
 								<a class="zm-item-link-avatar avatar-link" href=""
 									target="_blank" data-tip="p$t$yingxiaodao"> <img
 									src="../images/res/11be4a90ed938abfbab4899df56ee754_s.png"
 									class="zm-list-avatar avatar"></a> <a class="author-link"
 									data-tip="p$t$yingxiaodao" target="_blank" href="">${AnswerDetail.username }</a>
-								<span title="爱科学 爱运动" class="bio">:${AnswerDetail.usermeans }</span>
+								<span title="${AnswerDetail.usermeans }" class="bio">:${AnswerDetail.usermeans }</span>
 							</div>
 
 						</div>
 						<div class="zm-item-rich-text expandable js-collapse-body"
 							data-resourceid="6727688" data-action="/answer/content"
-							data-author-name="营销岛"
-							data-entry-url="/question/36301524/answer/66862039">
+							data-author-name="${AnswerDetail.username }">
 							<div class="zm-editable-content clearfix">
 								<p>${AnswerDetail.answercontent }</p>
-
 							</div>
 						</div>
 						<a class="zg-anchor-hidden ac" name="22162611-comment"></a>
 						<div
 							class="zm-item-meta answer-actions clearfix js-contentActions">
 							<div class="zm-meta-panel">
-								<a itemprop="url" class="answer-date-link meta-item"
-									target="_blank" href="">发布于 ${AnswerDetail.answertime }</a> <a
-									href="" name="addcomment"
-									class="meta-item toggle-comment js-toggleCommentBox"> <i
-									class="z-icon-comment"></i>4 条评论
-								</a>
-								<!--                                    id="modal-578824 zu-top-add-question" href="#modal-container-578824" role="button" class="zu-top-add-question btn" data-toggle="modal"
--->
 								<a name="addcomment" href="#modal-container-578824"
 									class="meta-item toggle-comment js-toggleCommentBox "
 									data-toggle="modal"> <i class="z-icon-comment1"></i>私信
@@ -191,7 +142,6 @@
 									class="meta-item js-thank" data-thanked="false"> <i
 									class="z-icon-thank"></i>收藏
 								</a>
-
 								<!-- 点赞按钮-->
 								<button data-za-module="VoteBar" id="dianzan"
 									onclick="likeNum(${AnswerDetail.answerid})"
@@ -201,9 +151,7 @@
 									<span class="label sr-only">赞同</span>
 								</button>
 								<!-- 点赞ajax -->
-								<script>
-								
-								
+								<script>	
 									function likeNum(e) {
 							
 										$.ajax({
@@ -242,16 +190,10 @@
 					</div>
 				</div>
 
-				<div id="zh-question-collapsed-wrap"
-					class="zh-question-answer-wrapper" style="display: none"></div>
-				<a name="draft"></a>
-				<form action="answer?method=doanswer">
-					<textarea></textarea>
-				</form>
 
 				<script type="text/javascript">
 					function setCollection(answerid, questionid) {
-						$.ajax({
+					$.ajax({
 							url : "/zhifou/collection",
 							type : "post",
 							dataType : "json",

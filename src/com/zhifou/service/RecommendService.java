@@ -47,4 +47,7 @@ public class RecommendService {
 	public List<Object> SearchCategory(){
 		return recommendDao.SearchCategory();
 	}
+	public int GetCollectNumber(int id){
+		return recommendDao.GetCollectNumber(id);
+	}
 }

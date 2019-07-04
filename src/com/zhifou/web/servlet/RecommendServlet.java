@@ -77,12 +77,12 @@ public class RecommendServlet extends BaseServlet {
 		String value = request.getParameter("answerid");
 		int answerid = Integer.parseInt(value);
 		RecommendService service = new RecommendService();
-
 		Answer answer = service.FindAnswerByID(answerid);
 		User user = service.FindUserByID(answer.getAnswerproposer());
 		Question question = service.FindQuestionById(answer.getQuestionid());
 		Category category = service.FindCategoryByID(question.getCategoryid());
 		UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+		int number = service.GetCollectNumber(answerid);
 		Jedis j = null;
 		j = new Jedis("127.0.0.1", 6379);
 		if ((j.get("answer:" + answerid)) != null) {
@@ -98,7 +98,7 @@ public class RecommendServlet extends BaseServlet {
 		}
 		// response.getWriter().print(lognum);
 		request.getSession().setAttribute("AnswerDetail", userindex);
-
+		request.getSession().setAttribute("collectnumber", number);
 		// request.setAttribute("nums", lognum);
 		try {
 			response.sendRedirect("/zhifou/html/detail.jsp");
