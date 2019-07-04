@@ -91,6 +91,13 @@ public class MsgServlet extends BaseServlet {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 	 
    }
+    public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Message message =service.doread(id);
+        message.setStatus(3);//状态设置为删除（3）
+        service.updateMessage(message);
+        response.sendRedirect("msgServlet?method=findMsgByUserId");
+    }
 }

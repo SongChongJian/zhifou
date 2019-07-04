@@ -69,8 +69,8 @@
 							</strong>							
 						</p>
 						</a>
-					<li class=""><em><a href="Message?act=reply&id=">回信</a></em> <em><a
-							href="Message?act=delete&id=">删除</a></em></li>
+					<li class=""><em><a href="/zhifou/msgServlet?method=doread&id=${item.id}">回信</a></em> <em><a
+							href="/zhifou/msgServlet?method=delete&id=${item.id}">删除</a></em></li>
 
 				</c:forEach>
 			</ul>
