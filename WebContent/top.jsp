@@ -37,7 +37,7 @@
 
             
             <!--提问-->
-            <a id="modal-578824 zu-top-add-question" href="#modal-container-578824" role="button" class="zu-top-add-question btn" data-toggle="modal">提问</a>
+            <a onclick="searchcategory()" id="modal-578824 zu-top-add-question" href="#modal-container-578824" role="button" class="zu-top-add-question btn" data-toggle="modal">提问</a>
             
             <div role="search" id="zh-top-search" class="zu-top-search">
                 <form method="get" action="/zhifou/recommend" id="zh-top-search-form" class="zu-top-search-form">
@@ -154,13 +154,11 @@
 			                                </div>
                                 	<!--下拉 列表 -->
                           			     问题类型<br />
-									<select name="categoryid" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 150px;height: 30px;border-radius:3px;">
-									  <option value="1">科技</option>
-									  <option value="2">娱乐</option>
-									  <option value="3">体育</option>
+									<select id="searchcategory" name="categoryid" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 150px;height: 30px;border-radius:3px;">
+									  <option value="请选择">请选择</option>
 									</select>
-									</br>
-									</br>
+									<br/>
+									<br/>
 									<!--选择文件-->
 									<input name="questionphoto" type="file" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 565px;height: 30px;border-radius:3px;"/>
                                 
@@ -177,6 +175,29 @@
 			</div>
    
    	<script type="text/javascript">
+   		function searchcategory(){
+   			$.ajax({
+   				url:"/zhifou/recommend",
+   				type:"POST",
+   				data:{"method":"SearchCategory"},
+   				dataType:"json",
+   				success:function(data){
+   					if(data.length>0){
+   						var content="";
+   				
+   						$.each(data,function(index,obj){
+   					
+   							content+= "<option value='"+obj+"'>"+obj+"</option>"
+   						});
+   						$("#searchcategory").append(content);
+   					}
+   				},
+   				error:function(){
+						alert("请求失败");
+				}
+   			});
+   		}
+   	
    		function searchWord(e){
    			$("#showDiv").html("");
    			var content = "";

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ColumnListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.zhifou.bean.Answer;
@@ -180,5 +181,18 @@ public class RecommendDao {
 			e.printStackTrace();
 		}
 		return answers;
+	}
+	
+	//获取类型的名字
+	public List<Object> SearchCategory(){
+		String sql = "select categoryname from category";
+		List<Object> list = null;
+		try {
+			list=queryrunner.query(sql, new ColumnListHandler("categoryname"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
