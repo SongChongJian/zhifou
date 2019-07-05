@@ -137,10 +137,11 @@
 						<div class="modal fade" id="modal-container-57882" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
+   									<form action="/zhifou/ask?method=ask" method="post">
    									<div class="modal-header">
 										 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 										<h4 class="modal-title" id="myModalLabel">
-											问题:
+											问题:<input  class="form-control"  name="questiontitle" type="text"/>
 										</h4>
 									</div>
 									<div class="modal-body">
@@ -149,28 +150,31 @@
 			                                    <div class="zm-editable-editor-wrap no-toolbar" style="">
 			                                        <div class="zm-editable-editor-outer">
 			                                            <div class="zm-editable-editor-field-wrap">
-			                                                <div id="mock:k" class="zm-editable-editor-field-element editable" g_editable="true" role="textbox" contenteditable="true" style="font-style: italic;">
-			                                                    <p>
-			                                                        <span style="font-style: normal;color: #999;">问题背景、条件等详细信息</span></p>
-			                                                </div>
+			                                                
+			                                                    <textarea name="questioncontent" style="width:100%;height:100%;" placeholder="问题说明">
+												
+												</textarea>
+			                                                
 			                                            </div>
 			                                        </div>
 			                                    </div>
 			                                </div>
                                 	<!--下拉 列表 -->
                           			     问题类型<br />
-									<select id="searchcategory" style="border: 1px solid #869FB1;background-color: #FFFFFF;width:95%;height: 30px;border-radius:3px;">
+									<select id="searchcategory" name="categoryid" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 150px;height: 30px;border-radius:3px;">
 									  <option value="请选择">请选择</option>
 									</select>
 									<br/>
 									<br/>
 									<!--选择文件-->
-									<input type="file" style="border: 1px solid #869FB1;background-color: #FFFFFF;width:95%;height: 30px;border-radius:3px;"/>
+									<input name="questionphoto" type="file" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 565px;height: 30px;border-radius:3px;"/>
                                 
 									</div>
 									<div class="modal-footer">
-										 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">提交</button>
+										 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+										  <input type="submit" class="zg-r5px zu-question-form-add zg-btn-blue" value="发布"/>
 									</div>
+									</form>									
 							</div>
 						</div>
 					</div>

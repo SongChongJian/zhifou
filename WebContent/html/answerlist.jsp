@@ -40,7 +40,6 @@
 .modal-dialog {
 	position: absolute;
 	z-index: 99;
-	width: 420px;
 	max-width: 100%;
 	border-radius: 8px;
 	border: 1px solid #888;
