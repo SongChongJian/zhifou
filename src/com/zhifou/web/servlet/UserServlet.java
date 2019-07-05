@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -90,8 +91,28 @@ public class UserServlet extends BaseServlet {
 		/*request.setCharacterEncoding("UTF-8");*/
 		String usermail = request.getParameter("mail");
 		String password = request.getParameter("password");
+		String remember = request.getParameter("remember");
+		System.out.println(remember);
 		User user= service.login(usermail,password);
 		if(user!=null){
+			if("true".equals(remember)){
+				response.addCookie(new Cookie("mail",usermail));
+                response.addCookie(new Cookie("password",password));
+                response.addCookie(new Cookie("remember","true"));
+                System.out.println("记住密码");
+				
+			}else{
+				System.out.println("不记住密码");
+				Cookie cookie1 = new Cookie("mail",null);
+                cookie1.setMaxAge(0);
+                response.addCookie(cookie1);
+
+                Cookie cookie2 = new Cookie("password",null);
+                cookie2.setMaxAge(0);
+                response.addCookie(cookie2);
+
+                response.addCookie(new Cookie("remember","false"));
+			}
 			session = request.getSession();
 			session.setAttribute("user", user);
 			response.sendRedirect("/zhifou/recommend?method=searchQuestionIndex");
