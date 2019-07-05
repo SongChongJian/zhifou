@@ -13,7 +13,7 @@
                 </a>
                 <ul class="top-nav-dropdown" id="top-nav-profile-dropdown" aria-labelledby=":0">
                     <li>
-                    <a href="/zhifou/recommend?method=searchQuestionIndexpeople/hu-yuan-24-48" tabindex="-1" id=":1">
+                    <a href="http://localhost:8080/zhifou/personalCenter.jsp" tabindex="-1" id=":1">
                     <i class="zg-icon zg-icon-dd-home"></i>我的主页
                     </a>
                     </li>

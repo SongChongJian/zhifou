@@ -1,26 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	pageEncoding="UTF-8" import="com.zhifou.bean.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="zh-CN" 
+	class="js is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile"
+	style="">
 <head>
-<meta charset="UTF-8">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	    <script type="text/javascript" async="" src="../scripts/za-0.1.1.min.js"></script>
-	    <script async="" src="scripts/ga.js"></script>
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	    <meta name="renderer" content="webkit">
-	    <meta http-equiv="X-ZA-Response-Id" content="46acde5c53db46f2806ccad726de9826">
-	    <title>资料更改</title>
-	    <meta name="apple-itunes-app" content="app-id=432274380">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	    <meta http-equiv="mobile-agent" content="format=html5;url=https://nowcoder.com/">
-	    <meta id="znonce" name="znonce" content="d3edc464cf014708819feffde7ddd01e">
-	    <link rel="search" type="application/opensearchdescription+xml" href="https://nowcoder.com/static/search.xml" title="牛客">
-	    <link rel="stylesheet" href="styles/top.css">
-	    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-ZA-Response-Id"
+	content="46acde5c53db46f2806ccad726de9826">
+<title>首页 - 知否</title>
+<meta name="apple-itunes-app" content="app-id=432274380">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="mobile-agent"
+	content="format=html5;url=https://nowcoder.com/">
+<meta id="znonce" name="znonce"
+	content="d3edc464cf014708819feffde7ddd01e">
+<link rel="search" type="application/opensearchdescription+xml"
+	href="https://nowcoder.com/static/search.xml" title="牛客">
+<link rel="stylesheet" href="styles/index.css">
+<link rel="stylesheet" href="styles/gdt-style.css">
+<link rel="stylesheet"  href="bootstrap-3.3.7/css/bootstrap.css"/>
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.js"></script>
+<style>
+.zm-item-answer-author-info a.collapse {
+	margin-top: 0
+}
+</style>
+
 </head>
-<body>
-<div role="navigation" class="zu-top">
+<body class="zhi ">
+	<%@ include file="top.jsp"%>
+	<div role="navigation" class="zu-top">
         <div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
             <a href="https://nowcoder.com/" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">牛客</a>
             <div class="top-nav-profile">
@@ -145,14 +161,14 @@
 				<div class="form-group">
 					<label for="firstname" class="col-sm-2 control-label">用户名</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="username" name="username" 
-							   placeholder="张三">
+						<input type="text" class="form-control" id="username" name="username" value="${user.username}"
+							   placeholder="用户名">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="firstname" class="col-sm-2 control-label">密码</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="userpassword" name="userpassword" 
+						<input type="text" class="form-control" id="userpassword" name="userpassword"  value="${user.userpassword}"
 							   placeholder="张三">
 					</div>
 				</div>
@@ -160,38 +176,31 @@
 				<div class="form-group">
 					<label for="lastname" class="col-sm-2 control-label">邮箱</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="usermail" name="usermail"
+						<input type="text" class="form-control" id="usermail" name="usermail"  value="${user.usermail}"
 							   placeholder="字段">
 					</div>				
 				</div> 
 				<div class="form-group">
 					<label for="lastname" class="col-sm-2 control-label">上传头像</label>
 					<div class="col-sm-4">
-						<input type="file" id="userphoto" name="userphoto" value="" />
+						<input type="file" id="userphoto" name="userphoto"  value="${user.userphoto}"/>
 					</div>			
 				</div>
    
 				<div class="form-group">
 					<label for="lastname" class="col-sm-2 control-label">个人签名</label>
 					<div class="col-sm-4">
-						<textarea rows="3" name="usermeans" id="usermeans" value="" cols="50" placeholder="签名"></textarea>
+						<textarea rows="3" name="usermeans" id="usermeans"  value="${user.usermeans}" cols="50" placeholder="签名"></textarea>
 					</div>			
 				</div>
  
 				<div class="form-group">	
-					<div class="col-sm-10">
-					<form action="ModifyData">
-						<button  type="button" class="btn btn-primary" onclick="upload()"  value="确认修改">
-					</form>
-					</div>				
+					<a style="margin-left: 210px " type="button" class="btn btn-primary"  href="http://localhost:8080/zhifou/personalCenter.jsp" value="确认修改">确认修改</a>				
 				</div>  			
 		    </form>	
 		</div>
 	</div>
 </div>
-
-
-
 			<!--弹出层-->
             <div class="modal fade" id="modal-container-751906" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
@@ -252,9 +261,9 @@ function upload(){
 		data:{"username":username,"userpassword":userpassword,"usermail":usermail,"userphoto":userphoto,"usermeans":usermeans,"method":"uploadpersonalmessage"},
 		success:function(data){
 			if (data == 1) {
-				alert();
+				alert("信息修改成功");
 			} else {
-		
+				alert("信息修改失败");
 			}
 		},
 		error:function(){
