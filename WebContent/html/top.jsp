@@ -3,8 +3,8 @@
     
     <div role="navigation" class="zu-top">
         <div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
-            <!--  <a href="/zhifou/recommend?method=searchQuestionIndex" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">知否</a>
-           --> <div class="top-nav-profile">
+       <a href="/zhifou/recommend?method=searchQuestionIndex" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home" data-za-l="top_navigation_zhihu_logo">知否</a>
+            <div class="top-nav-profile">
                 <a href="/zhifou/recommend?method=searchQuestionIndex" class="zu-top-nav-userinfo " id=":0" role="button" aria-haspopup="true" aria-activedescendant="">
                     <span class="name">知否</span>
                     <img class="Avatar" src="../images/res/da8e974dc_s.jpg"  alt="知否">
