@@ -9,6 +9,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">
+
+ <script src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
+ <script src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
 </head>
 <body>
 <div id="box"></div>
@@ -48,16 +51,25 @@
 			<div class="button">
 			<button type="submit" class="login-btn register-btn" id="button">登录</button>
 			</div>
-		</form>
-		
-
-		<div class="remember clearfix">
-			<label class="remember-me"><span class="icon"><span class="zt"></span></span><input type="checkbox" name="remember-me" id="remember-me" class="remember-mecheck" checked>记住我</label>
+			<div class="remember clearfix">
+			<input type="checkbox" name="remember" id="remember" value="true" class="pass_status">记住我</label>
 			<label class="forgot-password">
 				<a href="#">忘记密码？</a>
 			</label>
-		</div>
-		
+			</div>
+		</form>		
+		<script>
+	    var remember = $.cookie("remember");
+	    if(remember == "true"){//说明 cookie里有用户信息
+	        var mail = $.cookie("mail");
+	        var password = $.cookie("password");
+	        //回填数据到输入框
+	        $("#email").val(mail);
+	        $("#password").val(password);
+	        $("#remember").prop("checked",true);
+	    }
+
+		</script>
 	</div>
 </div>
 
