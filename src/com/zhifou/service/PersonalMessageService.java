@@ -1,5 +1,8 @@
 package com.zhifou.service;
 
+import java.util.List;
+
+import com.zhifou.bean.Answer;
 import com.zhifou.dao.PersonalMessageDao;
 
 public class PersonalMessageService {
@@ -8,5 +11,11 @@ public class PersonalMessageService {
 			String usermeans) {
 		return personalmessagedao.uploadpersonalmessage(userid, userphoto, username, userpassword, usermail, usermeans);
 	}
-
+	
+	public List<Answer> personalAnswer(int userid){
+		return personalmessagedao.findAnswerByAnswerproposer(userid);
+	}
+    
+	
+	
 }

@@ -157,7 +157,7 @@
 				<strong>个人信息修改：</strong> 
 			</p>
 			<!--表单开始-->
-			<form class="form-horizontal" role="form" >
+			<form class="form-horizontal" role="form" action="personalmessageservlet?method=modifyData" method="post" enctype="multipart/form-data" >
 				<div class="form-group">
 					<label for="firstname" class="col-sm-2 control-label">用户名</label>
 					<div class="col-sm-4">
@@ -181,9 +181,9 @@
 					</div>				
 				</div> 
 				<div class="form-group">
-					<label for="lastname" class="col-sm-2 control-label">上传头像</label>
+					<label for="lastname" class="col-sm-2 control-label">更换头像</label>
 					<div class="col-sm-4">
-						<input type="file" id="userphoto" name="userphoto"  value="${user.userphoto}"/>
+						<input type="file" id="userphoto" name="file" />
 					</div>			
 				</div>
    
@@ -195,7 +195,7 @@
 				</div>
  
 				<div class="form-group">	
-					<a style="margin-left: 210px " type="button" class="btn btn-primary"  href="http://localhost:8080/zhifou/personalCenter.jsp" value="确认修改">确认修改</a>				
+					<button style="margin-left: 210px " type="submit" class="btn btn-primary"  value="确认修改">确认修改</button>				
 				</div>  			
 		    </form>	
 		</div>

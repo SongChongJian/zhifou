@@ -40,14 +40,17 @@
 	<br /><br />
  <div class="mainContent">
     <aside>
+      <p style="text-align:center;font-size:25px"><span>青春</span></p>
       <div class="avatar">
-        <a href="#" src="${user.userphoto}"><span>青春</span></a>
+      <img src="${user.userphoto}"/>    
+                 
       </div>
+    
       <section class="topspaceinfo">
       	<h1 ><a style="color:white" href="http://localhost:8080/zhifou/ModifyData.jsp">修改资料</a></h1>
       	
         <h1>个人签名</h1>
-        <p>于千万人之中，我遇见了我所遇见的人....</p>
+        <p>${user.usermeans }</p>
       </section>
       <div class="userinfo"> 
         <p class="btns"><a href="/" target="_blank">我的相册</a><a href="/" target="_blank">我的邮箱</a></p>   
@@ -77,61 +80,22 @@
     </aside>
     <div class="blogitem">
       <article>
-        <h2 class="title"><a href="/">论吃鸡</a></h2>
-        <ul class="text">
-          <p>和平精英</p>
-          <p>“跳哪?”
-          	“P城!机场!g港!学校!”
-          	“人太多了吧?”
-          	“这游戏不就是杀人的吗”
-          	“前面有人!”
-          	“干他丫的!”
-          	“有车来了!”
-          	“直接扫车!”
-          	“房子里有人!”
-          	“冲进去!”</p>
-          <p>“跳哪?”
-          	“哪人少跳哪”
-          	“搜东西太无聊了吧”
-          	“吃鸡最重要!”
-          	“前面有人!”
-          	“等他看见我们再打”
-          	“有车来了!”
-          	“等他们停车再打!”
-          	“房子里有人!”
-          	“在门口等着别出声，等他们出来再打”</p>
-          <p class="textimg"><img src="images/text02.jpg"></p>
-          <p>“跳哪?”
-          	“打野吧，西南海边，渔村，农场”
-          	“太穷了吧”
-          	“打枪又不会，野区风景还好，超喜欢打野的”
-          	“前面有人!”
-          	“调头，别让他们发现了!”
-          	“有车来了!”
-          	“快把门都打开，躲厕所装死”
-          	“房子里有人!”
-          	设置—音频设置—所有人
-          	“大哥，别开枪，我们是友军!”</p>
-          
+        <h2 class="title"><a href="/">我回答的问题：</a></h2>
+        <ul class="text"> 
+          <c:forEach items="${answers }" var="item">
+            <p>${item.answercontent }</p>
+          </c:forEach>   
         </ul>
         <div class="textfoot">
           <a href="/">阅读全文</a><a href="/">评论</a><a href="/">转载</a>
         </div>
       </article> 
       <article>
-        <h2 class="title"><a href="/">谈王者意识</a></h2>
+        <h2 class="title"><a href="/">我回答的问题:</a></h2>
         <ul class="text">
-          <p>王者荣耀</p>
-          <p>对于很多新手来说，是知道小地图这个东西的存在的(就是在游戏界面的左上角)，但是很少会去有意识的看这个地方。我这里要说的是，对于新手而言，小地图是尤为重要的存在。
-                                 其中数目最多的蓝色和红色的东西就是己方和对方的防御塔，红色圆圈图标是敌方英雄，蓝色圆圈图标是己方队友，绿色圆圈图标则是自己，黄色的是野怪。
-                                 知道了这些小地图的多种元素后，我们就要知道如何看懂小地图。有的新手可能会说，看小地图还需要你教？不不不，总有你不知道的东西在里面。</p>
-          <p>看小地图最重要的目的就是知道哪里爆发了团战，当蓝色圆圈与红色圆圈很集中的时候就要意识到爆发团战了，这个时候你要做出选择
-          	(这个选择会在后面优先级意识中详细说明)，是否要去支援团战，最直接的判断依据就是团战爆发点距离你远不远，这些信息都可以从小地图上获得。</p>
-          <p class="textimg"><img src="../images/text01.jpg"></p>
-          <p>防御塔受到攻击时，在小地图上会有闪烁的提示，这个时候同样要有意识的去守塔，除非你有十分正当的理由放弃这个塔，塔受到攻击会类似于
-          	英雄一样有掉血的现象，体现在小地图上就是防御塔的颜色由实心逐渐变成空心，在塔的颜色完全变空时，可以选择随便攻击一下这座塔，让其失去防御的能力。</p>
-          <p>还有一个细节就是英雄图标的圆圈上有一个小小的箭头，这个箭头表示的是该英雄的朝向，新手不会三指操作（这个三指操作我最近看视频才知道的，
-          	我也不会，看起来很6）就可以通过这个细节来提高技能对看不见的敌人的命中率(比如虞姬的一技能，嬴政的大招等等。)</p>
+          <c:forEach items="${answers }" var="item">
+            <p>${item.answercontent }</p>
+          </c:forEach>        
         </ul>
         <div class="textfoot">
           <a href="/">阅读全文</a><a href="/">评论</a><a href="/">转载</a>
