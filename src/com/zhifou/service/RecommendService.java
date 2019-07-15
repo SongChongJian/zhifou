@@ -56,4 +56,7 @@ public class RecommendService {
 	public List<Answer>  GetAnswerByUserId(int id){
 		return recommendDao.GetAnswerByUserId(id);
 	}
+	public List<Question> getAllQuestions(){
+		return recommendDao.getAllQuestions();
+	}
 }

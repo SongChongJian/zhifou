@@ -58,6 +58,10 @@
                     <li class="top-nav-noti zu-top-nav-li ">
                     <a class="zu-top-nav-link" href="/zhifou/msgServlet?method=findMsgByUserId" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息<span id="zh-top-nav-count" class="zu-top-nav-count zg-noti-number" style="display: none;">0</span></a>
                     </li>
+                    
+                     <li class="top-nav-noti zu-top-nav-li ">
+                    <a class="zu-top-nav-link" href="/zhifou/recommend?method=getAllQuestions"  role="button"><span class="mobi-arrow"></span>问题</a>
+                    </li>
                 </ul>
                 <div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
                     <div class="zu-top-nav-live-inner zg-r5px">

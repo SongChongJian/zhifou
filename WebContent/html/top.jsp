@@ -17,7 +17,7 @@
 			</a>
 			<ul class="top-nav-dropdown" id="top-nav-profile-dropdown"
 				aria-labelledby=":0">
-				<li><a href="/zhifou/recommend?method=searchQuestionIndex"
+				<li><a href="/zhifou/personalmessageservlet?method=personalAnswer"
 					tabindex="-1" id=":1"> <i class="zg-icon zg-icon-dd-home"></i>我的主页
 				</a></li>
 
@@ -67,6 +67,10 @@
 					class="zu-top-nav-link"
 					href="/zhifou/msgServlet?method=findMsgByUserId" role="button"><span></span>消息</a>
 				</li>
+				
+				 <li class="top-nav-noti zu-top-nav-li ">
+                    <a class="zu-top-nav-link" href="/zhifou/recommend?method=getAllQuestions"  role="button"><span class="mobi-arrow"></span>问题</a>
+                 </li>
 			</ul>
 			<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard"
 				id="zh-top-nav-live-new" role="popup" tabindex="0">

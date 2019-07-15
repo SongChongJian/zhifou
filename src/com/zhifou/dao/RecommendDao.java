@@ -233,5 +233,16 @@ public class RecommendDao {
 			}
 			return answers;			
 		}
-		
+		//查询所有问题
+		public List<Question> getAllQuestions(){
+			String sql = "select * from question where ispassaudit=1";
+			List<Question> questions=null;
+			try {
+				questions=queryrunner.query(sql, new BeanListHandler<>(Question.class));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return questions;
+		}
 }

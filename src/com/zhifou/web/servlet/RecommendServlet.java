@@ -188,4 +188,10 @@ public class RecommendServlet extends BaseServlet {
 		System.out.println(jsondata);
 		response.getWriter().write(jsondata);
 	}
+	public void getAllQuestions(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+		RecommendService service = new RecommendService();
+		List<Question> questions = service.getAllQuestions();
+		request.setAttribute("questions",questions);
+		request.getRequestDispatcher("/html/QuestionIndex.jsp").forward(request, response);
+	}
 }
