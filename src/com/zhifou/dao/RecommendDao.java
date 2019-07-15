@@ -221,4 +221,17 @@ public class RecommendDao {
 			}
 			return number.intValue();
 		}
+		//根据作者id查询到所有回答的问题
+		public List<Answer>  GetAnswerByUserId(int id){
+			String sql ="select * from answer where answerproposer = ?";
+			List<Answer> answers=null;
+			try {
+				answers=queryrunner.query(sql, new BeanListHandler<>(Answer.class),id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return answers;			
+		}
+		
 }
