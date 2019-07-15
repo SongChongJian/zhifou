@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,8 +18,12 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
 import com.zhifou.bean.Answer;
+import com.zhifou.bean.Category;
+import com.zhifou.bean.Question;
 import com.zhifou.bean.User;
+import com.zhifou.bean.UserIndex;
 import com.zhifou.service.PersonalMessageService;
 import com.zhifou.service.RecommendService;
 
@@ -43,9 +47,17 @@ public class PersonalMessageServlet extends BaseServlet {
 	
 	public void personalAnswer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 	   User user = (User)request.getSession().getAttribute("user");
-	   int userid = user.getUserid();
+	   int userid = user.getUserid();  
 	   List<Answer> answers = personalmessageservice.personalAnswer(userid);
-	   request.setAttribute("answers", answers);
+	   RecommendService recommendService = new RecommendService();
+	   List<UserIndex> userindexs = new ArrayList<>();
+	   for (Answer answer : answers) {
+		   Question question = recommendService.FindQuestionById(answer.getAnswerid());
+		   Category category = recommendService.FindCategoryByID(question.getCategoryid());
+		   UserIndex userindex = recommendService.CreateUserIndex(user, answer, question, category);
+		   userindexs.add(userindex);
+	}
+	   request.setAttribute("answers", userindexs);
 	   request.getRequestDispatcher("personalCenter.jsp").forward(request, response);		
 	}
 	
@@ -61,18 +73,18 @@ public class PersonalMessageServlet extends BaseServlet {
 		String userphoto = null;
 		String usermeans =null;
 		try {
-			// 使用Apache文件上传组件处理文件上传步骤：
-			// 1、创建一个DiskFileItemFactory工厂
+			// 浣跨敤Apache鏂囦欢涓婁紶缁勪欢澶勭悊鏂囦欢涓婁紶姝ラ锛�
+			// 1銆佸垱寤轰竴涓狣iskFileItemFactory宸ュ巶
 			DiskFileItemFactory factory = new DiskFileItemFactory();
-			// 2、创建一个文件上传解析器
+			// 2銆佸垱寤轰竴涓枃浠朵笂浼犺В鏋愬櫒
 			ServletFileUpload upload = new ServletFileUpload(factory);
-			// 解决上传文件名的中文乱码  
+			// 瑙ｅ喅涓婁紶鏂囦欢鍚嶇殑涓枃涔辩爜  
             upload.setHeaderEncoding("utf-8"); 
 						
-			// 4、使用ServletFileUpload解析器解析上传数据，解析结果返回的是一个List<FileItem>集合，每一个FileItem对应一个Form表单的输入项
+			// 4銆佷娇鐢⊿ervletFileUpload瑙ｆ瀽鍣ㄨВ鏋愪笂浼犳暟鎹紝瑙ｆ瀽缁撴灉杩斿洖鐨勬槸涓�涓狶ist<FileItem>闆嗗悎锛屾瘡涓�涓狥ileItem瀵瑰簲涓�涓狥orm琛ㄥ崟鐨勮緭鍏ラ」
 			List<FileItem> list = upload.parseRequest(request);
 			for (FileItem item : list) {
-				// 如果fileitem中封装的是普通输入项的数据
+				// 濡傛灉fileitem涓皝瑁呯殑鏄櫘閫氳緭鍏ラ」鐨勬暟鎹�
 				if (item.isFormField()) {
 					String name = item.getFieldName();
 					String value = item.getString("UTF-8");
@@ -94,7 +106,7 @@ public class PersonalMessageServlet extends BaseServlet {
 
 				} else {
 					
-					//读取上传的文件
+					//璇诲彇涓婁紶鐨勬枃浠�
 					InputStream is = item.getInputStream();
 					//aa.jpg  bb.txt  cc.rar
 					String filename = item.getName();					
@@ -110,9 +122,9 @@ public class PersonalMessageServlet extends BaseServlet {
 					
 					FileOutputStream fos = new FileOutputStream(file);
 					
-					//转存文件
+					//杞瓨鏂囦欢
 					byte[] b = new byte[512];
-					int len=-1;//标记文件是否读取结束
+					int len=-1;//鏍囪鏂囦欢鏄惁璇诲彇缁撴潫
 					while((len=is.read(b))!=-1){
 						fos.write(b,0,len);
 					}									
@@ -125,9 +137,9 @@ public class PersonalMessageServlet extends BaseServlet {
 			e.printStackTrace();
 		}
 		
-		//调用service层插入数据库
+		//璋冪敤service灞傛彃鍏ユ暟鎹簱
 		int row = personalmessageservice.uploadpersonalmessage(userid, userphoto, username, userpassword, usermail, usermeans);
-		//更新用户信息
+		//鏇存柊鐢ㄦ埛淇℃伅
 		User user1 = recommendService.FindUserByID(userid);
 		request.getSession().setAttribute("user", user1);
 		request.getRequestDispatcher("personalmessageservlet?method=personalAnswer").forward(request, response);	

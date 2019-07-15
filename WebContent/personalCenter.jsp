@@ -53,74 +53,61 @@
         <p>${user.usermeans }</p>
       </section>
       <div class="userinfo"> 
-        <p class="btns"><a href="/" target="_blank">我的相册</a><a href="/" target="_blank">我的邮箱</a></p>   
+        <a href="/" target="_blank">我的邮箱</a></p>   
       </div>
-      <section class="newpic">
-         <h2>最新照片</h2>
-         <ul>
-           <li><a href="/"><img src="images/01.jpg"></a></li>
-           <li><a href="/"><img src="images/02.jpg"></a></li>
-           <li><a href="/"><img src="images/03.jpg"></a></li>
-           <li><a href="/"><img src="images/04.jpg"></a></li>
-           <li><a href="/"><img src="images/05.jpg"></a></li>
-           <li><a href="/"><img src="images/06.jpg"></a></li>
-           <li><a href="/"><img src="images/07.jpg"></a></li>
-           <li><a href="/"><img src="images/08.jpg"></a></li>
-         </ul>
-      </section>
-      <section class="taglist">
-         <h2>全部标签</h2>
-         <ul>
-           <li><a href="/">游戏</a></li>
-           <li><a href="/">90后</a></li>
-           <li><a href="/">study</a></li>
-           <li><a href="/">毕业季</a></li>
-        </ul>
-      </section>
+     
     </aside>
     <div class="blogitem">
       <article>
-        <h2 class="title"><a href="/">我回答的问题：</a></h2>
-        <ul class="text"> 
-          <c:forEach items="${answers }" var="item">
-            <p>${item.answercontent }</p>
-          </c:forEach>   
-        </ul>
-        <div class="textfoot">
-          <a href="/">阅读全文</a><a href="/">评论</a><a href="/">转载</a>
-        </div>
+        <h2 class="title"><a href="personalmessageservlet?method=personalAnswer" }>我回答的问题：</a></h2>
+        <c:forEach items="${answers}" varStatus="status" var="item">
+										<div class="feed-main">
+											
+											<div class="feed-content" data-za-module="AnswerItem">
+												<h2 class="feed-title" style="font-size: 25px">
+													<a class="question_link" target="_blank"
+														href="/zhifou/recommend?method=showQuestionDetail&questionid=${item.questionid }">${item.questiontitle }</a>
+												</h2>
+												<div class="feed-question-detail-item">
+													<div class="question-description-plain zm-editable-content"></div>
+												</div>
+												<div class="expandable entry-body">
+													<!-- <link itemprop="url" href="/question/19857995/answer/13174385">
+		                                            <meta itemprop="answer-id" content="389034">
+		                                            <meta itemprop="answer-url-token" content="13174385"> -->
+													
+											
+													<div class="zm-item-answer-author-info">
+														<a class="author-link" data-tip="p$b$amuro1230"
+															target="_blank"
+															href="https://nowcoder.com/people/amuro1230">${item.username }</a>
+														<span title="${item.usermeans }" class="bio">，${item.usermeans }</span>
+													</div>
+						 					
+													<div class="zm-item-rich-text expandable js-collapse-body"
+														data-resourceid="123114" data-action="/answer/content"
+														data-author-name="${item.username }"
+														data-entry-url="/question/19857995/answer/13174385">
+														<textarea hidden="" class="content"></textarea>
+														<div class="zh-summary summary clearfix">
+														<p class="answercontent">${item.answercontent}</p> 
+															<a href="/zhifou/recommend?method=showAnswerDetail&answerid=${item.answerid }"
+																class="toggle-expand">显示全部</a>
+														</div>
+														<p class="visible-expanded">
+															<a  class="answer-date-link meta-item"
+																data-tip="s$t$发布于 2011-09-23" target="_blank">编辑于
+																${item.answertime }</a>
+														</p>
+													</div>
+												</div>
+												
+											</div>
+										</div>
+									</c:forEach>
       </article> 
-      <article>
-        <h2 class="title"><a href="/">我回答的问题:</a></h2>
-        <ul class="text">
-          <c:forEach items="${answers }" var="item">
-            <p>${item.answercontent }</p>
-          </c:forEach>        
-        </ul>
-        <div class="textfoot">
-          <a href="/">阅读全文</a><a href="/">评论</a><a href="/">转载</a>
-        </div>
-      </article>
-      <div class="pages"><span>1</span><a href="/" hidefocus="">2</a><a href="/" hidefocus="">3</a><a href="/" class="next">下一页&gt;&gt;</a></div>
+    
     </div>
  </div>
-<footer>
-   <div class="footavatar">
-     <img src="images/photo.jpg" class="footphoto">
-     <ul class="footinfo">
-       <p class="fname"><a href="/dancesmile" >青春</a>  </p>
-       <p class="finfo">性别：无 年龄：20岁</p>
-       <p>现居：河南郑州</p></ul>
-   </div>
-   
-   <div class="Copyright">
-     <ul>
-       <a href="/">帮助中心</a><a href="/">空间客服</a><a href="/">投诉中心</a><a href="http://www.777moban.com.com/" target="_blank">网页模板</a><a href="/">空间协议</a>
-     </ul>
-   </div>
- </footer>
-	
-	
-	
 </body>	
 </html>
