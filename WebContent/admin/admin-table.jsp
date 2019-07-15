@@ -26,8 +26,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/toastr/toastr.min.js"></script>
 <style type="text/css">
 	.toast-center-center {
-    	top: 50%;
-   		left: 50%;
+    	top: 30%;
+   		left: 70%;
    		margin-top: -25px;
     	margin-left: -150px;
 	}
@@ -133,7 +133,7 @@ input::-webkit-input-placeholder {
 					class="am-icon-caret-down"></span>
 			</a>
 				<ul class="am-dropdown-content">
-					<li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/admin-user.jsp"><span class="am-icon-user"></span> 资料</a></li>
 					<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
 					<li><a href="/zhifou/adminservlet?method=adminexit"><span class="am-icon-power-off"></span> 退出</a></li>
 				</ul></li>
@@ -366,22 +366,22 @@ input::-webkit-input-placeholder {
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	toastr.options = {
-			  "closeButton": false,
-			  "debug": false,
-			  "newestOnTop": false,
-			  "progressBar": false,
-			  "positionClass": "toast-top-center",
-			  "preventDuplicates": false,
-			  "onclick": null,
-			  "showDuration": "3000",
-			  "hideDuration": "1000",
-			  "timeOut": "1000",
-			  "extendedTimeOut": "1000",
-			  "showEasing": "swing",
-			  "hideEasing": "linear",
-			  "showMethod": "fadeIn",
-			  "hideMethod": "fadeOut"
-			}
+		  "closeButton": false,
+		  "debug": false,
+		  "newestOnTop": false,
+		  "progressBar": false,
+		  "positionClass": "toast-top-center",
+		  "preventDuplicates": false,
+		  "onclick": null,
+		  "showDuration": "3000",
+		  "hideDuration": "1000",
+		  "timeOut": "1000",
+		  "extendedTimeOut": "1000",
+		  "showEasing": "swing",
+		  "hideEasing": "linear",
+		  "showMethod": "fadeIn",
+		  "hideMethod": "fadeOut"
+		}
 /* 	toastr.options.positionClass = 'toast-top-center';
 	toastr.success('审核成功');
 	toastr.warning('审核失败');*/

@@ -27,14 +27,8 @@ public class AdminFilter implements Filter {
 		chain.doFilter(request, response);
 		
 	}
-    public AdminFilter() {
-        // TODO Auto-generated constructor stub
-    }
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
-	
-	public void init(FilterConfig fConfig) throws ServletException {
-	}
+    public AdminFilter() {}
+	public void destroy() {}
+	public void init(FilterConfig fConfig) throws ServletException {}
 
 }

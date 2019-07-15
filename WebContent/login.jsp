@@ -33,17 +33,17 @@
 			<div class="login form">
 				<div class="group">
 					<div class="group-ipt email"><!-- onblur="check_mail(this)" --> 
-						<input type="text" name="mail" id="email" class="ipt" autocomplete="off" placeholder="邮箱地址" required>
+						<input type="text" name="mail" id="email" class="ipt" autocomplete="off" value="" placeholder="邮箱地址" required>
 						<input type="hidden" name="method" value="login" />
 					</div>
 					<div id="password_message"></div>
 					<div class="group-ipt password"><!-- onblur="check_password(this)"  -->
-						<input type="password" name="password" id="password" class="ipt" autocomplete="off" placeholder="输入您的登录密码" required>
+						<input type="password" name="password" id="password" class="ipt" autocomplete="off" value="" placeholder="输入您的登录密码" required>
 					</div>
 					<div id="password_message"></div>
 					<div class="group-ipt verify"><!-- onblur="check_checkcode(this)"  -->
-						<input type="text" name="checkcode" id="verify" class="ipt" autocomplete="off" placeholder="输入验证码" required>
-						<img onclick="changeImg(this)" src="checkimageservlet" class="imgcode" />
+						<input type="text" name="checkcode" id="verify" class="ipt" autocomplete="off" value="" placeholder="输入验证码" required>
+						<img  src="checkimageservlet" class="imgcode" /><!-- onclick="changeImg(this)" -->
 					</div>
 					<div id="checkcode_message"></div>
 				</div>
@@ -54,7 +54,7 @@
 			<div class="remember clearfix">
 			<input type="checkbox" name="remember" id="remember" value="true" class="pass_status">记住我</label>
 			<label class="forgot-password">
-				<a href="#">忘记密码？</a>
+				<a href="javascript:;" onclick="forgetpassword()" >忘记密码？</a>
 			</label>
 			</div>
 		</form>		
@@ -87,9 +87,33 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">
 <script>
+	$('.imgcode').hover(function(){
+		layer.tips("看不清？点击更换", '.verify', {
+        		time: 6000,
+        		tips: [2, "#3c3c3c"]
+    		})
+	},function(){
+		layer.closeAll('tips');
+	}).click(function(){
+		$(this).attr('src','checkimageservlet?time=' + new Date().getTime());
+	});
+	$("#remember-me").click(function(){
+		var n = document.getElementById("remember-me").checked;
+		if(n){
+			$(".zt").show();
+		}else{
+			$(".zt").hide();
+		}
+	});
+</script>
+<script>
 	/* 更改验证码 */
-	function changeImg(e){
+/* 	function changeImg(e){
 		e.src="checkimageservlet?time="+new Date().getTime();
+	} */
+	function forgetpassword(){
+		location.href="/zhifou/forgetpassword.jsp";
+		
 	}
 	//邮箱
 	/* function check_mail(e){

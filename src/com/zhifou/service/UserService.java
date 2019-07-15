@@ -17,6 +17,14 @@ public class UserService {
 	public Boolean register(String username, String userpassword, String usermail) {
 		return userdao.register(username,userpassword,usermail);
 	}
+	//检查邮箱是否存在
+	public Boolean usermailcheck(String usermail) {
+		return userdao.usermailcheck(usermail);
+	}
+	//忘记密码
+	public Boolean forgetpassword(String usermail,String userpassword) {
+		return userdao.forgetpassword(usermail,userpassword);
+	}
 	
 
 }

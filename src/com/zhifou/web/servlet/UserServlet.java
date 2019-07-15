@@ -120,6 +120,41 @@ public class UserServlet extends BaseServlet {
 			response.sendRedirect("/zhifou/login.jsp");
 		}
 	}
-	
+	//忘记密码
+	//检查邮箱是否存在
+	public void usermailcheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String usermail = request.getParameter("usermail");
+		Boolean	isexit = service.usermailcheck(usermail);
+		response.getWriter().write(isexit?"1":"0");
+	}
+	public void forgetpassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("已经入forgetpassword方法");
+		String usermail = request.getParameter("usermail");
+		String userpassword = request.getParameter("password");
+		String code = request.getParameter("code");
+		System.out.println(usermail+userpassword);
+		if(Integer.parseInt(code)==0){
+			String content = "<p>"+usermail+"您好 O(∩_∩)O~~<br><br>您正在重置密码!)"
+					+ "<br><br>请在24小时内点击下面的链接重置密码："
+	                +"<br><a href='http://localhost:8080/zhifou/userservlet?method=forgetpassword&usermail="+usermail+"&password="+userpassword+"&code=1'>"
+	                + "href='http://localhost:8080/zhifou/userservlet</a></p>";
+			try {
+				MailUtils.sendMail(usermail,"知否用户激活邮件",content);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			response.sendRedirect("zhaohuimima.jsp");
+		}else if(Integer.parseInt(code)==1){
+			Boolean sucsees = service.forgetpassword(usermail,userpassword);
+			if(sucsees){
+				session = request.getSession();
+				session.setAttribute("usermail", usermail);
+				response.sendRedirect("login.jsp");
+
+			}else{
+				response.sendRedirect("/zhifou/forgetpassword.jsp");
+			}
+		}
+	}
 	
 }
