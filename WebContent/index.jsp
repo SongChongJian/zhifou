@@ -21,7 +21,7 @@
 <meta id="znonce" name="znonce"
 	content="d3edc464cf014708819feffde7ddd01e">
 <link rel="search" type="application/opensearchdescription+xml"
-	href="https://nowcoder.com/static/search.xml" title="牛客">
+	href="https://nowcoder.com/static/search.xml" title="知否">
 <link rel="stylesheet" href="styles/index.css">
 <link rel="stylesheet" href="styles/gdt-style.css">
 <link rel="stylesheet"  href="bootstrap-3.3.7/css/bootstrap.css"/>
@@ -59,10 +59,10 @@
 							<div id="showAll" class="feed-item-inner">
 								<c:forEach items="${userindexs}" varStatus="status" var="item">
 										<div class="avatar">
-											<a title="李淼" data-tip="p$t$amuro1230"
+											<a title="${item.username }" data-tip="p$t$amuro1230"
 												class="zm-item-link-avatar" target="_blank"
 												href="https://nowcoder.com/people/amuro1230"> <img
-												src="images/res/12a8e1ce5ad8060fddb93ae2df98028b_m.jpg"
+												src="${item.userphoto }"
 												class="zm-item-img-avatar"></a>
 										</div>
 										<div class="feed-main">
@@ -215,9 +215,9 @@
 							 usermeans=obj.usermeans;
 						 }
 						content+="<div class='avatar'>"
-						+"		<a title='李淼' data-tip='p$t$amuro1230'"
+						+"		<a title='"+obj.username+"' data-tip='p$t$amuro1230'"
 						+"			class='zm-item-link-avatar' target='_blank'> <img"
-						+"			src='images/res/12a8e1ce5ad8060fddb93ae2df98028b_m.jpg'"
+						+"			src='"+obj.userphoto+"'"
 						+"			class='zm-item-img-avatar'></a>"
 						+"	</div>"
 						+"	<div class='feed-main'>"
