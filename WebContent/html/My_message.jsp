@@ -73,8 +73,7 @@
 			<ul class="letter-list">
 				<c:forEach items="${msgList}" var="item" varStatus="status">
 					<li class=""><em style="font-size: initial">${item.create_time}</em>
-						<em style="font-size: initial"> &nbsp;&nbsp;&nbsp;&nbsp;
-							发信人：${item.from_id}</em> <c:if test="${item.status==1}">
+						 <c:if test="${item.status==1}">
 							</em>
 							<em style="font-size: initial"> &nbsp;&nbsp;&nbsp;&nbsp;
 								状态：已读</em>
@@ -86,8 +85,9 @@
 						<a href="/zhifou/msgServlet?method=doread&id=${item.id}">
 						<p>
 							<strong style="font-size: large">主题： ${item.subject}</a>
-							</strong>							
+							</strong>																					
 						</p>
+						<p>${item.content}</p>
 						</a>
 					<li class=""><em><a href="/zhifou/msgServlet?method=doread&id=${item.id}">回信</a></em> <em><a
 							href="/zhifou/msgServlet?method=delete&id=${item.id}">删除</a></em></li>

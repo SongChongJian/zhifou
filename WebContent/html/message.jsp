@@ -92,7 +92,7 @@
 											<div class="zm-item-answer-author-info">
 												<a class="author-link" data-tip="p$b$amuro1230"
 													target="_blank"
-													href="https://nowcoder.com/people/amuro1230">姓名:${message.from_id}</a>
+													href="https://nowcoder.com/people/amuro1230">昵称:${fromuser.username}</a>
 												<div class="zm-item-rich-text expandable js-collapse-body"
 													data-resourceid="123114" data-action="/answer/content"
 													data-author-name=""

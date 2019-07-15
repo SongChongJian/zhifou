@@ -16,9 +16,9 @@ public class MsgService {
 	    }
 	    public User findUserById(int fromid){
 	        //通过i对方送人的id查找发送者
-	        //User user = msgDao.findUserById(fromid);
-	        //return user;
-	    	return null;
+	        User user = msgDao.findUserById(fromid);
+	        return user;
+	    	
 	    }
 	    public void updateMessage(Message message){
 	        msgDao.updateMessage(message);
