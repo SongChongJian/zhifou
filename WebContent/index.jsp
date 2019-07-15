@@ -61,7 +61,7 @@
 										<div class="avatar">
 											<a title="${item.username }" data-tip="p$t$amuro1230"
 												class="zm-item-link-avatar" target="_blank"
-												href="https://nowcoder.com/people/amuro1230"> <img
+												href="/zhifou/recommend?method=findUserCenter&userid=${item.userid }"> <img
 												src="${item.userphoto }"
 												class="zm-item-img-avatar"></a>
 										</div>
@@ -91,7 +91,7 @@
 													<div class="zm-item-answer-author-info">
 														<a class="author-link" data-tip="p$b$amuro1230"
 															target="_blank"
-															href="https://nowcoder.com/people/amuro1230">${item.username }</a>
+															href="/zhifou/recommend?method=findUserCenter&userid=${item.userid }">${item.username }</a>
 														<span title="${item.usermeans }" class="bio">，${item.usermeans }</span>
 													</div>
 						 					

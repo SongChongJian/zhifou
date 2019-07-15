@@ -194,4 +194,21 @@ public class RecommendServlet extends BaseServlet {
 		request.setAttribute("questions",questions);
 		request.getRequestDispatcher("/html/QuestionIndex.jsp").forward(request, response);
 	}
+	public void findUserCenter(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+		String userid = request.getParameter("userid");
+		Integer id = Integer.parseInt(userid);
+		RecommendService service = new RecommendService();
+		List<Answer> answers = service.GetAnswerByUserId(id);
+		User user = service.FindUserByID(id);
+	    List<UserIndex> userindexs = new ArrayList<>();
+		for (Answer answer : answers) {
+			Question question = service.FindQuestionById(answer.getAnswerid());
+			Category category = service.FindCategoryByID(question.getCategoryid());
+			UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+			userindexs.add(userindex);
+		}
+		request.setAttribute("answers", userindexs);
+		request.getRequestDispatcher("personalCenter.jsp").forward(request, response);		
+
+	}
 }
