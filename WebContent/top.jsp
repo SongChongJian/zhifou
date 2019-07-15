@@ -160,7 +160,7 @@
 									<br/>
 									<br/>
 									<!--选择文件-->
-									<input name="questionphoto" type="file" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 565px;height: 30px;border-radius:3px;"/>
+									<!--<input name="questionphoto" type="file" style="border: 1px solid #869FB1;background-color: #FFFFFF;width: 565px;height: 30px;border-radius:3px;"/> -->
                                 
 									</div>
 									<div class="modal-footer">

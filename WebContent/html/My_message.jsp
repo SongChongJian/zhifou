@@ -32,6 +32,26 @@
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" />
 <script type="text/javascript" src="../js/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
+<style type="text/css">
+.modal-dialog {
+	position: absolute;
+	z-index: 99;
+	max-width: 100%;
+	border-radius: 8px;
+	border: 1px solid #888;
+	box-shadow: 0 0 80px 0 rgba(0, 0, 0, .4);
+	background: #fff;
+	text-align: left;
+	left: 50%;
+	margin-left: -275px;
+	margin-top: 14%;
+	margin-top: 14vh;
+}
+
+.zm-meta-panel #dianzan:hover {
+	background-color: red;
+}
+</style>
 </head>
 <body class="posts_show">
 	<%@ include file="top.jsp"%>
