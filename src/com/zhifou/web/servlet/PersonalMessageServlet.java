@@ -52,7 +52,7 @@ public class PersonalMessageServlet extends BaseServlet {
 	   RecommendService recommendService = new RecommendService();
 	   List<UserIndex> userindexs = new ArrayList<>();
 	   for (Answer answer : answers) {
-		   Question question = recommendService.FindQuestionById(answer.getAnswerid());
+		   Question question = recommendService.FindQuestionById(answer.getQuestionid());
 		   Category category = recommendService.FindCategoryByID(question.getCategoryid());
 		   UserIndex userindex = recommendService.CreateUserIndex(user, answer, question, category);
 		   userindexs.add(userindex);
