@@ -47,7 +47,7 @@
       </div>
     
       <section class="topspaceinfo">
-      	<h1 ><a style="color:white" href="http://localhost:8080/zhifou/ModifyData.jsp">修改资料</a></h1>
+      	<h1 ><a style="color:white" href="/zhifou/ModifyData.jsp">修改资料</a></h1>
       	
         <h1>个人签名</h1>
         <p>${user.usermeans }</p>

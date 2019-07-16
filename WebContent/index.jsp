@@ -70,9 +70,7 @@
 												热门回答，来自 <a href="https://nowcoder.com/topic/19562033"
 													data-tip="t$t$19562033" data-token="19562033"
 													data-topicid="3946" target="_blank">${item.categoryname }</a>
-												<a data-follow="t:link" href="javascript:;"
-													class="zg-follow zu-autohide follow-topic zu-edit-button"
-													data-id="3946">关注话题</a>
+												
 											</div>
 											<div class="feed-content" data-za-module="AnswerItem">
 												<h2 class="feed-title" style="font-size: 25px">
@@ -116,15 +114,6 @@
 													<div
 														class="zm-item-meta answer-actions clearfix js-contentActions">
 														<div class="zm-meta-panel">
-															<a data-follow="q:link"
-																class="follow-link zg-follow meta-item"
-																href="javascript:;" id="sfb-123114"> <i
-																class="z-icon-follow"></i>关注问题
-															</a> 
-															<a href="#" 
-																class="meta-item toggle-comment js-toggleCommentBox">
-																<i class="z-icon-comment"></i>69 条评论
-															</a> 
 															<a onclick="setCollection('${item.answerid}','${item.questionid }')" class="meta-item js-thank"
 																data-thanked="false"> <i class="z-icon-thank"></i>收藏
 															</a>
@@ -225,9 +214,6 @@
 						+"			热门回答，来自 <a "
 						+"				data-tip='t$t$19562033' data-token='19562033'"
 						+"				data-topicid='3946' target='_blank'>"+obj.categoryname+"</a>"
-						+"			<a data-follow='t:link' href='javascript:;'"
-						+"				class='zg-follow zu-autohide follow-topic zu-edit-button'"
-						+"				data-id='3946'>关注话题</a>"
 						+"		</div>"
 						+"		<div class='feed-content' data-za-module='AnswerItem'>"
 						+"			<meta itemprop='answer-id' content='389034'>"
@@ -258,13 +244,7 @@
 						+"				<div"
 						+"					class='zm-item-meta answer-actions clearfix js-contentActions'>"
 						+"					<div class='zm-meta-panel'>"
-						+"						<a data-follow='q:link'"
-						+"							class='follow-link zg-follow meta-item' id='sfb-123114'> <i"
-						+"							class='z-icon-follow'></i>关注问题"
-						+"						</a> <a href='#' name='addcomment'"
-						+"							class='meta-item toggle-comment js-toggleCommentBox'>"
-						+"							<i class='z-icon-comment'></i>69 条评论"
-						+"						</a> <a onclick='setCollection("+obj.answerid+","+obj.questionid+")' class='meta-item js-thank'"
+						+"						  <a onclick='setCollection("+obj.answerid+","+obj.questionid+")' class='meta-item js-thank'"
 						+"							data-thanked='false'> <i class='z-icon-thank'></i>收藏"
 						+"						</a>"
 						+"						<button class='meta-item item-collapse js-collapse'>"

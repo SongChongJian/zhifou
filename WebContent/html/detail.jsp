@@ -13,7 +13,7 @@
 <meta http-equiv="X-ZA-Response-Id"
 	content="4b3ad1bf1e8045f1a016c31f5fbb40c8">
 
-<title>问题详情页面</title>
+<title>回答详情页面</title>
 <meta name="apple-itunes-app"
 	content="app-id=432274380, app-argument=nowcoder://questions/36301524">
 
@@ -96,9 +96,10 @@
 						<a class="zg-anchor-hidden" name="answer-22162611"></a>
 						<div class="answer-head">
 							<div class="zm-item-answer-author-info">
-								<a class="zm-item-link-avatar avatar-link" href=""
+								<a class="zm-item-link-avatar avatar-link" 
+								href="/zhifou/recommend?method=findUserCenter&userid=${AnswerDetail.userid }"
 									target="_blank" data-tip="p$t$yingxiaodao"> <img
-									src="../images/res/11be4a90ed938abfbab4899df56ee754_s.png"
+									src="${AnswerDetail.userphoto }"
 									class="zm-list-avatar avatar"></a> <a class="author-link"
 									data-tip="p$t$yingxiaodao" target="_blank" href="">${AnswerDetail.username }</a>
 								<span title="${AnswerDetail.usermeans }" class="bio">:${AnswerDetail.usermeans }</span>

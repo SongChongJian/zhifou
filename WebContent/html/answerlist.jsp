@@ -111,9 +111,9 @@
 
 							<div class="answer-head">
 								<div class="zm-item-answer-author-info">
-									<a class="zm-item-link-avatar avatar-link" href=""
+									<a class="zm-item-link-avatar avatar-link" href="/zhifou/recommend?method=findUserCenter&userid=${p.userid }"
 										target="_blank" data-tip="p$t$yingxiaodao"> <img
-										src="../images/res/11be4a90ed938abfbab4899df56ee754_s.png"
+										src="${p.userphoto }"
 										class="zm-list-avatar avatar"></a> <a class="author-link"
 										data-tip="p$t$yingxiaodao" target="_blank" href=""></a> <span
 										title="爱科学 爱运动" class="bio"></span>
@@ -145,14 +145,7 @@
 								<div class="zm-meta-panel">
 									<a itemprop="url" class="answer-date-link meta-item"
 										target="_blank" href="">发布于${p.answertime}</a> 
-									<a name="addcomment" href="#modal-container-578824"
-										class="meta-item toggle-comment js-toggleCommentBox "
-										data-toggle="modal"> <i class="z-icon-comment1"></i>私信To
-										${p.username}
-									</a>
-
-
-									<button class="item-collapse js-collapse"
+										<button class="item-collapse js-collapse"
 										style="transition: none;">
 										<i class="z-icon-fold"></i>收起
 									</button>

@@ -12,7 +12,7 @@
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-ZA-Response-Id"
 	content="46acde5c53db46f2806ccad726de9826">
-<title>首页 - 知否</title>
+<title>个人资料修改</title>
 <meta name="apple-itunes-app" content="app-id=432274380">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
