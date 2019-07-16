@@ -255,8 +255,8 @@ public class RecommendServlet extends BaseServlet {
 			UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
 			userindexs.add(userindex);
 		}
+		request.setAttribute("otherUser", user);
 		request.setAttribute("answers", userindexs);
 		request.getRequestDispatcher("personalCenter.jsp").forward(request, response);		
-
 	}
 }

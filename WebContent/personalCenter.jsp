@@ -40,21 +40,20 @@
 	<br /><br />
  <div class="mainContent">
     <aside>
-      <p style="text-align:center;font-size:25px"><span>青春</span></p>
+     
       <div class="avatar">
-      <img src="${user.userphoto}" width="160px" height="160px"/>    
+      <img src="${otherUser.userphoto}" width="160px" height="160px"/>    
                  
       </div>
     
       <section class="topspaceinfo">
-      	<h1 ><a style="color:white" href="/zhifou/ModifyData.jsp">修改资料</a></h1>
-      	
+      <c:if test="${user.userid==otherUser.userid }">
+      		<h1 ><a style="color:white" href="/zhifou/ModifyData.jsp">修改资料</a></h1>
+      	</c:if>
         <h1>个人签名</h1>
-        <p>${user.usermeans }</p>
+        <p>${otherUser.usermeans }</p>
       </section>
-      <div class="userinfo"> 
-        <a href="/" target="_blank">我的邮箱</a></p>   
-      </div>
+      
      
     </aside>
     <div class="blogitem">
@@ -80,7 +79,7 @@
 													<div class="zm-item-answer-author-info">
 														<a class="author-link" data-tip="p$b$amuro1230"
 															target="_blank"
-															href="https://nowcoder.com/people/amuro1230">${item.username }</a>
+															>${item.username }</a>
 														<span title="${item.usermeans }" class="bio">，${item.usermeans }</span>
 													</div>
 						 					
