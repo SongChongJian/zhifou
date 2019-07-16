@@ -42,7 +42,7 @@
     <aside>
       <p style="text-align:center;font-size:25px"><span>青春</span></p>
       <div class="avatar">
-      <img src="${user.userphoto}"/>    
+      <img src="${user.userphoto}" width="160px" height="160px"/>    
                  
       </div>
     
