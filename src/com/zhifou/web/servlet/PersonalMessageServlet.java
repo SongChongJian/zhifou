@@ -67,11 +67,12 @@ public class PersonalMessageServlet extends BaseServlet {
 		request.setCharacterEncoding("utf-8");		
 		User user = (User)request.getSession().getAttribute("user");
 		Integer userid = user.getUserid();
+		String userphoto = user.getUserphoto();
+		String usermeans = user.getUsermeans();
 		String username = null;
 		String userpassword = null;
-		String usermail = null ;
-		String userphoto = null;
-		String usermeans =null;
+		String usermail = null ;	
+		
 		try {
 			// 浣跨敤Apache鏂囦欢涓婁紶缁勪欢澶勭悊鏂囦欢涓婁紶姝ラ锛�
 			// 1銆佸垱寤轰竴涓狣iskFileItemFactory宸ュ巶
@@ -99,38 +100,42 @@ public class PersonalMessageServlet extends BaseServlet {
 							usermail=value;
 							break;
 						case "usermeans":
-							usermeans = value;
+							usermeans = value;							
 							break;						
 					}
 					System.out.println(name + "=" + value);
+					System.out.println(usermeans);
 
 				} else {
 					
-					//璇诲彇涓婁紶鐨勬枃浠�
+				  if(item!=null){
+					// 璇诲彇涓婁紶鐨勬枃浠�
 					InputStream is = item.getInputStream();
-					//aa.jpg  bb.txt  cc.rar
-					String filename = item.getName();					
-					String subfix = filename.substring(filename.indexOf("."));					
-					String nfilename = new Date().getTime()+subfix;
-					
-					userphoto ="/img/"+filename;
-					
-					File file = new File("E:\\upload\\"+filename);
-					if(!file.exists()){
+					// aa.jpg bb.txt cc.rar
+					String filename = item.getName();
+					String subfix = filename.substring(filename.indexOf("."));
+					String nfilename = new Date().getTime() + subfix;
+
+					userphoto = "/img/" + filename;
+
+					File file = new File("E:\\upload\\" + filename);
+					if (!file.exists()) {
 						file.createNewFile();
 					}
-					
+
 					FileOutputStream fos = new FileOutputStream(file);
-					
-					//杞瓨鏂囦欢
+
+					// 杞瓨鏂囦欢
 					byte[] b = new byte[512];
-					int len=-1;//鏍囪鏂囦欢鏄惁璇诲彇缁撴潫
-					while((len=is.read(b))!=-1){
-						fos.write(b,0,len);
-					}									
-					is.close();				
+					int len = -1;// 鏍囪鏂囦欢鏄惁璇诲彇缁撴潫
+					while ((len = is.read(b)) != -1) {
+						fos.write(b, 0, len);
+					}
+					is.close();
 					fos.close();
-					
+				  }
+				  
+				  
 				}
 			}
 		}  catch (Exception e) {

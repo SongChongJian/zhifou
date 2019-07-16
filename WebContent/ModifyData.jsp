@@ -43,7 +43,8 @@
 			<!--表单开始-->
 			<form class="form-horizontal" role="form" action="personalmessageservlet?method=modifyData" method="post" enctype="multipart/form-data" >
 				<div class="form-group">
-					<label for="firstname" class="col-sm-2 control-label">用户名</label>
+					<label for="firstname" class="col-sm-2 control-label" >用户名</label>
+					
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="username" name="username" value="${user.username}"
 							   placeholder="用户名">
@@ -60,10 +61,16 @@
 				<div class="form-group">
 					<label for="lastname" class="col-sm-2 control-label">邮箱</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" id="usermail" name="usermail"  value="${user.usermail}"
-							   placeholder="字段">
+						<input type="text" class="form-control" id="usermail" name="usermail"  value="${user.usermail}">
 					</div>				
 				</div> 
+				
+				<div class="form-group">
+					<label for="lastname" class="col-sm-2 control-label">个人签名</label>
+					<div class="col-sm-4">
+						<textarea rows="3" cols="50"  name="usermeans" id="usermeans"  value="${user.usermeans}" ></textarea>
+					</div>			
+				</div>
 				<div class="form-group">
 					<label for="lastname" class="col-sm-2 control-label">更换头像</label>
 					<div class="col-sm-4">
@@ -71,12 +78,7 @@
 					</div>			
 				</div>
    
-				<div class="form-group">
-					<label for="lastname" class="col-sm-2 control-label">个人签名</label>
-					<div class="col-sm-4">
-						<textarea rows="3" name="usermeans" id="usermeans"  value="${user.usermeans}" cols="50" placeholder="签名"></textarea>
-					</div>			
-				</div>
+				
  
 				<div class="form-group">	
 					<button style="margin-left: 210px " type="submit" class="btn btn-primary"  value="确认修改">确认修改</button>				
@@ -95,9 +97,8 @@
 										修改个人信息
 									</h4>
 								</div>
-								<form></form>
 								<div class="modal-body">
-									<form action="" method="post">
+									<form  action="" method="post">
 					                    <div class="form-group">
 					                        <label for="recipient-name" class="control-label">字段1:</label>
 					                        <input type="text" class="form-control" id="recipient-name">
@@ -132,13 +133,13 @@
 </body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
-function upload(){
+ function upload(){ 
 	var username = document.getElementById("username").value;
 	var userpassword = document.getElementById("userpassword").value;
 	var usermail = document.getElementById("usermail").value;
 	var userphoto = document.getElementById("userphoto").value;
-	var usermeans = document.getElementById("usermeans").value;
-	$.ajax({
+	var usermeans = document.getElementById("usermeans").value; */
+	 $.ajax({
 		url:"/zhifou/personalmessageservlet",
 		async:true,
 		type:"POST",
@@ -155,8 +156,7 @@ function upload(){
 		},
 		dataType:"text"				
 	});  
-}
-
+} 
 
 </script>
 </html>
