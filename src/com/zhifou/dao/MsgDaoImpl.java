@@ -27,11 +27,18 @@ public class MsgDaoImpl {
 				return null;
 			}		
 	    }
-//	    public User findUserById(int id){
-//	        String sql = "select id,nickname,username,password,email,create_time,last_login_time,status from user where id=?";
-//	        User user = JdbcUtils.queryOne(sql,User.class,id);//此处的id是发件人的id
-//	        return user;//发件人的全部信息
-//	    }
+	    public User findUserById(int id){
+	        String sql = "select userid,username,usermail,userphoto,usermeans from user where userid=?";
+	        
+			try {
+				User user = queryrunner.query(sql, new BeanHandler<User>(User.class),id);
+				return user;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+	    }
 	    public void updateMessage(Message message){
 	    	String sql = "update message set status=? where id=?";
 			int update = 0;
@@ -63,5 +70,6 @@ public class MsgDaoImpl {
 				e.printStackTrace();
 			}
 	    }
+
 
 }

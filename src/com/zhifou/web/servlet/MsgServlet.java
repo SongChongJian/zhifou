@@ -40,12 +40,12 @@ public class MsgServlet extends BaseServlet {
         Message message = service.doread(id);
         int   fromId = message.getFrom_id();
         // 通过发送者的Id查找用户
-       // User fromuser = service.findUserById(fromId);
+        User fromuser = service.findUserById(fromId);
         //将信息状态改为已读
         message.setStatus(1);
         service.updateMessage(message);
         //request.setAttribute("fromUser",fromuser);
-        
+        request.getSession().setAttribute("fromuser", fromuser);
         request.getSession().setAttribute("message", message);
         response.sendRedirect("html/message.jsp");
     }
