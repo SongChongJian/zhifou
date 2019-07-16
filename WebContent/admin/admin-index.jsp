@@ -50,11 +50,10 @@
 					管理员:${admin.adminname} <span class="am-icon-caret-down"></span>
 			</a>
 				<ul class="am-dropdown-content">
-					<li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-					<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-					<li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-				</ul></li>
-		</ul>
+					<li><a href="${pageContext.request.contextPath}/admin/admin-user.jsp"><span class="am-icon-user"></span> 资料</a></li>
+				<li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+				<li><a href="/zhifou/adminservlet?method=adminexit"><span class="am-icon-power-off"></span> 退出</a></li>				</ul></li>
+				</ul>
 	</div>
 	</header>
 
@@ -75,7 +74,7 @@
 							href="${pageContext.request.contextPath}/admin/admin-user.jsp"
 							class="am-cf"><span class="am-icon-check"></span> 个人资料<span
 								class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-						<li><a
+						<%-- <li><a
 							href="${pageContext.request.contextPath}/admin/admin-help.jsp"><span
 								class="am-icon-puzzle-piece"></span> 帮助页</a></li>
 						<li><a
@@ -84,7 +83,7 @@
 								class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/admin/admin-log.jsp"><span
-								class="am-icon-calendar"></span> 系统日志</a></li>
+								class="am-icon-calendar"></span> 系统日志</a></li> --%>
 					</ul></li>
 				<li><a
 					href="${pageContext.request.contextPath}/adminservlet?method=questionmanage"><span
@@ -97,9 +96,11 @@
 			<div class="am-panel am-panel-default admin-sidebar-panel">
 				<div class="am-panel-bd">
 					<p>
-						<span class="am-icon-bookmark"></span> 公告
+						<span class="am-icon-bookmark"></span>最新公告
 					</p>
-					<p>时光静好，与君语；细水流年，与君同。—— Zhifou</p>
+					<p>&nbsp;&nbsp;${newnotice.noticetitle}</p>
+					<p>&nbsp;&nbsp;${newnotice.noticecontent}</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${newnotice.noticerelease}</p>
 				</div>
 			</div>
 
