@@ -32,28 +32,37 @@
 				<div class="slide-bar slide-bar1"></div>				
 			</div>
 		</div>
-		<form action="userservlet" method="post" ><!-- onsubmit="return checkall()" -->
-			<div class="login form">		
-				<div class="group">
-					<div class="group-ipt user"><!-- onblur="check_username(this)" -->
-						<input type="text" name="username" autocomplete="off" id="user" class="ipt"  placeholder="选择一个用户名" required>
+		<form action="userservlet" method="post" onsubmit="return checkall()" >
+			<div class="login form" style="width: 500px; height: 250px;">		
+				<div class="group" style="width: 500px; height: 250px; border-width: 0px; border-style: solid; border-color: white; border-image: initial; border-radius: 3px;">
+					<div class="group-ipt user" style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
+						<input style="border-top: 0px" onblur="check_username(this)" type="text" name="username" autocomplete="off" id="user" class="ipt"  placeholder="选择一个用户名" required>
 					</div>
-					<div id="username_message"></div>
-					<div class="group-ipt password"><!-- onblur="check_password(this)"  -->
-						<input type="password" name="password" autocomplete="off" id="password" class="ipt" placeholder="设置登录密码" required>
-					</div><span id="password_message"></span>
-					<div class="group-ipt password1"><!-- onkeyup="check_checkpassword(this)" -->
-						<input type="password" name="checkpassword" autocomplete="off" id="password1" class="ipt"  placeholder="重复密码" required>
-					</div><span id="checkpassword_message"></span>
-					<div class="group-ipt email"><!-- onblur="check_mail(this)" -->
-						<input type="email" name="mail" autocomplete="off" id="email" class="ipt"  placeholder="请输入邮箱" required>
+					<div style="width: 188px; float: left; height: 48px;line-height: 50px;padding-left: 10px;"
+					 id="username_message"></div>
+					<div class="group-ipt password" style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
+						<input style="border-top: 0px" onblur="check_password(this)" type="password" name="password" autocomplete="off" id="password" class="ipt" placeholder="设置登录密码" required>
+					</div>
+					<div  style="width: 188px; float: left; height: 48px;line-height: 50px;padding-left: 10px;"
+					 id="password_message"></div>
+					<div class="group-ipt password1" style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
+						<input style="border-top: 0px" onkeyup="check_checkpassword(this)" type="password" name="checkpassword" autocomplete="off" id="password1" class="ipt"  placeholder="重复密码" required>
+					</div>
+					<div  style="width: 188px; float: left; height: 48px;line-height: 50px;padding-left: 10px;"
+					id="checkpassword_message"></div>
+					<div class="group-ipt email" style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
+						<input style="border-top: 0px" onblur="check_mail(this)" type="email" name="mail" autocomplete="off" id="email" class="ipt"  placeholder="请输入邮箱" required>
 						<input type="hidden" name="method" value="register" />
 						<input type="hidden" name="code" value="0" />
-					</div><span id="mail_message"></span>
-					<div class="group-ipt verify"><!-- onblur="check_checkcode(this)" -->
-						<input type="text" name="checkcode" autocomplete="off" id="verify" class="ipt"  placeholder="输入验证码" required>
+					</div>
+					<div  style="width: 188px; float: left; height: 48px;line-height: 50px;padding-left: 10px;"
+					id="mail_message"></div>
+					<div class="group-ipt verify" style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
+						<input style="border-top: 0px" onblur="check_checkcode(this)" type="text" name="checkcode" autocomplete="off" id="verify" class="ipt"  placeholder="输入验证码" required>
 						<img onclick="changeImg(this)" src="checkimageservlet" class="imgcode" />
-					</div><span id="checkcode_message"></span>
+					</div>
+					<div style="width: 188px; float: left; height: 48px;line-height: 50px;padding-left: 10px;" 
+					id="checkcode_message"></div>
 				</div>
 				<div class="button">
 					<button style="width: 300px" type="submit" class="login-btn register-btn" id="button">注册</button>
@@ -106,7 +115,7 @@
 	}
 	/* 表单验证 */
 	//用户名
-	/*function check_username(e){
+	function check_username(e){
 		var username = e.value;
 		if(username == null || username.trim() == ""){
 			document.getElementById("username_message").innerHTML = "用户名不能为空！";
@@ -126,9 +135,11 @@
 					if (data == 1) {
 						document.getElementById("username_message").innerHTML = "该用户名已存在！";
 						document.getElementById("username_message").style.color = "red";
+						return false;
 					} else {
 						document.getElementById("username_message").innerHTML = "✔";
 						document.getElementById("username_message").style.color = "green";
+						return true;
 					}
 				},
 				error:function(){
@@ -136,7 +147,7 @@
 				},
 				dataType:"json"				
 			});
-			return true;
+			
 		}
 		
 	}
@@ -144,7 +155,12 @@
 	function check_password(e){
 		var password = e.value;
 		var passReg = /\w{6,18}/;
-		if(!passReg.test(password)){
+		if(password==null || password==""){
+			document.getElementById("password_message").innerHTML = "密码不能为空！";
+			document.getElementById("password_message").style.color = "red";
+			return false;
+		}
+		else if(!passReg.test(password)){
 			document.getElementById("password_message").innerHTML = "密码格式不正确(6-18位)！";
 			document.getElementById("password_message").style.color = "red";
 			return false;
@@ -162,11 +178,12 @@
 		var passReg = /\w{6,18}/;
 		var password = document.getElementsByName("password")[0].value;
 		var checkpassword = e.value;
-		if(!passReg.test(checkpassword)){
-			document.getElementById("checkpassword_message").innerHTML = "密码格式不正确(6-18位)！";
-			document.getElementById("checkpassword_message").style.color = "red";
+		if(checkpassword==null || checkpassword==""){
+			document.getElementById("password_message").innerHTML = "密码不能为空！";
+			document.getElementById("password_message").style.color = "red";
 			return false;
-		}else if(password!=checkpassword){
+		}
+		else if(password!=checkpassword){
 			document.getElementById("checkpassword_message").innerHTML = "密码不一致！";
 			document.getElementById("checkpassword_message").style.color = "red";
 			return false;
@@ -186,7 +203,7 @@
 		var email = e.value;
 		var emailReg=/^\w+@\w+\.[A-Za-z]{2,3}$/;
 		if(!emailReg.test(email)){
-			document.getElementById("mail_message").innerHTML = "邮箱格式不正确，请检查！！";
+			document.getElementById("mail_message").innerHTML = "邮箱格式不正确！";
 			document.getElementById("mail_message").style.color = "red";
 			return false;
 		}
@@ -204,7 +221,7 @@
 		var checkcode = e.value;
 		if(checkcode == null || checkcode.trim() == ""){
 			document.getElementById("checkcode_message").innerHTML = "请输入验证码!";
-			document.getElementById("checkcode_message").style.cssText="color:red;font-size: 11px";
+			document.getElementById("checkcode_message").style.cssText="color:red;width: 188px; float: left; height: 50px;line-height: 50px;padding-left: 10px;";
 			return false;
 		}else{
 			$.ajax({
@@ -215,11 +232,12 @@
 				success:function(data){
 					if (data == 0) {
 						document.getElementById("checkcode_message").innerHTML = "验证码不正确!";
-						document.getElementById("checkcode_message").style.cssText="color:red;font-size: 11px";
-						
+						document.getElementById("checkcode_message").style.cssText="color:red;width: 188px; float: left; height: 50px;line-height: 50px;padding-left: 10px;";
+						return false;
 					}else{
 						document.getElementById("checkcode_message").innerHTML = "✔";
 						document.getElementById("checkcode_message").style.color = "green";
+						return true;
 					}
 				},
 				error:function(){
@@ -227,7 +245,7 @@
 				},
 				dataType:"json"				
 			});
-			return true;
+			
 		}
 	}
 	document.getElementsByName("checkcode")[0].onfocus=function(){
@@ -247,7 +265,7 @@
 			return true;
 		}
 		return false;
-	} */
+	} 
 </script>
 </body>
 </html>
