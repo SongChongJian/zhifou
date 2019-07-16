@@ -75,8 +75,9 @@ public class MsgServlet extends BaseServlet {
     public void doreSend(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
    	 try {
    		UserIndex u = (UserIndex) request.getSession().getAttribute("AnswerDetail");
-       int toId = u.getQuestionproposer();
-       int fromId = u.getUserid();
+   		User uss = (User)request.getSession().getAttribute("user");
+       int fromId = uss.getUserid();  
+       int toId = u.getAnswerproposer();
        String subject = u.getCategoryname();
        // = request.getParameter("subject");
        String content = request.getParameter("content");
