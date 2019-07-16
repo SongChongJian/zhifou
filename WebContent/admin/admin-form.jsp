@@ -82,7 +82,7 @@
 							href="${pageContext.request.contextPath}/admin/admin-user.jsp"
 							class="am-cf"><span class="am-icon-check"></span> 个人资料<span
 								class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-						<li><a
+						<%-- <li><a
 							href="${pageContext.request.contextPath}/admin/admin-help.jsp"><span
 								class="am-icon-puzzle-piece"></span> 帮助页</a></li>
 						<li><a
@@ -91,7 +91,7 @@
 								class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/admin/admin-log.jsp"><span
-								class="am-icon-calendar"></span> 系统日志</a></li>
+								class="am-icon-calendar"></span> 系统日志</a></li> --%>
 					</ul></li>
 				<li><a
 					href="${pageContext.request.contextPath}/adminservlet?method=questionmanage"><span
