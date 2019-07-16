@@ -60,6 +60,19 @@ public class MsgDaoImpl {
 	        System.out.println(msglist);
 	        return msglist;
 	    }
+	    public List<Message> getMsgBytoUserId(int id){
+	        List<Message> msglist = new ArrayList();
+	        String sql = "select id,from_id,to_id,subject,content,create_time,status from message where from_id ="+id+" and status!=3";
+			try {
+				msglist  = queryrunner.query(sql,new BeanListHandler<Message>(Message.class));
+				//System.out.println(update);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	        System.out.println(msglist);
+	        return msglist;
+	    }
+	    
 	    public void addMessage(Message message){
 	        String sql = "insert into message(from_id,to_id,subject,content,create_time,status) values(?,?,?,?,?,?)";
 

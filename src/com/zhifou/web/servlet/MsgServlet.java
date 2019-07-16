@@ -32,6 +32,16 @@ public class MsgServlet extends BaseServlet {
 		 request.getSession().setAttribute("msgList", MsgList);
 		 response.sendRedirect("html/My_message.jsp");
 	}	
+	public void findMsgBytoUserId(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, ParseException {
+		 User u = (User) request.getSession().getAttribute("user");
+		 int id = u.getUserid();
+		 System.out.println("当前信息id"+id);
+		 List<Message> MsgList = new ArrayList<>();
+		 MsgList = service.getMsgBytoUserId(id);
+		 request.getSession().setAttribute("msgList", MsgList);
+		 response.sendRedirect("html/My_message.jsp");
+	}	
     //读取信息
     public void doread(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String sid = request.getParameter("id");

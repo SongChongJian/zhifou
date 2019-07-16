@@ -19,7 +19,12 @@
                     </li>
                     <li>
                  	<a href="/zhifou/msgServlet?method=findMsgByUserId" tabindex="-1" id=":2">
-                    <i class="zg-icon zg-icon-dd-pm"></i>我的信息
+                    <i class="zg-icon zg-icon-dd-pm"></i>收件箱
+                    </a>
+                    </li>
+                    <li>
+                 	<a href="/zhifou/msgServlet?method=findMsgBytoUserId" tabindex="-1" id=":2">
+                    <i class="zg-icon zg-icon-dd-pm"></i>发件箱
                     </a>
                     </li>
                     <li>

@@ -30,6 +30,11 @@ public class MsgService {
 	        messageList = msgDao.getMsgByUserId(id);
 	        return  messageList;
 	    }
+	    public List<Message> getMsgBytoUserId(int id){
+	        List<Message> messageList = new ArrayList();
+	        messageList = msgDao.getMsgBytoUserId(id);
+	        return  messageList;
+	    }
 	    public void addMessage(Message message){
 	        msgDao.addMessage(message);
 	    }
