@@ -105,6 +105,9 @@ public class AdminServlet extends BaseServlet {
 	 	request.setAttribute("currentpage", currentpage);
 	 	request.setAttribute("method", "issearched");
 	 	request.setAttribute("categoryid", categoryid);
+	 	//查询所有用户
+	 	List<User> userlist = adminservice.getallusers();
+		request.setAttribute("userlist", userlist);
 	 	//获取问题的类型 -- 调用方法
 	 	List<Category> categorylist = null;
 	 	categorylist = getcategorylist(request,response);
