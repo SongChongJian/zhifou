@@ -153,9 +153,7 @@
 			                                        <div class="zm-editable-editor-outer">
 			                                            <div class="zm-editable-editor-field-wrap">
 			                                                
-			                                                    <textarea name="questioncontent" style="width:100%;height:100%;" placeholder="问题说明">
-												
-												</textarea>
+			                                                    <textarea name="questioncontent" style="width:100%;height:100%;" placeholder="问题说明"></textarea>
 			                                                
 			                                            </div>
 			                                        </div>
