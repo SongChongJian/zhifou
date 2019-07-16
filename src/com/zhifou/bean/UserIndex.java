@@ -25,7 +25,14 @@ public class UserIndex {
 	private String categoryname;//类别名称
 	private Integer answer_count;//回答浏览次数
 	private Integer collectionid;//收藏ID
+	private Integer status=0;//收藏的状态，默认是未收藏
 	
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	public Integer getCollectionid() {
 		return collectionid;
 	}

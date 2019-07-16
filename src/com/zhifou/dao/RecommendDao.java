@@ -245,4 +245,28 @@ public class RecommendDao {
 			}
 			return questions;
 		}
+		//每次点击显示全部，回答浏览次数+1
+		public int addAnswerCount(int id){
+			String sql = "update answer set answer_count = answer_count+1 where answerid = ?";
+			int num=0;
+			try {
+				num=queryrunner.update(sql,id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return num;
+		}
+		//点击问题，问题浏览次数+1
+		public int addQuestionCount(int id){
+			String sql = "update question set question_count = question_count+1 where questionid = ?";
+			int num=0;
+			try {
+				num=queryrunner.update(sql,id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return num;
+		}
 }

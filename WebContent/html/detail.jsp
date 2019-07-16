@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <!-- saved from url=(0039)question/36301524 -->
 <html lang="zh-CN" 
@@ -120,11 +120,21 @@
 								<a name="addcomment" href="#modal-container-578824"
 									class="meta-item toggle-comment js-toggleCommentBox "
 									data-toggle="modal"> <i class="z-icon-comment1"></i>私信
-								</a> <a
-									onclick="setCollection('${AnswerDetail.answerid}','${AnswerDetail.questionid }')"
-									class="meta-item js-thank" data-thanked="false"> <i
-									class="z-icon-thank"></i>收藏
-								</a>
+								</a> 
+								<c:if test="${AnswerDetail.status==0 }">
+									<a
+										onclick="setCollection('${AnswerDetail.answerid}','${AnswerDetail.questionid }')"
+										class="meta-item js-thank" data-thanked="false"> <i
+										class="z-icon-thank"></i>收藏
+									</a>
+								</c:if>
+								<c:if test="${AnswerDetail.status==1 }">
+									<a style="color: #337AB7"
+										onclick="setCollection('${AnswerDetail.answerid}','${AnswerDetail.questionid }')"
+										class="meta-item js-thank" data-thanked="false"> <i
+										class="z-icon-thank"></i>已收藏
+									</a>
+								</c:if>
 								<!-- 点赞按钮-->
 								<button data-za-module="VoteBar" id="dianzan"
 									onclick="likeNum(${AnswerDetail.answerid})"

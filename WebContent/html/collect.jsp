@@ -79,7 +79,7 @@
             <!-- 遍历的到收藏列表 -->
             <c:forEach items="${uindex}" var="item" varStatus="status" >
                 <li id="conversation-item-10005_622873"  class="${item.collectionid}">
-                    <a class="letter-link" href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1"></a>
+                    <a class="letter-link"></a>
                     <div class="letter-info">
                         <div class="l-operate-bar">
                             <a href="javascript:void(0);" class="sns-action-del" data-id="10005_622873"  onclick="deleteCollection(${item.collectionid})">

@@ -13,10 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.zhifou.bean.Answer;
 import com.zhifou.bean.Category;
+import com.zhifou.bean.Collection;
 import com.zhifou.bean.Question;
 import com.zhifou.bean.User;
 import com.zhifou.bean.UserIndex;
 import com.zhifou.service.Adminservice;
+import com.zhifou.service.CollectionService;
 import com.zhifou.service.RecommendService;
 import com.zhifou.utils.JsonUtils;
 
@@ -30,6 +32,7 @@ public class RecommendServlet extends BaseServlet {
 	public void searchQuestionIndex(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("UTF-8");
+		User loginuser = (User) request.getSession().getAttribute("user");
 		RecommendService service = new RecommendService();// 生成RecommendService对象
 		if (request.getSession().getAttribute("search") != null) {
 			request.getSession().removeAttribute("search");
@@ -39,21 +42,39 @@ public class RecommendServlet extends BaseServlet {
 		count++;
 		List<UserIndex> userindexs = new ArrayList<>();
 		// 遍历answer，通过answerid查询到问题，然后找到作者，找到类型。组装成一个userindex对象
-		for (Answer answer : answers) {
-			User user = service.FindUserByID(answer.getAnswerproposer());
-			Question question = service.FindQuestionById(answer.getQuestionid());
-			Category category = service.FindCategoryByID(question.getCategoryid());
-			UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
-			userindexs.add(userindex);
+		if(loginuser!=null){
+			CollectionService collectionService = new CollectionService();
+			for (Answer answer : answers) {
+				User user = service.FindUserByID(answer.getAnswerproposer());
+				Question question = service.FindQuestionById(answer.getQuestionid());
+				Category category = service.FindCategoryByID(question.getCategoryid());
+				List<Collection> list = collectionService.getCollection(loginuser.getUserid());
+				UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+				for (Collection collection : list) {
+					if(collection.getAnswerid()==answer.getAnswerid()){
+						userindex.setStatus(1);
+					}
+				}
+				userindexs.add(userindex);
+			}
+		}else{
+			for (Answer answer : answers) {
+				User user = service.FindUserByID(answer.getAnswerproposer());
+				Question question = service.FindQuestionById(answer.getQuestionid());
+				Category category = service.FindCategoryByID(question.getCategoryid());
+				UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+				userindexs.add(userindex);
+			}
 		}
+		
 		request.getSession().setAttribute("userindexs", userindexs);
 		response.sendRedirect("index.jsp");
-
 	}
 
 	public void searchQuestionByPage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");
+		User loginuser = (User) request.getSession().getAttribute("user");
 		RecommendService service = new RecommendService();
 		if (request.getSession().getAttribute("search") != null) {
 			count = service.GetAllAnswer();// 如果session中有search，说明现在这个界面是搜索得到的。我们不能再显示更多了
@@ -61,12 +82,29 @@ public class RecommendServlet extends BaseServlet {
 		List<Answer> answers = service.FindQuestionByPage(count, pz);
 		count++;
 		List<UserIndex> userindexs = new ArrayList<>();
-		for (Answer answer : answers) {
-			User user = service.FindUserByID(answer.getAnswerproposer());
-			Question question = service.FindQuestionById(answer.getQuestionid());
-			Category category = service.FindCategoryByID(question.getCategoryid());
-			UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
-			userindexs.add(userindex);
+		if(loginuser!=null){
+			CollectionService collectionService = new CollectionService();
+			for (Answer answer : answers) {
+				User user = service.FindUserByID(answer.getAnswerproposer());
+				Question question = service.FindQuestionById(answer.getQuestionid());
+				Category category = service.FindCategoryByID(question.getCategoryid());
+				List<Collection> list = collectionService.getCollection(loginuser.getUserid());
+				UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+				for (Collection collection : list) {
+					if(collection.getAnswerid()==answer.getAnswerid()){
+						userindex.setStatus(1);
+					}
+				}
+				userindexs.add(userindex);
+			}
+		}else{
+			for (Answer answer : answers) {
+				User user = service.FindUserByID(answer.getAnswerproposer());
+				Question question = service.FindQuestionById(answer.getQuestionid());
+				Category category = service.FindCategoryByID(question.getCategoryid());
+				UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+				userindexs.add(userindex);
+			}
 		}
 		String jsonData = JsonUtils.objectToJson(userindexs);
 		System.out.println(jsonData);
@@ -75,13 +113,22 @@ public class RecommendServlet extends BaseServlet {
 
 	public void showAnswerDetail(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String value = request.getParameter("answerid");
+		User loginuser=(User)request.getSession().getAttribute("user");
 		int answerid = Integer.parseInt(value);
 		RecommendService service = new RecommendService();
+		service.addAnswerCount(answerid);//浏览次数+1
+		CollectionService collectionService = new CollectionService();
 		Answer answer = service.FindAnswerByID(answerid);
 		User user = service.FindUserByID(answer.getAnswerproposer());
 		Question question = service.FindQuestionById(answer.getQuestionid());
 		Category category = service.FindCategoryByID(question.getCategoryid());
 		UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
+		List<Collection> list = collectionService.getCollection(loginuser.getUserid());
+		for (Collection collection : list) {
+			if(collection.getAnswerid()==answer.getAnswerid()){
+				userindex.setStatus(1);
+			}
+		}
 		int number = service.GetCollectNumber(answerid);
 		Jedis j = null;
 		j = new Jedis("127.0.0.1", 6379);
@@ -150,6 +197,7 @@ public class RecommendServlet extends BaseServlet {
 		int number = service.GetQuestionNumber(questionid);
 		request.getSession().setAttribute("number", number);
 		request.getSession().setAttribute("Question", q);// 存一个question，存放最上面标题等信息
+		service.addQuestionCount(questionid);//问题浏览次数+1
 		List<Answer> answers = service.FindAllAnswer(questionid);
 		List<UserIndex> userindexs = new ArrayList<>();
 		for (Answer answer : answers) {
@@ -202,7 +250,7 @@ public class RecommendServlet extends BaseServlet {
 		User user = service.FindUserByID(id);
 	    List<UserIndex> userindexs = new ArrayList<>();
 		for (Answer answer : answers) {
-			Question question = service.FindQuestionById(answer.getAnswerid());
+			Question question = service.FindQuestionById(answer.getQuestionid());
 			Category category = service.FindCategoryByID(question.getCategoryid());
 			UserIndex userindex = service.CreateUserIndex(user, answer, question, category);
 			userindexs.add(userindex);

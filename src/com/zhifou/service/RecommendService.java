@@ -59,4 +59,10 @@ public class RecommendService {
 	public List<Question> getAllQuestions(){
 		return recommendDao.getAllQuestions();
 	}
+	public int addAnswerCount(int id){
+		return recommendDao.addAnswerCount(id);
+	}
+	public int addQuestionCount(int id){
+		return recommendDao.addQuestionCount(id);
+	}
 }

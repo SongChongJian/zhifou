@@ -114,14 +114,17 @@
 													<div
 														class="zm-item-meta answer-actions clearfix js-contentActions">
 														<div class="zm-meta-panel">
+														<c:if test="${item.status==0 }">
 															<a onclick="setCollection('${item.answerid}','${item.questionid }')" class="meta-item js-thank"
-																data-thanked="false"> <i class="z-icon-thank"></i>收藏
+																	data-thanked="false"> <i class="z-icon-thank"></i>收藏
 															</a>
-	
-	
-															<button class="meta-item item-collapse js-collapse">
-																<i class="z-icon-fold"></i>收起
-															</button>
+														</c:if>
+															<c:if test="${item.status==1 }">
+															<a style="color: #337AB7" onclick="setCollection('${item.answerid}','${item.questionid }')" class="meta-item js-thank"
+																	data-thanked="false"> <i class="z-icon-thank"></i>已收藏
+															</a>
+														</c:if>
+															
 														</div>
 													</div>
 													
@@ -203,59 +206,115 @@
 						 if(obj.usermeans!=null){
 							 usermeans=obj.usermeans;
 						 }
-						content+="<div class='avatar'>"
-						+"		<a title='"+obj.username+"' data-tip='p$t$amuro1230'"
-						+"			class='zm-item-link-avatar' target='_blank'> <img"
-						+"			src='"+obj.userphoto+"'"
-						+"			class='zm-item-img-avatar'></a>"
-						+"	</div>"
-						+"	<div class='feed-main'>"
-						+"		<div class='feed-source' data-za-module='FeedSource'>"
-						+"			热门回答，来自 <a "
-						+"				data-tip='t$t$19562033' data-token='19562033'"
-						+"				data-topicid='3946' target='_blank'>"+obj.categoryname+"</a>"
-						+"		</div>"
-						+"		<div class='feed-content' data-za-module='AnswerItem'>"
-						+"			<meta itemprop='answer-id' content='389034'>"
-						+"			<meta itemprop='answer-url-token' content='13174385'>"
-						+"			<h2 class='feed-title'>"
-						+"				<a href='/zhifou/recommend?method=showQuestionDetail&questionid="+obj.questionid+"' class='question_link' target='_blank'>"+obj.questiontitle+"</a>"
-						+"			</h2>"
-						+"			<div class='feed-question-detail-item'>"
-						+"				<div class='question-description-plain zm-editable-content'></div>"
-						+"			</div>"
-						+"		"
-						+"				<div class='zm-item-rich-text expandable js-collapse-body'"
-						+"					data-resourceid='123114' data-action='/answer/content'"
-						+"					data-author-name='"+obj.username+"'"
-						+"					data-entry-url='/question/19857995/answer/13174385'>"
-						+"					<textarea hidden='' class='content'></textarea>"
-						+"					<div class='zh-summary summary clearfix'><p class='answercontent'>"+obj.answercontent+"</p>"
-						+"						<a href='/zhifou/recommend?method=showAnswerDetail&answerid="+obj.answerid+"' class='toggle-expand'>显示全部</a>"
-						+"					</div>"
-						+"					<p class='visible-expanded'>"
-						+"						<a itemprop='url' class='answer-date-link meta-item'"
-						+"							data-tip='s$t$发布于 2011-09-23' target='_blank'>编辑于"
-						+"							2015-06-24</a>"
-						+"					</p>"
-						+"				</div>"
-						+"			</div>"
-						+"			<div class='feed-meta'>"
-						+"				<div"
-						+"					class='zm-item-meta answer-actions clearfix js-contentActions'>"
-						+"					<div class='zm-meta-panel'>"
-						+"						  <a onclick='setCollection("+obj.answerid+","+obj.questionid+")' class='meta-item js-thank'"
-						+"							data-thanked='false'> <i class='z-icon-thank'></i>收藏"
-						+"						</a>"
-						+"						<button class='meta-item item-collapse js-collapse'>"
-						+"							<i class='z-icon-fold'></i>收起"
-						+"						</button>"
-						+"					</div>"
-						+"				</div>"
-						+"			</div>"
-						+"		</div>"
-						+"	</div>"
-					;
+						if(obj.status==0){
+							content+="<div class='avatar'>"
+								+"		<a title='"+obj.username+"' data-tip='p$t$amuro1230'"
+								+"			class='zm-item-link-avatar' target='_blank'> <img"
+								+"			src='"+obj.userphoto+"'"
+								+"			class='zm-item-img-avatar'></a>"
+								+"	</div>"
+								+"	<div class='feed-main'>"
+								+"		<div class='feed-source' data-za-module='FeedSource'>"
+								+"			热门回答，来自 <a "
+								+"				data-tip='t$t$19562033' data-token='19562033'"
+								+"				data-topicid='3946' target='_blank'>"+obj.categoryname+"</a>"
+								+"		</div>"
+								+"		<div class='feed-content' data-za-module='AnswerItem'>"
+								+"			<meta itemprop='answer-id' content='389034'>"
+								+"			<meta itemprop='answer-url-token' content='13174385'>"
+								+"			<h2 class='feed-title'>"
+								+"				<a href='/zhifou/recommend?method=showQuestionDetail&questionid="+obj.questionid+"' class='question_link' target='_blank'>"+obj.questiontitle+"</a>"
+								+"			</h2>"
+								+"			<div class='feed-question-detail-item'>"
+								+"				<div class='question-description-plain zm-editable-content'></div>"
+								+"			</div>"
+								+"		"
+								+"				<div class='zm-item-rich-text expandable js-collapse-body'"
+								+"					data-resourceid='123114' data-action='/answer/content'"
+								+"					data-author-name='"+obj.username+"'"
+								+"					data-entry-url='/question/19857995/answer/13174385'>"
+								+"					<textarea hidden='' class='content'></textarea>"
+								+"					<div class='zh-summary summary clearfix'><p class='answercontent'>"+obj.answercontent+"</p>"
+								+"						<a href='/zhifou/recommend?method=showAnswerDetail&answerid="+obj.answerid+"' class='toggle-expand'>显示全部</a>"
+								+"					</div>"
+								+"					<p class='visible-expanded'>"
+								+"						<a itemprop='url' class='answer-date-link meta-item'"
+								+"							data-tip='s$t$发布于 2011-09-23' target='_blank'>编辑于"
+								+"							2015-06-24</a>"
+								+"					</p>"
+								+"				</div>"
+								+"			</div>"
+								+"			<div class='feed-meta'>"
+								+"				<div"
+								+"					class='zm-item-meta answer-actions clearfix js-contentActions'>"
+								+"					<div class='zm-meta-panel'>"
+								+"						  <a onclick='setCollection("+obj.answerid+","+obj.questionid+")' class='meta-item js-thank'"
+								+"							data-thanked='false'> <i class='z-icon-thank'></i>收藏"
+								+"						</a>"
+								+"						<button class='meta-item item-collapse js-collapse'>"
+								+"							<i class='z-icon-fold'></i>收起"
+								+"						</button>"
+								+"					</div>"
+								+"				</div>"
+								+"			</div>"
+								+"		</div>"
+								+"	</div>"
+							;
+						}else if(obj.status==1){
+							content+="<div class='avatar'>"
+								+"		<a title='"+obj.username+"' data-tip='p$t$amuro1230'"
+								+"			class='zm-item-link-avatar' target='_blank'> <img"
+								+"			src='"+obj.userphoto+"'"
+								+"			class='zm-item-img-avatar'></a>"
+								+"	</div>"
+								+"	<div class='feed-main'>"
+								+"		<div class='feed-source' data-za-module='FeedSource'>"
+								+"			热门回答，来自 <a "
+								+"				data-tip='t$t$19562033' data-token='19562033'"
+								+"				data-topicid='3946' target='_blank'>"+obj.categoryname+"</a>"
+								+"		</div>"
+								+"		<div class='feed-content' data-za-module='AnswerItem'>"
+								+"			<meta itemprop='answer-id' content='389034'>"
+								+"			<meta itemprop='answer-url-token' content='13174385'>"
+								+"			<h2 class='feed-title'>"
+								+"				<a href='/zhifou/recommend?method=showQuestionDetail&questionid="+obj.questionid+"' class='question_link' target='_blank'>"+obj.questiontitle+"</a>"
+								+"			</h2>"
+								+"			<div class='feed-question-detail-item'>"
+								+"				<div class='question-description-plain zm-editable-content'></div>"
+								+"			</div>"
+								+"		"
+								+"				<div class='zm-item-rich-text expandable js-collapse-body'"
+								+"					data-resourceid='123114' data-action='/answer/content'"
+								+"					data-author-name='"+obj.username+"'"
+								+"					data-entry-url='/question/19857995/answer/13174385'>"
+								+"					<textarea hidden='' class='content'></textarea>"
+								+"					<div class='zh-summary summary clearfix'><p class='answercontent'>"+obj.answercontent+"</p>"
+								+"						<a href='/zhifou/recommend?method=showAnswerDetail&answerid="+obj.answerid+"' class='toggle-expand'>显示全部</a>"
+								+"					</div>"
+								+"					<p class='visible-expanded'>"
+								+"						<a itemprop='url' class='answer-date-link meta-item'"
+								+"							data-tip='s$t$发布于 2011-09-23' target='_blank'>编辑于"
+								+"							2015-06-24</a>"
+								+"					</p>"
+								+"				</div>"
+								+"			</div>"
+								+"			<div class='feed-meta'>"
+								+"				<div"
+								+"					class='zm-item-meta answer-actions clearfix js-contentActions'>"
+								+"					<div class='zm-meta-panel'>"
+								+"						  <a style='color: #337AB7' onclick='setCollection("+obj.answerid+","+obj.questionid+")' class='meta-item js-thank'"
+								+"							data-thanked='false'> <i class='z-icon-thank'></i>已收藏"
+								+"						</a>"
+								+"						<button class='meta-item item-collapse js-collapse'>"
+								+"							<i class='z-icon-fold'></i>收起"
+								+"						</button>"
+								+"					</div>"
+								+"				</div>"
+								+"			</div>"
+								+"		</div>"
+								+"	</div>"
+							;
+						}
 					}); 
 				}else{
 					$("#zh-load-more").html("已经到底了！！")
@@ -277,6 +336,7 @@
 			data:{"method":"addCollection","answerid":answerid,"questionid":questionid},
 			success:function(data){
 				alert("收藏成功");
+				window.location.href="/zhifou/recommend?method=searchQuestionIndex";
 			},
 			error:function(){
 				alert("您已收藏过该回答！可进入我的收藏查看！");
