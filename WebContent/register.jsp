@@ -32,7 +32,7 @@
 				<div class="slide-bar slide-bar1"></div>				
 			</div>
 		</div>
-		<form action="userservlet" method="post" onsubmit="return checkall()" >
+		<form action="userservlet" method="post"  ><!-- onsubmit="return checkall()" -->
 			<div class="login form" style="width: 500px; height: 250px;">		
 				<div class="group" style="width: 500px; height: 250px; border-width: 0px; border-style: solid; border-color: white; border-image: initial; border-radius: 3px;">
 					<div class="group-ipt user" style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">

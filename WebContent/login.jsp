@@ -2,19 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html class="no-js">
+<html>
 <head>
 <title>登录 - 知否</title>
 <link rel="stylesheet" type="text/css" href="styles/register-login.css">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">
-
-<script src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
 </head>
 <body>
 	<div id="box"></div>
@@ -31,34 +22,31 @@
 					<div class="slide-bar"></div>
 				</div>
 			</div>
-			<form action="userservlet" method="post" onsubmit="return checkall()">
+			<form action="userservlet" method="post" ><!-- onsubmit="return checkall();" -->
 				<div class="login form" style="width: 500px; height: 160px;">
-					<div class="group"
-						style="width: 500px; height: 160px; border-width: 0px; border-style: solid; border-color: white; border-image: initial; border-radius: 3px;">
-						<div class="group-ipt email"
-							style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
-							<input onblur="check_mail(this)" type="text" name="mail"
-								id="email" class="ipt" autocomplete="off" value=""
-								placeholder="邮箱地址" required> <input type="hidden"
-								name="method" value="login" />
+					<div class="group" style="width: 500px; height: 160px; border-width: 0px; border-style: solid; border-color: white; border-image: initial; border-radius: 3px;">
+						<!-- 邮箱 -->
+						<div class="group-ipt email" style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
+							<input required onblur="check_mail(this)" type="text" name="mail" id="email" class="ipt" autocomplete="off" value="" placeholder="邮箱地址" >
+							<!-- servlet方法提交 -->	
+							<input type="hidden" name="method" value="login" />
 						</div>
+						<!-- 邮箱验证 -->
 						<div style="width: 188px; float: left; height: 50px;line-height: 50px;padding-left: 10px;"
 							id="mail_message"></div>
-						<div class="group-ipt password"
-							style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
-							<input onblur="check_password(this)" type="password"
-								name="password" id="userpassword" class="ipt" autocomplete="off"
-								value="" placeholder="输入您的登录密码" required>
+						<!-- 密码 -->	
+						<div class="group-ipt password" style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
+							<input required onblur="check_password(this)" type="password" name="password" id="userpassword" class="ipt" autocomplete="off" value="" placeholder="输入您的登录密码" >
 						</div>
+						<!-- 密码验证 -->
 						<div style="width: 188px; float: left; height: 50px;line-height: 50px;padding-left: 10px;"
 							id="password_message"></div>
-						<div class="group-ipt verify"
-							style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
-							<input style="border-top: 0px" onblur="check_checkcode(this)" type="text"
-								name="checkcode" id="verify" class="ipt" autocomplete="off"
-								value="" placeholder="输入验证码" required> <img
-								src="checkimageservlet" class="imgcode" />
+						<!-- 验证码 -->	
+						<div class="group-ipt code" style="float: left; width: 300px; border-width: 1px; border-style: solid; border-color: rgb(213, 213, 213); border-image: initial; border-radius: 3px;">
+							<input required style="border-top: 0px" onblur="check_checkcode(this)" type="text" name="checkcode" id="code" class="ipt" autocomplete="off" value="" placeholder="输入验证码" > 
+							<img src="checkimageservlet" class="imgcode" />
 						</div>
+						<!-- 验证码验证 -->
 						<div style="width: 188px; float: left; height: 50px;line-height: 50px;padding-left: 10px;"
 							id="checkcode_message"></div>
 					</div>
@@ -73,17 +61,6 @@
 					</label>
 				</div>
 			</form>
-			<script>
-				var remember = $.cookie("remember");
-				if (remember == "true") {//说明 cookie里有用户信息
-					var mail = $.cookie("mail");
-					var password = $.cookie("password");
-					//回填数据到输入框
-					$("#email").val(mail);
-					$("#password").val(password);
-					$("#remember").prop("checked", true);
-				}
-			</script>
 		</div>
 	</div>
 
@@ -94,38 +71,44 @@
 		</p>
 	</div>
 
-	<script src='js/particles.js' type="text/javascript"></script>
-	<script src='js/background.js' type="text/javascript"></script>
-	<script src='js/jquery.min.js' type="text/javascript"></script>
-	<script src='js/layer/layer.js' type="text/javascript"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-	<link rel="stylesheet"
-		href="${pageContext.request.contextPath}/admin/bootstrap-3.3.7-dist/css/bootstrap.css">
-	<script>
-		$('.imgcode').hover(function() {
-			layer.tips("看不清？点击更换", '.verify', {
-				time : 6000,
-				tips : [ 2, "#3c3c3c" ]
-			})
-		}, function() {
-			layer.closeAll('tips');
-		}).click(
-				function() {
-					$(this).attr('src',
-							'checkimageservlet?time=' + new Date().getTime());
-				});
-		$("#remember-me").click(function() {
-			var n = document.getElementById("remember-me").checked;
-			if (n) {
-				$(".zt").show();
-			} else {
-				$(".zt").hide();
-			}
-		});
-	</script>
+<script src='js/particles.js' type="text/javascript"></script>
+<script src='js/background.js' type="text/javascript"></script>
+<script src='js/jquery.min.js' type="text/javascript"></script>
+<script src='js/layer/layer.js' type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
+<script>
+	var remember = $.cookie("remember");
+	if (remember == "true") {//说明 cookie里有用户信息
+		var mail = $.cookie("mail");
+		var password = $.cookie("password");
+		//回填数据到输入框
+		$("#email").val(mail);
+		$("#password").val(password);
+		$("#remember").prop("checked", true);
+	} 
+</script>
+<script>
+	$('.imgcode').hover(function() {
+		layer.tips("看不清？点击更换", '.code', {
+			time : 6000,
+			tips : [ 2, "#3c3c3c" ]
+		})
+	}, function() {
+		layer.closeAll('tips');
+	}).click(
+			function() {
+				$(this).attr('src',
+						'checkimageservlet?time=' + new Date().getTime());
+			});
+	$("#remember-me").click(function() {
+		var n = document.getElementById("remember-me").checked;
+		if (n) {
+			$(".zt").show();
+		} else {
+			$(".zt").hide();
+		}
+	});
+</script>
 	<script>
 		/* 更改验证码 */
 		/* 	function changeImg(e){
@@ -144,7 +127,7 @@
 				document.getElementById("mail_message").style.color = "red";
 				return false;
 			}
-			else if (!emailReg.test(email)) {
+			else if(!emailReg.test(email)) {
 				document.getElementById("mail_message").innerHTML = "邮箱格式不正确，请检查！";
 				document.getElementById("mail_message").style.color = "red";
 				return false;
@@ -220,20 +203,23 @@
 		}
 
 		//判断提交条件
-		function checkall() {
+ 		function checkall() {
+			
+			//check_password(document.getElementsById("userpassword"));
+			//check_mail(document.getElementsById("email"));
+			//check_checkcode(document.getElementsById("code"));
 			var password = check_password(document.getElementsById("userpassword"));
-			var mail = check_mail(document.getElementsById("email"));
-			var checkcode = check_checkcode(document.getElementsById("verify"));
-			if (password && mail && checkcode) {
+			//var mail = check_mail(document.getElementsById("email"));
+			//var checkcode = check_checkcode(document.getElementsById("code"));		
+			if (password) {
 				return true;
-			} else {
+			}else {
 				check_password(document.getElementsById("userpassword"));
 				check_mail(document.getElementsById("email"));
-				check_checkcode(document.getElementsById("verify"));
+				check_checkcode(document.getElementsById("code"));
 				return false;
-			}
-
-		}
+			} 	
+		} 
 	</script>
 </body>
 </html>

@@ -21,11 +21,11 @@ public class AdminFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse)response;
 		HttpServletRequest req = (HttpServletRequest)request;
 		Object obj = req.getSession().getAttribute("admin");
-		if(obj == null) {
+		if(obj == null && req.getRequestURI().endsWith(".jsp")) {
 			resp.sendRedirect("/zhifou/adminlogin.jsp");
 		}
 		chain.doFilter(request, response);
-		
+
 	}
     public AdminFilter() {}
 	public void destroy() {}
