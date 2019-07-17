@@ -67,9 +67,9 @@
 										</div>
 										<div class="feed-main">
 											<div class="feed-source" data-za-module="FeedSource">
-												热门回答，来自 <a href="https://nowcoder.com/topic/19562033"
+												热门回答，来自 <a 
 													data-tip="t$t$19562033" data-token="19562033"
-													data-topicid="3946" target="_blank">${item.categoryname }</a>
+													data-topicid="3946" >${item.categoryname }</a>
 												
 											</div>
 											<div class="feed-content" data-za-module="AnswerItem">
