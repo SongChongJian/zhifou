@@ -5,6 +5,8 @@
 <html>
 <head>
 <title>登录 - 知否</title>
+ <script src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
+ <script src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
 <link rel="stylesheet" type="text/css" href="styles/register-login.css">
 </head>
 <body>
@@ -70,12 +72,6 @@
 			Designed By ZhiFou & <a href="zrong.me">mycodes.net</a> 2019
 		</p>
 	</div>
-
-<script src='js/particles.js' type="text/javascript"></script>
-<script src='js/background.js' type="text/javascript"></script>
-<script src='js/jquery.min.js' type="text/javascript"></script>
-<script src='js/layer/layer.js' type="text/javascript"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
 <script>
 	var remember = $.cookie("remember");
 	if (remember == "true") {//说明 cookie里有用户信息
@@ -83,10 +79,16 @@
 		var password = $.cookie("password");
 		//回填数据到输入框
 		$("#email").val(mail);
-		$("#password").val(password);
+		$("#userpassword").val(password);
 		$("#remember").prop("checked", true);
 	} 
 </script>
+<script src='js/particles.js' type="text/javascript"></script>
+<script src='js/background.js' type="text/javascript"></script>
+<script src='js/jquery.min.js' type="text/javascript"></script>
+<script src='js/layer/layer.js' type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
+
 <script>
 	$('.imgcode').hover(function() {
 		layer.tips("看不清？点击更换", '.code', {

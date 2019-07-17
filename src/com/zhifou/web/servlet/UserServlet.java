@@ -92,7 +92,6 @@ public class UserServlet extends BaseServlet {
 		String usermail = request.getParameter("mail");
 		String password = request.getParameter("password");
 		String remember = request.getParameter("remember");
-		System.out.println(remember);
 		User user= service.login(usermail,password);
 		if(user!=null){
 			if("true".equals(remember)){
