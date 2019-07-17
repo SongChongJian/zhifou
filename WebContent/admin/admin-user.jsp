@@ -17,8 +17,8 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/assets/css/amazeui.min.css"/>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/assets/css/admin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/admin/toastr/toastr.min.css">
-  <script type="text/javascript" src="${pageContext.request.contextPath}/admin/toastr/toastr.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/admin/toastr/toastr.min.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/toastr/toastr.min.js"></script>
 </head>
 <body>
 
@@ -35,7 +35,7 @@
       <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
       <li class="am-dropdown" data-am-dropdown>
         <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-          <span class="am-icon-users"></span> 管理员:${admin.adminname}<span class="am-icon-caret-down"></span>
+          <span class="am-icon-users"></span><span id = "newadminname">管理员:${admin.adminname}</span><span class="am-icon-caret-down"></span>
         </a>
         <ul class="am-dropdown-content">
 			<li><a href="${pageContext.request.contextPath}/admin/admin-user.jsp"><span class="am-icon-user"></span> 资料</a></li>
@@ -94,7 +94,7 @@
     <div class="am-g">
 
       <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
-        <div class="am-panel am-panel-default">
+        <%-- <div class="am-panel am-panel-default">
           <div class="am-panel-bd">
             <div class="am-g">
               <div class="am-u-md-4">
@@ -112,9 +112,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --%>
 
-        <div class="am-panel am-panel-default">
+        <!-- <div class="am-panel am-panel-default">
           <div class="am-panel-bd">
             <div class="user-info">
               <p>等级信息</p>
@@ -131,7 +131,7 @@
               <p class="user-info-order">信用等级：正常当前 信用积分：<strong>80</strong></p>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
@@ -188,11 +188,13 @@
   <hr>
   <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
 </footer>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/amazeui.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/admin/assets/js/jquery.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/admin/assets/js/amazeui.min.js"></script>
+	<!--<![endif]-->
+	<script src="${pageContext.request.contextPath}/admin/assets/js/app.js"></script>
 </body>
-<script type="text/javascript" src="${pageContext.request.contextPath}/admin/assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	toastr.options = {
 			  "closeButton": false,
@@ -211,30 +213,25 @@
 			  "showMethod": "fadeIn",
 			  "hideMethod": "fadeOut"
 			}
-/* 	toastr.options.positionClass = 'toast-top-center';
-	toastr.success('审核成功');
-	toastr.warning('审核失败');*/
-</script>
-<script type="text/javascript">
+/* 	toastr.options.positionClass = 'toast-top-center'; */
 	//修改管理员信息
 	function changeadmininformation(){
 		var adminname = document.getElementById("adminname").value;
 		var adminpassword = document.getElementById("adminpassword").value;
 		var adminmail = document.getElementById("adminmail").value;
-		var adminphoto = document.getElementById("adminphoto").src;
 		$.ajax({
 			url:"/zhifou/adminservlet",
 			async:true,
 			type:"POST",
-			data:{"method":"changeadmininformation","adminname":adminname,"adminpassword":adminpassword,"adminmail":adminmail,"adminphoto":adminphoto},
+			data:{"method":"changeadmininformation","adminname":adminname,"adminpassword":adminpassword,"adminmail":adminmail},
 			success:function(data){
 				if (data==1){
-					/* document.getElementById("adminnamemessage").value="";
-					document.getElementById("adminpasswordmessage").value="";
-					document.getElementById("adminmailmessage").value=""; */
-					toastr.success('修改成功');
+					document.getElementById("newadminname").innerHTML = "管理员:"+adminname;
+				 	alert("修改成功");		 	
+					/* toastr.success('修改成功'); */
 				}else{
-					toastr.error('修改失败');
+					alert("修改失败");
+					/* toastr.error('修改失败'); */
 				}
 			},
 			error:function(){

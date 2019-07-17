@@ -243,8 +243,7 @@ public class Admindao {
 		return category!=null?true:false;
 	}
 	//管理员修改个人信息
-	public int changeadmininformation(Integer adminid,String adminname, String adminpassword, String adminmail,
-			String adminphoto) {
+	public Admin changeadmininformation(Integer adminid,String adminname, String adminpassword, String adminmail) {
 		/*List<String> messagelist = null;
 		Admin admin = null;
 		try {
@@ -274,14 +273,24 @@ public class Admindao {
 			return null;
 	
 		}*/
-		String sql = "UPDATE admin SET adminname = ? , adminpassword = ? , adminmail = ? , adminphoto = ? WHERE adminid = ?";
+		String sql = "UPDATE admin SET adminname = ? , adminpassword = ? , adminmail = ? WHERE adminid = ?";
+		String sql2 = "select * from admin where adminid = ?";
 		int row = 0;
+		Admin newadmin = null;
 		try {
-			row = queryrunner.update(sql, adminname,adminpassword,adminmail,adminphoto,adminid);
+			row = queryrunner.update(sql, adminname,adminpassword,adminmail,adminid);
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
-		return row;
+		if(row>0){
+			try {
+				newadmin = queryrunner.query(sql2, new BeanHandler<Admin>(Admin.class), adminid);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return newadmin;
 	}
 
 }

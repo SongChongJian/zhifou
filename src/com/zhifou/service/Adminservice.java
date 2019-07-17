@@ -90,9 +90,8 @@ public class Adminservice {
 		return admindao.checknewcategory(newcategory);
 	}
 	//管理员修改个人信息
-	public int changeadmininformation(Integer adminid,String adminname, String adminpassword, String adminmail,
-			String adminphoto) {
-		return admindao.changeadmininformation(adminid,adminname,adminpassword,adminmail,adminphoto);
+	public Admin changeadmininformation(Integer adminid,String adminname, String adminpassword, String adminmail) {
+		return admindao.changeadmininformation(adminid,adminname,adminpassword,adminmail);
 	}
 	
 

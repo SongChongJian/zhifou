@@ -177,6 +177,9 @@ public class AdminServlet extends BaseServlet {
 	 	request.setAttribute("currentpage", currentpage);
 	 	request.setAttribute("method", "fuzzysearch");
 	 	request.setAttribute("fuzzy", fuzzy);
+	 	//查询所有用户
+	 	List<User> userlist = adminservice.getallusers();
+		request.setAttribute("userlist", userlist);
 	 	//获取问题的类型
 	 	List<Category> categorylist = adminservice.getcategory();
 	 	request.setAttribute("categorylist", categorylist);
@@ -240,12 +243,17 @@ public class AdminServlet extends BaseServlet {
 		String adminname = request.getParameter("adminname");
 		String adminpassword = request.getParameter("adminpassword");
 		String adminmail = request.getParameter("adminmail");
-		String adminphoto = request.getParameter("adminphoto");
 		HttpSession session = request.getSession();
 		Admin admin = (Admin)session.getAttribute("admin");
 		int adminid = admin.getAdminid();
-		int issucsses = adminservice.changeadmininformation(adminid,adminname,adminpassword,adminmail,adminphoto);
-		response.getWriter().write(issucsses==1?"1":"0");
+		Admin newadmin = adminservice.changeadmininformation(adminid,adminname,adminpassword,adminmail);
+		if(newadmin!=null){
+			session.setAttribute("admin", newadmin);
+			response.getWriter().write("1");
+		}else{
+			response.getWriter().write("0");
+		}
+		
 	}
 	//===================================================================================================================================
 	//管理员退出登录

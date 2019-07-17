@@ -457,7 +457,7 @@
 		if(content == null || content.trim() == ""){
 			document.getElementById("noticecontent").placeholder = "公告内容不能为空！";
 			toastr.warning('请检查字段');
-			document.getElementById("noticecontent").placeholder.style.color = "red";
+			
 			return false;
 		}
 		return true;
