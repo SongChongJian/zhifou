@@ -197,6 +197,7 @@
 							},
 							success : function(data) {
 								alert("收藏成功");
+								window.location.href="/zhifou/recommend?method=showAnswerDetail&answerid="+answerid;
 							},
 							error : function() {
 								alert("您已收藏该回答！可进入我的收藏查看！");
