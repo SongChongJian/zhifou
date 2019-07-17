@@ -41,6 +41,8 @@ public class PersonalMessageServlet extends BaseServlet {
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");		
 		int row = personalmessageservice.uploadpersonalmessage(user.getUserid(),userphoto,username,userpassword,usermail,usermeans);
+		user.setUsermeans(usermeans);
+		session.setAttribute("user", user);
 		response.getWriter().write(row>0?"1":"0");
 	}
 	

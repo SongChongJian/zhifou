@@ -68,7 +68,7 @@
 				<div class="form-group">
 					<label for="lastname" class="col-sm-2 control-label">个人签名</label>
 					<div class="col-sm-4">
-						<textarea rows="3" cols="50"  name="usermeans" id="usermeans"  value="${user.usermeans}" ></textarea>
+						<textarea rows="3" cols="50"  name="usermeans" id="usermeans" >${user.usermeans}</textarea>
 					</div>			
 				</div>
 				<div class="form-group">

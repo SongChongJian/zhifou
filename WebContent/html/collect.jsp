@@ -91,8 +91,8 @@
                         </div>
                     </div>
                     <div class="chat-headbox">
-                        <a class="list-head">
-                            <img alt="头像" src="${item.userphoto}">
+                        <a class="list-head" href="/zhifou/recommend?method=findUserCenter&userid=${item.userid }">
+                            <img alt="头像" width="50px" height="50px" src="${item.userphoto}">
                         </a>
                     </div>
                     <div class="letter-detail">
